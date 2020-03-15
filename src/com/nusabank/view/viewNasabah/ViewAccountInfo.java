@@ -5,19 +5,45 @@
  */
 package com.nusabank.view.viewNasabah;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author User
  */
-public class ViewCekSaldo extends javax.swing.JFrame {
+public class ViewAccountInfo extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewCekSaldo
      */
-    public ViewCekSaldo() {
+    public ViewAccountInfo() {
         initComponents();
     }
 
+    public JTextField getTfNamaNasabah(){
+        return txtNamaNasabah;
+    }
+    
+    public JTextField getTfNoRek() {
+        return txtNoRekening;
+    }
+    
+    public JTextField getTfSaldo() {
+        return txtSaldo;
+    }
+    
+    public JButton getBtnEditData() {
+        return btnEditDataNasabah;
+    }
+    
+    public JButton getBtnGantiPIN() {
+        return btnGantiPIN;
+    }
+    
+    public JButton getBtnBack() {
+        return btnBack;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,42 +54,48 @@ public class ViewCekSaldo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbLogoPT = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtNamaNasabah = new javax.swing.JTextField();
+        txtNoRekening = new javax.swing.JTextField();
+        txtSaldo = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        btnGantiPIN = new javax.swing.JButton();
+        btnEditDataNasabah = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Balance Check");
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jLabel2.setText("NUSA BANK");
+        lbLogoPT.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lbLogoPT.setText("NUSA BANK");
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Nama");
 
-        jLabel4.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("No Rekening");
 
-        jLabel5.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Saldo");
 
-        jTextField2.setText("jTextField1");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtNoRekening.setText("jTextField1");
+
+        txtSaldo.setText("jTextField1");
+
+        btnBack.setText("Back");
+
+        btnGantiPIN.setText("Ganti PIN");
+
+        btnEditDataNasabah.setText("Edit Data Pribadi");
+        btnEditDataNasabah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                btnEditDataNasabahActionPerformed(evt);
             }
         });
-
-        jTextField3.setText("jTextField1");
-
-        jButton1.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,11 +107,10 @@ public class ViewCekSaldo extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbLogoPT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -87,42 +118,54 @@ public class ViewCekSaldo extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                    .addComponent(jTextField3))))
+                                    .addComponent(txtNamaNasabah)
+                                    .addComponent(txtNoRekening, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(txtSaldo)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGantiPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbLogoPT, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNamaNasabah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(txtNoRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23))
+                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(btnGantiPIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void btnEditDataNasabahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDataNasabahActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_btnEditDataNasabahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,33 +184,36 @@ public class ViewCekSaldo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewCekSaldo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAccountInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewCekSaldo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAccountInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewCekSaldo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAccountInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewCekSaldo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAccountInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewCekSaldo().setVisible(true);
+                new ViewAccountInfo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnEditDataNasabah;
+    private javax.swing.JButton btnGantiPIN;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lbLogoPT;
+    private javax.swing.JTextField txtNamaNasabah;
+    private javax.swing.JTextField txtNoRekening;
+    private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 }

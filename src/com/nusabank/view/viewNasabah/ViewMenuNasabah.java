@@ -75,11 +75,17 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         lbLogoPT = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnMenu1 = new javax.swing.JPanel();
+        btnAccountInfo = new javax.swing.JButton();
         btnMenu4 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
         btnMenu3 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         btnMenu6 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
         btnMenu2 = new javax.swing.JPanel();
+        btn = new javax.swing.JButton();
         btnMenu5 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -110,70 +116,87 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
+        btnAccountInfo.setText("ACCOUNT INFO");
+        btnAccountInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccountInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout btnMenu1Layout = new javax.swing.GroupLayout(btnMenu1);
         btnMenu1.setLayout(btnMenu1Layout);
         btnMenu1Layout.setHorizontalGroup(
             btnMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 173, Short.MAX_VALUE)
+            .addComponent(btnAccountInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
         );
         btnMenu1Layout.setVerticalGroup(
             btnMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addComponent(btnAccountInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
+
+        jButton4.setText("CREDIT CARD");
 
         javax.swing.GroupLayout btnMenu4Layout = new javax.swing.GroupLayout(btnMenu4);
         btnMenu4.setLayout(btnMenu4Layout);
         btnMenu4Layout.setHorizontalGroup(
             btnMenu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 173, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
         );
         btnMenu4Layout.setVerticalGroup(
             btnMenu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
+
+        jButton3.setText("PPOB");
 
         javax.swing.GroupLayout btnMenu3Layout = new javax.swing.GroupLayout(btnMenu3);
         btnMenu3.setLayout(btnMenu3Layout);
         btnMenu3Layout.setHorizontalGroup(
             btnMenu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
         );
         btnMenu3Layout.setVerticalGroup(
             btnMenu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jButton6.setText("HELP");
 
         javax.swing.GroupLayout btnMenu6Layout = new javax.swing.GroupLayout(btnMenu6);
         btnMenu6.setLayout(btnMenu6Layout);
         btnMenu6Layout.setHorizontalGroup(
             btnMenu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 171, Short.MAX_VALUE)
+            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnMenu6Layout.setVerticalGroup(
             btnMenu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        btn.setText("TRANSFER");
 
         javax.swing.GroupLayout btnMenu2Layout = new javax.swing.GroupLayout(btnMenu2);
         btnMenu2.setLayout(btnMenu2Layout);
         btnMenu2Layout.setHorizontalGroup(
             btnMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(btn, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
         );
         btnMenu2Layout.setVerticalGroup(
             btnMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jButton5.setText("DEPOSITO");
 
         javax.swing.GroupLayout btnMenu5Layout = new javax.swing.GroupLayout(btnMenu5);
         btnMenu5.setLayout(btnMenu5Layout);
         btnMenu5Layout.setHorizontalGroup(
             btnMenu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 172, Short.MAX_VALUE)
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnMenu5Layout.setVerticalGroup(
             btnMenu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -299,6 +322,10 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAccountInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAccountInfoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,12 +363,18 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn;
+    private javax.swing.JButton btnAccountInfo;
     private javax.swing.JPanel btnMenu1;
     private javax.swing.JPanel btnMenu2;
     private javax.swing.JPanel btnMenu3;
     private javax.swing.JPanel btnMenu4;
     private javax.swing.JPanel btnMenu5;
     private javax.swing.JPanel btnMenu6;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;

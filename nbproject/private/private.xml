@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/model/table/TableModelNasabah.java</file>
-            <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/model/database/DBConnection.java</file>
-            <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/view/viewLogin/ViewLoginNasabah.java</file>
+            <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/view/viewAdmin/ViewRegisNasabah.java</file>
             <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/controller/ControllerNasabah.java</file>
-            <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/controller/ControllerLoginNasabah.java</file>
             <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/model/ModelNasabah.java</file>
             <file>file:/C:/Users/ANDI%20DWI%20SAPUTRO/Documents/GitHub/NusaBank/src/com/nusabank/view/viewNasabah/ViewMenuNasabah.java</file>
         </group>

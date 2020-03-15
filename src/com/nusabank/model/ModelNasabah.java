@@ -7,6 +7,7 @@ package com.nusabank.model;
 
 import java.sql.Date;
 
+
 /**
  *
  * @author ANDI DWI SAPUTRO
