@@ -10,7 +10,7 @@ package com.nusabank.model;
  * @author ANDI DWI SAPUTRO
  */
 public class ModelAdmin {
-    private String id;
+    private int id;
     private String nama;
     private String username;
     private String password;
@@ -18,11 +18,11 @@ public class ModelAdmin {
     private String jenisKelamin;
     private String noHp;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

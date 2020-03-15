@@ -85,6 +85,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             statement.setString(12, nasabah.getNamaIbu());
             statement.setString(13, nasabah.getUsername());
             statement.setString(14, nasabah.getPassword());
+            statement.setInt(15, nasabah.getId());
             
           
             statement.executeUpdate();

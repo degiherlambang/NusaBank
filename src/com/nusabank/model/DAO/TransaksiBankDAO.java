@@ -21,7 +21,9 @@ import javax.swing.JOptionPane;
  * @author ANDI DWI SAPUTRO
  */
 public class TransaksiBankDAO implements InterfaceTrxBankDAO {
-
+    
+    private List<ModelTransaksiBank> listTrxBank;
+    
     @Override
     public void insert(ModelTransaksiBank mtb) {
         try {
@@ -41,34 +43,148 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
             statement.close();
         } catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: "+ex);
-            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void update(ModelTransaksiBank mtb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
+                    + "UPDATE transaksi_bank SET "
+                    + "jenis_transaksi=?, nominal=?, tgl_transaksi=?,"
+                    + "kode_bank=?, rek_tujuan=?, biaya_admin=?,"
+                    + "ket_transaksi=?"
+                    + "  WHERE id_transaksi=?");
+            
+            statement.setString(1, mtb.getJenisTransaksi());
+            statement.setInt(2, mtb.getNominal());
+            statement.setDate(3, mtb.getTglTransaksi());
+            statement.setInt(4, mtb.getKodeBank());
+            statement.setInt(5, mtb.getRekTujuan());
+            statement.setInt(6, mtb.getBiayaAdmin());
+            statement.setString(7, mtb.getKetTransaksi());
+            statement.setInt(8, mtb.getIdTransaksi());
+            
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
+                    + "DELETE FROM transaksi_bank WHERE id_transaksi=?");
+            
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @Override
     public List<ModelTransaksiBank> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    listTrxBank = new ArrayList<ModelTransaksiBank>();
+        
+        try {
+            
+            Statement statement = DBConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM transaksi_bank");
+            
+            while (result.next()) { 
+                ModelTransaksiBank mtb = new ModelTransaksiBank();
+                mtb.setIdTransaksi(result.getInt("id_transaksi"));
+                mtb.setJenisTransaksi(result.getString("jenis_transaksi"));
+                mtb.setNominal(result.getInt("nominal"));
+                mtb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mtb.setKodeBank(result.getInt("kode_bank"));
+                mtb.setRekTujuan(result.getInt("rek_tujuan"));
+                mtb.setBiayaAdmin(result.getInt("biaya_admin"));
+                mtb.setKetTransaksi(result.getString("ket_transaksi"));
+                listTrxBank.add(mtb);
+            }
+            
+            
+            statement.close();
+            result.close();
+            return listTrxBank;
+        } catch (SQLException ex) {
+            Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }    
     }
 
     @Override
     public List<ModelTransaksiBank> search(String category, String search) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listTrxBank = new ArrayList<ModelTransaksiBank>();
+        
+        try {
+            String query = "SELECT * FROM transaksi_bank WHERE "+category+" LIKE '%"+search+"%'";
+            Statement statement = DBConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            
+            while (result.next()) { 
+                ModelTransaksiBank mtb = new ModelTransaksiBank();
+                mtb.setIdTransaksi(result.getInt("id_transaksi"));
+                mtb.setJenisTransaksi(result.getString("jenis_transaksi"));
+                mtb.setNominal(result.getInt("nominal"));
+                mtb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mtb.setKodeBank(result.getInt("kode_bank"));
+                mtb.setRekTujuan(result.getInt("rek_tujuan"));
+                mtb.setBiayaAdmin(result.getInt("biaya_admin"));
+                mtb.setKetTransaksi(result.getString("ket_transaksi"));
+                listTrxBank.add(mtb);
+            }
+            
+            
+            statement.close();
+            result.close();
+            return listTrxBank;
+        } catch (SQLException ex) {
+            Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     @Override
     public List<ModelTransaksiBank> getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    listTrxBank = new ArrayList<ModelTransaksiBank>();
+        
+        try {
+            String query = "SELECT * FROM transaksi_bank WHERE id_transaksi='"+id+"'";
+            Statement statement = DBConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            
+            while (result.next()) { 
+                ModelTransaksiBank mtb = new ModelTransaksiBank();
+                mtb.setIdTransaksi(result.getInt("id_transaksi"));
+                mtb.setJenisTransaksi(result.getString("jenis_transaksi"));
+                mtb.setNominal(result.getInt("nominal"));
+                mtb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mtb.setKodeBank(result.getInt("kode_bank"));
+                mtb.setRekTujuan(result.getInt("rek_tujuan"));
+                mtb.setBiayaAdmin(result.getInt("biaya_admin"));
+                mtb.setKetTransaksi(result.getString("ket_transaksi"));
+                listTrxBank.add(mtb);
+            }
+            
+            
+            statement.close();
+            result.close();
+            return listTrxBank;
+        } catch (SQLException ex) {
+            Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
     
 }

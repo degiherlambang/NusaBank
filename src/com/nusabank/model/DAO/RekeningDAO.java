@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class RekeningDAO implements InterfaceRekeningDAO {
     
-    List<ModelRekening> modelRekening;
+    List<ModelRekening> listRekening;
     
     @Override
     public void insert(ModelRekening rekening) {
@@ -49,27 +49,130 @@ public class RekeningDAO implements InterfaceRekeningDAO {
 
     @Override
     public void update(ModelRekening rekening) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
+                    + "UPDATE rekening SET "
+                    + "saldo=?, jenis_rekening=?, no_pin=?"
+                    + "  WHERE id_rekening=? AND no_rekening=?");
+            
+            statement.setInt(1, rekening.getSaldo());
+            statement.setString(2, rekening.getJenisRekening());
+            statement.setInt(3, rekening.getNoPin());
+            statement.setInt(4, rekening.getIdRekening());
+            statement.setInt(5, rekening.getNoRekening());
+            
+          
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
+                    + "DELETE FROM rekening WHERE id_rekening=?");
+            
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @Override
     public List<ModelRekening> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listRekening = new ArrayList<ModelRekening>();
+        
+        try {
+            
+            Statement statement = DBConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM rekening");
+            
+            while (result.next()) { 
+                ModelRekening rekening = new ModelRekening();
+                rekening.setIdRekening(result.getInt("id_rekening"));
+                rekening.setNoRekening(result.getInt("no_rekening"));
+                rekening.setSaldo(result.getInt("saldo"));
+                rekening.setJenisRekening(result.getString("jenis_rekening"));
+                rekening.setNoPin(result.getInt("no_pin"));
+                
+                listRekening.add(rekening);
+            }
+            
+            
+            statement.close();
+            result.close();
+            return listRekening;
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     @Override
     public List<ModelRekening> search(String category, String search) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listRekening = new ArrayList<ModelRekening>();
+        
+        try {
+            String query = "SELECT * FROM rekening WHERE "+category+" LIKE '%"+search+"%'";
+            Statement statement = DBConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            
+            while (result.next()) { 
+                ModelRekening rekening = new ModelRekening();
+                rekening.setIdRekening(result.getInt("id_rekening"));
+                rekening.setNoRekening(result.getInt("no_rekening"));
+                rekening.setSaldo(result.getInt("saldo"));
+                rekening.setJenisRekening(result.getString("jenis_rekening"));
+                rekening.setNoPin(result.getInt("no_pin"));
+                
+                listRekening.add(rekening);
+            }
+            
+            
+            statement.close();
+            result.close();
+            return listRekening;
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     @Override
     public List<ModelRekening> getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            String query = "SELECT * FROM rekening WHERE id_rekening='"+id+"'";
+            Statement statement = DBConnection.getConnection().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            
+            while (result.next()) { 
+                ModelRekening rekening = new ModelRekening();
+                rekening.setIdRekening(result.getInt("id_rekening"));
+                rekening.setNoRekening(result.getInt("no_rekening"));
+                rekening.setSaldo(result.getInt("saldo"));
+                rekening.setJenisRekening(result.getString("jenis_rekening"));
+                rekening.setNoPin(result.getInt("no_pin"));
+                
+                listRekening.add(rekening);
+            }
+            
+            
+            statement.close();
+            result.close();
+            return listRekening;
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
     
 }

@@ -11,7 +11,7 @@ import com.nusabank.model.ModelTransaksiPPOB;
  *
  * @author ANDI DWI SAPUTRO
  */
-public interface InterfaceTrxPPOB {
+public interface InterfaceTrxPpobDAO {
     public void insert(ModelTransaksiPPOB mTrxPPOB);
     public void update(ModelTransaksiPPOB mTrxPPOB);
     public void delete(int id);
