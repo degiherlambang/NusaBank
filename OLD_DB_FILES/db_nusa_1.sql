@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2020 at 03:41 PM
+-- Generation Time: Mar 15, 2020 at 03:15 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -55,9 +55,9 @@ CREATE TABLE `nasabah` (
   `nik` int(16) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `alamat` text NOT NULL,
-  `photo` text,
+  `photo` text NOT NULL,
   `jenis_kelamin` varchar(10) NOT NULL,
-  `pekerjaan` text NOT NULL,
+  `pekerjaan` varchar(25) NOT NULL,
   `alamat_kantor` text NOT NULL,
   `pendapatan` int(12) NOT NULL,
   `no_hp` varchar(14) NOT NULL,
@@ -65,18 +65,16 @@ CREATE TABLE `nasabah` (
   `nama_ibu` varchar(40) NOT NULL,
   `username_nasabah` varchar(12) NOT NULL,
   `password_nasabah` varchar(12) NOT NULL,
-  `tgl_pembuatan` datetime NOT NULL,
-  `id_rekening` int(16) NOT NULL,
-  `id_admin` int(16) DEFAULT NULL
+  `tgl_pembuatan` date NOT NULL,
+  `id_rekening` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nasabah`
 --
 
-INSERT INTO `nasabah` (`id_nasabah`, `nama`, `nik`, `tgl_lahir`, `alamat`, `photo`, `jenis_kelamin`, `pekerjaan`, `alamat_kantor`, `pendapatan`, `no_hp`, `status`, `nama_ibu`, `username_nasabah`, `password_nasabah`, `tgl_pembuatan`, `id_rekening`, `id_admin`) VALUES
-(1, 'Jamal', 123123866, '1996-12-13', 'Kali Deres', 'res/nasabah_photos/avatar_1_jamal.jpg', 'Laki', 'Ini', 'Disini', 10000000, '0812218323', 'Duda', 'Siti', 'nasabah1', '123456', '2020-03-14 00:00:00', 1, 0),
-(2, 'Dummy1', 12345678, '1990-01-02', 'Jkt', 'file...', 'Male', 'Programmer', 'Jkt', 1200000, '0812345678', 'Single', 'Dummy Mom', 'dummy1', 'dummy1', '2020-03-16 19:02:00', 6, 0);
+INSERT INTO `nasabah` (`id_nasabah`, `nama`, `nik`, `tgl_lahir`, `alamat`, `photo`, `jenis_kelamin`, `pekerjaan`, `alamat_kantor`, `pendapatan`, `no_hp`, `status`, `nama_ibu`, `username_nasabah`, `password_nasabah`, `tgl_pembuatan`, `id_rekening`) VALUES
+(1, 'Jamal', 123123866, '1996-12-13', 'Kali Deres', 'res/nasabah_photos/avatar_1_jamal.jpg', 'Laki', 'Ini', 'Disini', 10000000, '0812218323', 'Duda', 'Siti', 'nasabah1', '123456', '2020-03-14', 1);
 
 -- --------------------------------------------------------
 
@@ -86,9 +84,9 @@ INSERT INTO `nasabah` (`id_nasabah`, `nama`, `nik`, `tgl_lahir`, `alamat`, `phot
 
 CREATE TABLE `rekening` (
   `id_rekening` int(12) NOT NULL,
-  `no_rekening` varchar(24) NOT NULL,
+  `no_rekening` int(16) NOT NULL,
   `saldo` int(12) NOT NULL,
-  `jenis_rekening` varchar(24) NOT NULL,
+  `jenis_rekening` varchar(10) NOT NULL,
   `no_pin` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -97,10 +95,7 @@ CREATE TABLE `rekening` (
 --
 
 INSERT INTO `rekening` (`id_rekening`, `no_rekening`, `saldo`, `jenis_rekening`, `no_pin`) VALUES
-(1, '1234567890', 100000, 'Reguler', 123456),
-(4, '058159171881', 100000, 'Gold', 123456),
-(5, '673159171881', 1000000, 'Reguler', 123456),
-(6, '058159171881', 900000, 'Reguler', 123456);
+(1, 1234567890, 100000, 'Reguler', 123456);
 
 -- --------------------------------------------------------
 
@@ -112,12 +107,11 @@ CREATE TABLE `transaksi_bank` (
   `id_transaksi` int(12) NOT NULL,
   `jenis_transaksi` varchar(10) NOT NULL,
   `nominal` int(12) NOT NULL,
-  `tgl_transaksi` datetime NOT NULL,
+  `tgl_transaksi` date NOT NULL,
   `kode_bank` int(3) NOT NULL,
   `rek_tujuan` int(16) NOT NULL,
   `biaya_admin` int(12) NOT NULL,
-  `ket_transaksi` text NOT NULL,
-  `id_rekening` int(16) NOT NULL
+  `ket_transaksi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -132,8 +126,7 @@ CREATE TABLE `transaksi_ppob` (
   `nominal` int(12) NOT NULL,
   `tgl_transaksi` datetime NOT NULL,
   `no_target` int(32) NOT NULL,
-  `ket_transaksi` text NOT NULL,
-  `id_rekening` int(16) NOT NULL
+  `ket_transaksi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -183,12 +176,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `nasabah`
 --
 ALTER TABLE `nasabah`
-  MODIFY `id_nasabah` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_nasabah` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
-  MODIFY `id_rekening` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_rekening` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `transaksi_bank`
 --
