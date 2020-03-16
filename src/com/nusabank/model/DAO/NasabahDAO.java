@@ -35,7 +35,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                     + "(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
             statement.setString(1, nasabah.getNama());
             statement.setInt(2, nasabah.getNik());
-            statement.setDate(3, nasabah.getTglLahir());
+            statement.setString(3, nasabah.getTglLahir());
             statement.setString(4, nasabah.getAlamatRumah());
             statement.setString(5, nasabah.getPhoto());
             statement.setString(6, nasabah.getJenisKelamin());
@@ -47,7 +47,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             statement.setString(12, nasabah.getNamaIbu());
             statement.setString(13, nasabah.getUsername());
             statement.setString(14, nasabah.getPassword());
-            statement.setDate(15, nasabah.getTglPembuatan());
+            statement.setString(15, nasabah.getTglPembuatan());
             statement.setInt(16, nasabah.getIdRekening());
             
             statement.executeUpdate();
@@ -73,7 +73,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             
             statement.setString(1, nasabah.getNama());
             statement.setInt(2, nasabah.getNik());
-            statement.setDate(3, nasabah.getTglLahir());
+            statement.setString(3, nasabah.getTglLahir());
             statement.setString(4, nasabah.getAlamatRumah());
             statement.setString(5, nasabah.getPhoto());
             statement.setString(6, nasabah.getJenisKelamin());
@@ -130,7 +130,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setUsername(result.getString("username_nasabah"));
                 nasabah.setPassword(result.getString("password_nasabah"));
                 nasabah.setIdRekening(result.getInt("id_rekening"));
-                nasabah.setTglLahir(result.getDate("tgl_lahir"));
+                nasabah.setTglLahir(result.getString("tgl_lahir"));
                 nasabah.setAlamatRumah(result.getString("alamat"));
                 nasabah.setAlamatKantor(result.getString("alamat_kantor"));
                 nasabah.setNoHp(result.getString("no_hp"));
@@ -139,7 +139,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setStatus(result.getString("status"));
                 nasabah.setPhoto(result.getString("photo"));
                 nasabah.setNamaIbu(result.getString("nama_ibu"));
-                nasabah.setTglPembuatan(result.getDate("tgl_pembuatan"));
+                nasabah.setTglPembuatan(result.getString("tgl_pembuatan"));
                 
                 
                 listNasabah.add(nasabah);
@@ -171,7 +171,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setUsername(result.getString("username_nasabah"));
                 nasabah.setPassword(result.getString("password_nasabah"));
                 nasabah.setIdRekening(result.getInt("id_rekening"));
-                nasabah.setTglLahir(result.getDate("tgl_lahir"));
+                nasabah.setTglLahir(result.getString("tgl_lahir"));
                 nasabah.setAlamatRumah(result.getString("alamat"));
                 nasabah.setAlamatKantor(result.getString("alamat_kantor"));
                 nasabah.setNoHp(result.getString("no_hp"));
@@ -180,7 +180,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setStatus(result.getString("status"));
                 nasabah.setPhoto(result.getString("photo"));
                 nasabah.setNamaIbu(result.getString("nama_ibu"));
-                nasabah.setTglPembuatan(result.getDate("tgl_pembuatan"));
+                nasabah.setTglPembuatan(result.getString("tgl_pembuatan"));
                 
                 listNasabah.add(nasabah);
             }
@@ -210,7 +210,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setUsername(result.getString("username_nasabah"));
                 nasabah.setPassword(result.getString("password_nasabah"));
                 nasabah.setIdRekening(result.getInt("id_rekening"));
-                nasabah.setTglLahir(result.getDate("tgl_lahir"));
+                nasabah.setTglLahir(result.getString("tgl_lahir"));
                 nasabah.setAlamatRumah(result.getString("alamat"));
                 nasabah.setAlamatKantor(result.getString("alamat_kantor"));
                 nasabah.setNoHp(result.getString("no_hp"));
@@ -219,7 +219,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setStatus(result.getString("status"));
                 nasabah.setPhoto(result.getString("photo"));
                 nasabah.setNamaIbu(result.getString("nama_ibu"));
-                nasabah.setTglPembuatan(result.getDate("tgl_pembuatan"));
+                nasabah.setTglPembuatan(result.getString("tgl_pembuatan"));
                 
                 listNasabah.add(nasabah);
             }

@@ -15,6 +15,8 @@ import com.nusabank.model.table.TableModelNasabah;
 import com.nusabank.view.viewAdmin.ViewRegisNasabah;
 import com.nusabank.view.viewNasabah.*;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -99,7 +101,10 @@ public class ControllerNasabah {
 
         ModelNasabah nasabah = new ModelNasabah();
         ModelRekening rekening = new ModelRekening();
-
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        java.util.Date tglPembuatan = new java.util.Date();
+        
         nasabah.setNama(vRegNasabah.getTxtNama().getText());
         nasabah.setUsername(vRegNasabah.getTxtUsername().getText());
         nasabah.setPassword(String.valueOf(vRegNasabah.getTxtPassword().getPassword()));
@@ -113,7 +118,8 @@ public class ControllerNasabah {
         nasabah.setPhoto(vRegNasabah.getLbFoto().getText());
         nasabah.setAlamatKantor(vRegNasabah.getTxtAlamatKantor().getText());
         nasabah.setAlamatRumah(vRegNasabah.getTxtAlamat().getText());
-        nasabah.setTglLahir((java.sql.Date) vRegNasabah.getTxtLahir().getDate());
+        nasabah.setTglLahir((new java.sql.Date(vRegNasabah.getTxtLahir().getDate().getTime()).toString()));
+        nasabah.setTglPembuatan(dateFormat.format(tglPembuatan));
         
         rekening.setNoPin(Integer.parseInt(String.valueOf(vRegNasabah.getTxtNoPIN().getPassword())));
         rekening.setNoRekening(Integer.parseInt(vRegNasabah.getTxtNoRekening().getText()));

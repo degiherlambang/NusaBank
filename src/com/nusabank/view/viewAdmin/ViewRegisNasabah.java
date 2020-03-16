@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -315,12 +316,10 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
         txtNoRekening.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtNoRekening.setText("jTextField1");
 
         jLabel18.setText("Your Account No:");
 
         txtResultNoPIN.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        txtResultNoPIN.setText("jTextField2");
 
         jLabel20.setText("PIN:");
 
@@ -382,8 +381,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setText("First Tiime Deposit");
-
-        txtSaldo.setText("jTextField1");
 
         todayDate.setText("tglSekarang");
 
@@ -619,6 +616,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
                dcTglLahir.getDateFormatString(), 
                todayDate.getText()
        );
+       txtNoRekening.setText(noRek);
        nc.insert();
        nc.reset();
     }//GEN-LAST:event_btnSaveActionPerformed

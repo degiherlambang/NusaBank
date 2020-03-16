@@ -19,8 +19,8 @@ public class ModelNasabah {
     private String username;
     private String password;
     private int idRekening;
-    private Date tglLahir;
-    private Date tglPembuatan;
+    private String tglLahir;
+    private String tglPembuatan;
     private int pendapatan;
     private String noHp;
     private String status;
@@ -80,11 +80,11 @@ public class ModelNasabah {
         this.idRekening = idRekening;
     }
 
-    public Date getTglPembuatan() {
+    public String getTglPembuatan() {
         return tglPembuatan;
     }
 
-    public void setTglPembuatan(Date tglPembuatan) {
+    public void setTglPembuatan(String tglPembuatan) {
         this.tglPembuatan = tglPembuatan;
     }
 
@@ -152,11 +152,11 @@ public class ModelNasabah {
         this.namaIbu = namaIbu;
     }
 
-    public Date getTglLahir() {
+    public String getTglLahir() {
         return tglLahir;
     }
 
-    public void setTglLahir(Date tglLahir) {
+    public void setTglLahir(String tglLahir) {
         this.tglLahir = tglLahir;
     }
 

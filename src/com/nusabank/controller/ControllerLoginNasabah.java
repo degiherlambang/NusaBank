@@ -33,13 +33,13 @@ public class ControllerLoginNasabah {
     private ModelNasabah nasabah;
     private List<ModelNasabah> listNasabah;
     private String jenisRekening;
-    private final InterfaceNasabahDAO interfaceNasabah;
+    //private final InterfaceNasabahDAO interfaceNasabah;
 
     public ControllerLoginNasabah(ViewLoginNasabah vLoginNasabah) {
         this.vLoginNasabah = vLoginNasabah;
-        interfaceNasabah = new NasabahDAO();
+        //interfaceNasabah = new NasabahDAO();
         //nasabah = new ModelNasabah();
-        listNasabah = interfaceNasabah.getAll();
+        //listNasabah = interfaceNasabah.getAll();
     }
 
     public void doLogin(String username, String password) throws IOException {
@@ -57,7 +57,7 @@ public class ControllerLoginNasabah {
                     nasabah.setUsername(rs.getString("username_nasabah"));
                     nasabah.setNama(rs.getString("nama"));
                     nasabah.setNik(rs.getInt("nik"));
-                    nasabah.setTglLahir(rs.getDate("tgl_lahir"));
+                    nasabah.setTglLahir(rs.getString("tgl_lahir"));
                     nasabah.setJenisKelamin(rs.getString("jenis_kelamin"));
                     nasabah.setIdRekening(rs.getInt("id_rekening"));
                     nasabah.setPhoto(rs.getString("photo"));
