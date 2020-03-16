@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  *
  * @author ANDI DWI SAPUTRO
  */
-public class ControllerLoginNasabah {
+public class CLoginNasabah {
 
     private final ViewLoginNasabah vLoginNasabah;
     private ModelNasabah nasabah;
@@ -35,7 +35,7 @@ public class ControllerLoginNasabah {
     private String jenisRekening;
     //private final InterfaceNasabahDAO interfaceNasabah;
 
-    public ControllerLoginNasabah(ViewLoginNasabah vLoginNasabah) {
+    public CLoginNasabah(ViewLoginNasabah vLoginNasabah) {
         this.vLoginNasabah = vLoginNasabah;
         //interfaceNasabah = new NasabahDAO();
         //nasabah = new ModelNasabah();

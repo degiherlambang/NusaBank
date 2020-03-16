@@ -8,9 +8,6 @@ package com.nusabank.controller;
 import com.nusabank.model.ModelNasabah;
 import com.nusabank.model.DAO.NasabahDAO;
 import com.nusabank.model.DAO.InterfaceNasabahDAO;
-import com.nusabank.model.DAO.InterfaceRekeningDAO;
-import com.nusabank.model.DAO.RekeningDAO;
-import com.nusabank.model.ModelRekening;
 import com.nusabank.model.table.TableModelNasabah;
 import com.nusabank.view.viewAdmin.ViewRegisNasabah;
 import com.nusabank.view.viewNasabah.*;
@@ -33,10 +30,8 @@ public class CRegisNasabah {
     private final ViewRegisNasabah vRegNasabah;
 
     private List<ModelNasabah> listNasabah;
-    //private List<ModelRekening> listRekening;
 
     private final InterfaceNasabahDAO interfaceNasabah;
-    //private final InterfaceRekeningDAO interfaceRekening;
     
     public CRegisNasabah(JFrame frame) {
         this.vRegNasabah = (ViewRegisNasabah) frame;
@@ -63,14 +58,6 @@ public class CRegisNasabah {
         vRegNasabah.getCmbStatus().setSelectedIndex(0);
         vRegNasabah.getLbFoto().setText("file...");
         vRegNasabah.getLbNamaNasabah().setText("");   
-    }
-
-    public void bindingTable() {
-
-    }
-
-    public void getDataField() {
-
     }
 
     public void insert() {
@@ -101,19 +88,4 @@ public class CRegisNasabah {
         JOptionPane.showMessageDialog(null,"Data berhasil di input");
     }
 
-    public void update() {
-
-    }
-
-    public void delete() {
-
-    }
-
-    public void searchData() {
-
-    }
-
-    public void bindingSearch() {
-
-    }
 }

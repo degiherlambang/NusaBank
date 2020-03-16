@@ -38,22 +38,19 @@ public class CRegisRekening {
         listRekening = interfaceRekening.getAll();
     }
     
-    public void bindingTable() {
-
-    }
-
+ 
     public void getDataField() {
 
     }
     
-    public void getData(int id) {
+    /*public void getData(int id) {
         listRekening = interfaceRekening.getById(id);
         vRegNasabah.getTxtIdRekening()
                 .setText(String.valueOf(
                         listRekening.get(0)
                         .getIdRekening()
                 ));
-    }
+    }*/
     
     public void insert() {
 
@@ -70,22 +67,6 @@ public class CRegisRekening {
         interfaceRekening.insert(rekening);
         vRegNasabah.getTxtIdRekening().setText(interfaceRekening.getLastId());
         
-    }
-
-    public void update() {
-
-    }
-
-    public void delete() {
-
-    }
-
-    public void searchData() {
-
-    }
-
-    public void bindingSearch() {
-
     }
 
     public String generateNoRek(String nmNasabah, String dob, String dj) {
@@ -112,5 +93,7 @@ public class CRegisRekening {
         
         return norekResult;
     }
+
+    
 }
 

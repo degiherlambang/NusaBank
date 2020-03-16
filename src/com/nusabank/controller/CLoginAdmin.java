@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author ANDI DWI SAPUTRO
  */
-public class ControllerLoginAdmin {
+public class CLoginAdmin {
 
     private final ViewLoginAdmin vLoginAdmin;
 
@@ -30,7 +30,7 @@ public class ControllerLoginAdmin {
 
     //private final InterfaceAdminDAO interAdminDAO;
 
-    public ControllerLoginAdmin(ViewLoginAdmin vLoginAdmin) {
+    public CLoginAdmin(ViewLoginAdmin vLoginAdmin) {
         this.vLoginAdmin = vLoginAdmin;
     }
     

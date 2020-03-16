@@ -5,7 +5,7 @@
  */
 package com.nusabank.view.viewLogin;
 
-import com.nusabank.controller.ControllerLoginAdmin;
+import com.nusabank.controller.CLoginAdmin;
 
 /**
  *
@@ -15,7 +15,7 @@ public class ViewLoginAdmin extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
     
-    private ControllerLoginAdmin cLoginAdmin;
+    private CLoginAdmin cLoginAdmin;
     
     private String usernameAdmin;
     private String passwordAdmin;
@@ -25,7 +25,7 @@ public class ViewLoginAdmin extends javax.swing.JFrame {
      */
     public ViewLoginAdmin() {
         initComponents();
-        cLoginAdmin = new ControllerLoginAdmin(this);
+        cLoginAdmin = new CLoginAdmin(this);
     }
 
     /**

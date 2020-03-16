@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package com.nusabank.view.viewLogin;
-import com.nusabank.controller.ControllerLoginAdmin;
-import com.nusabank.controller.ControllerLoginNasabah;
+import com.nusabank.controller.CLoginAdmin;
+import com.nusabank.controller.CLoginNasabah;
 import com.nusabank.view.viewNasabah.ViewMenuNasabah;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class ViewLoginNasabah extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
     
-    private ControllerLoginNasabah cLoginNasabah;
+    private CLoginNasabah cLoginNasabah;
     
     private String usernameNasabah;
     private String passwordNasabah;
@@ -28,7 +28,7 @@ public class ViewLoginNasabah extends javax.swing.JFrame {
     public ViewLoginNasabah() {
         
         initComponents();
-        cLoginNasabah = new ControllerLoginNasabah(this);    
+        cLoginNasabah = new CLoginNasabah(this);    
         
     }
 
