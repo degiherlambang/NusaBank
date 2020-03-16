@@ -109,9 +109,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         return txtIdRekening;
     }
 
-    public JTextField getTxtResultNoPIN() {
-        return txtResultNoPIN;
-    }
 
     public JPasswordField getTxtNoPIN() {
         return txtNoPIN;
@@ -180,8 +177,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtNoRekening = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        txtResultNoPIN = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtIdRekening = new javax.swing.JTextField();
         lbNamaNasabah = new javax.swing.JLabel();
@@ -296,10 +291,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
 
         jLabel18.setText("Your Account No:");
 
-        txtResultNoPIN.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-
-        jLabel20.setText("PIN:");
-
         jLabel22.setText("ID No: ");
 
         txtIdRekening.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -324,13 +315,10 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbNamaNasabah, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 36, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtIdRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtResultNoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -338,8 +326,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(txtResultNoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
                     .addComponent(txtIdRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
@@ -640,7 +626,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -671,7 +656,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private javax.swing.JTextField txtPekerjaan;
     private javax.swing.JTextField txtPendapatan;
     private javax.swing.JPasswordField txtRePassword;
-    private javax.swing.JTextField txtResultNoPIN;
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
