@@ -28,10 +28,9 @@ public class RekeningDAO implements InterfaceRekeningDAO {
     public void insert(ModelRekening rekening) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO rekening "
-                    + "(id_rekening, no_rekening, saldo, jenis_rekening, no_pin)"
-                    + "VALUES "
-                    + "(null, ?, ?, ?, ?)");
-            statement.setInt(1, rekening.getNoRekening());
+                    + "(no_rekening, saldo, jenis_rekening, no_pin)"
+                    + "VALUES (?, ?, ?, ?)");
+            statement.setString(1, rekening.getNoRekening());
             statement.setInt(2, rekening.getSaldo());
             statement.setString(3, rekening.getJenisRekening());
             statement.setInt(4, rekening.getNoPin());
@@ -41,10 +40,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: "+ex);
             Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -59,7 +55,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             statement.setString(2, rekening.getJenisRekening());
             statement.setInt(3, rekening.getNoPin());
             statement.setInt(4, rekening.getIdRekening());
-            statement.setInt(5, rekening.getNoRekening());
+            statement.setString(5, rekening.getNoRekening());
             
           
             statement.executeUpdate();
@@ -98,7 +94,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             while (result.next()) { 
                 ModelRekening rekening = new ModelRekening();
                 rekening.setIdRekening(result.getInt("id_rekening"));
-                rekening.setNoRekening(result.getInt("no_rekening"));
+                rekening.setNoRekening(result.getString("no_rekening"));
                 rekening.setSaldo(result.getInt("saldo"));
                 rekening.setJenisRekening(result.getString("jenis_rekening"));
                 rekening.setNoPin(result.getInt("no_pin"));
@@ -128,7 +124,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             while (result.next()) { 
                 ModelRekening rekening = new ModelRekening();
                 rekening.setIdRekening(result.getInt("id_rekening"));
-                rekening.setNoRekening(result.getInt("no_rekening"));
+                rekening.setNoRekening(result.getString("no_rekening"));
                 rekening.setSaldo(result.getInt("saldo"));
                 rekening.setJenisRekening(result.getString("jenis_rekening"));
                 rekening.setNoPin(result.getInt("no_pin"));
@@ -157,7 +153,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             while (result.next()) { 
                 ModelRekening rekening = new ModelRekening();
                 rekening.setIdRekening(result.getInt("id_rekening"));
-                rekening.setNoRekening(result.getInt("no_rekening"));
+                rekening.setNoRekening(result.getString("no_rekening"));
                 rekening.setSaldo(result.getInt("saldo"));
                 rekening.setJenisRekening(result.getString("jenis_rekening"));
                 rekening.setNoPin(result.getInt("no_pin"));
@@ -173,6 +169,24 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+
+    @Override
+    public String getLastId() {
+        String lastId = "0";
+        String qLastId = "SELECT MAX(id_rekening) AS last_id FROM rekening";
+        
+        try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(qLastId);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                lastId = rs.getString("last_id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lastId;
     }
     
 }

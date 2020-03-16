@@ -33,17 +33,15 @@ public class ControllerNasabah {
     private final ViewRegisNasabah vRegNasabah;
 
     private List<ModelNasabah> listNasabah;
-    private List<ModelRekening> listRekening;
+    //private List<ModelRekening> listRekening;
 
     private final InterfaceNasabahDAO interfaceNasabah;
-    private final InterfaceRekeningDAO interfaceRekening;
+    //private final InterfaceRekeningDAO interfaceRekening;
     
     public ControllerNasabah(JFrame frame) {
         this.vRegNasabah = (ViewRegisNasabah) frame;
         interfaceNasabah = new NasabahDAO();
         listNasabah = interfaceNasabah.getAll();
-        interfaceRekening = new RekeningDAO();
-        listRekening = interfaceRekening.getAll();
     }
 
     public void reset() {
@@ -71,7 +69,7 @@ public class ControllerNasabah {
         vRegNasabah.getTxtNamaIbu().setText("");
         vRegNasabah.getTxtNoHP().setText("");
         vRegNasabah.getTxtNoPIN().setText("");
-        vRegNasabah.getTxtNoRekening().setText("");
+        //vRegNasabah.getTxtNoRekening().setText("");
         vRegNasabah.getTxtPassword().setText("");
         vRegNasabah.getTxtPekerjaan().setText("");
         vRegNasabah.getTxtRePassword().setText("");
@@ -100,7 +98,6 @@ public class ControllerNasabah {
     public void insert() {
 
         ModelNasabah nasabah = new ModelNasabah();
-        ModelRekening rekening = new ModelRekening();
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         java.util.Date tglPembuatan = new java.util.Date();
@@ -120,12 +117,8 @@ public class ControllerNasabah {
         nasabah.setAlamatRumah(vRegNasabah.getTxtAlamat().getText());
         nasabah.setTglLahir((new java.sql.Date(vRegNasabah.getTxtLahir().getDate().getTime()).toString()));
         nasabah.setTglPembuatan(dateFormat.format(tglPembuatan));
+        nasabah.setIdRekening(Integer.parseInt(vRegNasabah.getTxtIdRekening().getText()));
         
-        rekening.setNoPin(Integer.parseInt(String.valueOf(vRegNasabah.getTxtNoPIN().getPassword())));
-        rekening.setNoRekening(Integer.parseInt(vRegNasabah.getTxtNoRekening().getText()));
-        rekening.setSaldo(Integer.parseInt(vRegNasabah.getTxtSaldo().getText()));
-        
-        interfaceRekening.insert(rekening);
         interfaceNasabah.insert(nasabah);
     }
 
@@ -143,30 +136,5 @@ public class ControllerNasabah {
 
     public void bindingSearch() {
 
-    }
-
-    public String generateNoRek(String nmNasabah, String dob, String dj) {
-        String norekResult = "1234567890";
-
-        String a = nmNasabah;
-        String b = dob;
-        String c = dj;
-        int hash1 = a.hashCode();
-        int hash2 = b.hashCode();
-        int hash3 = c.hashCode();
-        String pt1 = String.valueOf(hash1).substring(1, 5);
-        String pt2 = String.valueOf(hash2).substring(1, 5);
-        String pt3 = String.valueOf(hash3).substring(1, 5);
-        String cont = pt1 + pt2 + pt3;
-        System.out.println(hash1);
-        System.out.println(hash2);
-        System.out.println(hash3);
-        System.out.println(pt1);
-        System.out.println(pt2);
-        System.out.println(pt3);
-        System.out.println(cont);
-        norekResult = cont;
-        
-        return norekResult;
     }
 }

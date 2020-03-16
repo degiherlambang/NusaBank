@@ -28,11 +28,11 @@ public class NasabahDAO implements InterfaceNasabahDAO {
     public void insert(ModelNasabah nasabah) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO nasabah "
-                    + "(id_nasabah, nama, nik, tgl_lahir, alamat, photo, jenis_kelamin,"
+                    + "(nama, nik, tgl_lahir, alamat, photo, jenis_kelamin,"
                     + "pekerjaan, alamat_kantor, pendapatan, no_hp, status, nama_ibu, username_nasabah,"
                     + "password_nasabah, tgl_pembuatan, id_rekening)"
                     + "VALUES "
-                    + "(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
+                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, nasabah.getNama());
             statement.setInt(2, nasabah.getNik());
             statement.setString(3, nasabah.getTglLahir());
@@ -55,8 +55,8 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: "+ex);
-        }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            Logger.getLogger(NasabahDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @Override

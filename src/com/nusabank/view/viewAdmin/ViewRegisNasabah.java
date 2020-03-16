@@ -7,6 +7,7 @@ package com.nusabank.view.viewAdmin;
 
 import com.toedter.calendar.JDateChooser;
 import com.nusabank.controller.ControllerNasabah;
+import com.nusabank.controller.ControllerRekening;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JComboBox;
@@ -24,7 +25,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
     
     private ControllerNasabah nc;
-    
+    private ControllerRekening rc;
     /**
      * Creates new form ViewRegisNasabah
      */
@@ -32,6 +33,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         initComponents();
         todayDateInit();
         nc = new ControllerNasabah(this);
+        rc = new ControllerRekening(this);
     }
 
     public void todayDateInit() {
@@ -122,6 +124,11 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     public JTextField getTxtSaldo() {
         return txtSaldo;
     }
+
+    public JComboBox<String> getCmbJenisRekening() {
+        return cmbJenisRekening;
+    }
+    
     
     
     /**
@@ -202,24 +209,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Address");
 
-        txtNamaNasabah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamaNasabahActionPerformed(evt);
-            }
-        });
-
-        txtNIK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNIKActionPerformed(evt);
-            }
-        });
-
-        txtNoHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNoHPActionPerformed(evt);
-            }
-        });
-
         txtAlamat.setColumns(20);
         txtAlamat.setRows(5);
         jScrollPane1.setViewportView(txtAlamat);
@@ -239,20 +228,8 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         cmbJenisKelamin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cmbJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Choose -", "Male", "Female" }));
 
-        txtPekerjaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPekerjaanActionPerformed(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Job Description");
-
-        txtPendapatan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPendapatanActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Income");
@@ -586,39 +563,26 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNamaNasabahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaNasabahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaNasabahActionPerformed
-
-    private void txtNIKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNIKActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNIKActionPerformed
-
-    private void txtNoHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNoHPActionPerformed
-
-    private void txtPekerjaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPekerjaanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPekerjaanActionPerformed
-
-    private void txtPendapatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPendapatanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPendapatanActionPerformed
-
     private void txtNamaIbuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaIbuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNamaIbuActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-       String noRek = nc.generateNoRek(
+       String noRek = rc.generateNoRek(
                txtNamaNasabah.getText().replace(" ", ""),
                dcTglLahir.getDateFormatString(), 
                todayDate.getText()
        );
        txtNoRekening.setText(noRek);
-       nc.insert();
-       nc.reset();
+       rc.insert();
+       
+       if (String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtRePassword.getPassword()))){
+        nc.insert();
+        nc.reset();   
+        JOptionPane.showMessageDialog(null,"Data berhasil di input");
+       } else {
+           JOptionPane.showMessageDialog(null,"error");
+       }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**

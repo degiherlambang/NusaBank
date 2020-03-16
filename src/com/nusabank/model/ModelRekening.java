@@ -11,7 +11,7 @@ package com.nusabank.model;
  */
 public class ModelRekening {
     private int idRekening;
-    private int noRekening;
+    private String noRekening;
     private int saldo;
     private String jenisRekening;
     private int noPin;
@@ -24,11 +24,11 @@ public class ModelRekening {
         this.idRekening = idRekening;
     }
 
-    public int getNoRekening() {
+    public String getNoRekening() {
         return noRekening;
     }
 
-    public void setNoRekening(int noRekening) {
+    public void setNoRekening(String noRekening) {
         this.noRekening = noRekening;
     }
 
