@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  *
  * @author ANDI DWI SAPUTRO
  */
-public class ControllerNasabah {
+public class CRegisNasabah {
 
     private final ViewRegisNasabah vRegNasabah;
 
@@ -38,29 +38,13 @@ public class ControllerNasabah {
     private final InterfaceNasabahDAO interfaceNasabah;
     //private final InterfaceRekeningDAO interfaceRekening;
     
-    public ControllerNasabah(JFrame frame) {
+    public CRegisNasabah(JFrame frame) {
         this.vRegNasabah = (ViewRegisNasabah) frame;
         interfaceNasabah = new NasabahDAO();
         listNasabah = interfaceNasabah.getAll();
     }
 
     public void reset() {
-        /* reset form transaksi banking
-        vTrxBank.getCmbJenisTransaksi().setSelectedIndex(0);
-        vTrxBank.getTfNoRekTujuan().setText("");
-        vTrxBank.getTfKodeBank().setText("");
-        vTrxBank.getTfNominal().setText("");
-        vTrxBank.getTfKeterangan().setText("");
-        vTrxBank.getTableTrxBank().clearSelection();
-
-        // reset form transaksi ppob
-        vTrxPPOB.getCmbJenisTransaksi().setSelectedIndex(0);
-        vTrxPPOB.getTfNoTarget().setText("");
-        vTrxPPOB.getTfNominal().setText("");
-        vTrxPPOB.getTfKeterangan().setText("");
-        vTrxPPOB.getTableTrxPPOB().clearSelection();
-        */
-        // reset form regis nasabah
         vRegNasabah.getTxtNama().setText("");
         vRegNasabah.getTxtAlamat().setText("");
         vRegNasabah.getTxtAlamatKantor().setText("");
@@ -78,13 +62,7 @@ public class ControllerNasabah {
         vRegNasabah.getCmbJenisKelamin().setSelectedIndex(0);
         vRegNasabah.getCmbStatus().setSelectedIndex(0);
         vRegNasabah.getLbFoto().setText("file...");
-        vRegNasabah.getLbNamaNasabah().setText("");
-        
-        
-        // reset form edit data diri
-        // TO-DO soon
-        // reset form ganti PIN
-        // TO-DO soon    
+        vRegNasabah.getLbNamaNasabah().setText("");   
     }
 
     public void bindingTable() {
@@ -120,6 +98,7 @@ public class ControllerNasabah {
         nasabah.setIdRekening(Integer.parseInt(vRegNasabah.getTxtIdRekening().getText()));
         
         interfaceNasabah.insert(nasabah);
+        JOptionPane.showMessageDialog(null,"Data berhasil di input");
     }
 
     public void update() {

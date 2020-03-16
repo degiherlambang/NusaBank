@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  *
  * @author ANDI DWI SAPUTRO
  */
-public class ControllerRekening {
+public class CRegisRekening {
  
     private final ViewRegisNasabah vRegNasabah;
 
@@ -32,7 +32,7 @@ public class ControllerRekening {
 
     private final InterfaceRekeningDAO interfaceRekening;
     
-    public ControllerRekening(JFrame frame) {
+    public CRegisRekening(JFrame frame) {
         this.vRegNasabah = (ViewRegisNasabah) frame;
         interfaceRekening = new RekeningDAO();
         listRekening = interfaceRekening.getAll();

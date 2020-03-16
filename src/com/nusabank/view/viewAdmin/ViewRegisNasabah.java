@@ -6,8 +6,8 @@
 package com.nusabank.view.viewAdmin;
 
 import com.toedter.calendar.JDateChooser;
-import com.nusabank.controller.ControllerNasabah;
-import com.nusabank.controller.ControllerRekening;
+import com.nusabank.controller.CRegisNasabah;
+import com.nusabank.controller.CRegisRekening;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JComboBox;
@@ -24,16 +24,16 @@ import javax.swing.JTextField;
 public class ViewRegisNasabah extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
     
-    private ControllerNasabah nc;
-    private ControllerRekening rc;
+    private CRegisNasabah nc;
+    private CRegisRekening rc;
     /**
      * Creates new form ViewRegisNasabah
      */
     public ViewRegisNasabah() {
         initComponents();
         todayDateInit();
-        nc = new ControllerNasabah(this);
-        rc = new ControllerRekening(this);
+        nc = new CRegisNasabah(this);
+        rc = new CRegisRekening(this);
     }
 
     public void todayDateInit() {
@@ -579,7 +579,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
        if (String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtRePassword.getPassword()))){
         nc.insert();
         nc.reset();   
-        JOptionPane.showMessageDialog(null,"Data berhasil di input");
        } else {
            JOptionPane.showMessageDialog(null,"error");
        }
