@@ -5,6 +5,8 @@
  */
 package com.nusabank.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author ANDI DWI SAPUTRO
@@ -12,11 +14,15 @@ package com.nusabank.model;
 public class ModelAdmin {
     private int id;
     private String nama;
+    private String NIK;
     private String username;
     private String password;
     private String photo;
     private String jenisKelamin;
     private String noHp;
+    private String tglLahir;
+    
+    
 
     public int getId() {
         return id;
@@ -34,6 +40,8 @@ public class ModelAdmin {
         this.nama = nama;
     }
 
+    
+    
     public String getUsername() {
         return username;
     }
@@ -72,6 +80,22 @@ public class ModelAdmin {
 
     public void setNoHp(String noHp) {
         this.noHp = noHp;
+    }
+
+    public String getTglLahir() {
+        return tglLahir;
+    }
+
+    public void setTglLahir(String tglLahir) {
+        this.tglLahir = tglLahir;
+    }
+
+    public String getNIK() {
+        return NIK;
+    }
+
+    public void setNIK(String NIK) {
+        this.NIK = NIK;
     }
     
     

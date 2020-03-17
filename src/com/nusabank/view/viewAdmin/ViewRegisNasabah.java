@@ -228,19 +228,19 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         txtNoPIN = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("No Contact");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("No ID");
+        jLabel5.setText("Identity No");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("First Name");
+        jLabel6.setText("Full Name");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Address");
+        jLabel7.setText("Home Address");
 
         txtAlamat.setColumns(20);
         txtAlamat.setRows(5);
@@ -262,7 +262,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         cmbJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Choose -", "Male", "Female" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Job Description");
+        jLabel8.setText("Job Position");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Income");
@@ -389,7 +389,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         todayDate.setText("tglSekarang");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel24.setText("PIN");
+        jLabel24.setText("PIN (Default)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

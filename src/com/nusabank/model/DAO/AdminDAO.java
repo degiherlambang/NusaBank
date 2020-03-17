@@ -27,13 +27,15 @@ public class AdminDAO implements InterfaceAdminDAO {
     public void insert(ModelAdmin admin) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO admin "
-                    + "(id_admin, nama_admin, username_admin, password_admin, photo, jenis_kelamin, no_hp)"
+                    + "(id_admin, nama_admin, nik,username_admin, password_admin, tgl_lahir, photo, jenis_kelamin, no_hp)"
                     + "VALUES "
-                    + "(null, ?, ?, ?, ?, ?, ?, ?");
+                    + "(null, ?, ?, ?, ?, ?, ?, ?, ?");
             statement.setString(1, admin.getNama());
+            statement.setString(2, admin.getNIK());
             statement.setString(2, admin.getUsername());
             statement.setString(3, admin.getPassword());
-            statement.setString(4, admin.getPhoto());
+            statement.setString(4, admin.getTglLahir());
+            statement.setString(5, admin.getPhoto());
             statement.setString(6, admin.getJenisKelamin());
             statement.setString(7, admin.getNoHp());
             
@@ -50,17 +52,19 @@ public class AdminDAO implements InterfaceAdminDAO {
     try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
                     + "UPDATE admin SET "
-                    + "nama_admin=?, username_admin=?, password_admin=?,"
-                    + "photo=?, jenis_kelamin=?, no_hp=?"
+                    + "nama_admin=?, nik=?, username_admin=?, password_admin=?,"
+                    + "tgl_lahir=?, photo=?, jenis_kelamin=?, no_hp=?"
                     + "  WHERE id_admin=?");
             
             statement.setString(1, admin.getNama());
-            statement.setString(2, admin.getUsername());
-            statement.setString(3, admin.getPassword());
-            statement.setString(4, admin.getPhoto());
-            statement.setString(5, admin.getJenisKelamin());
-            statement.setString(6, admin.getNoHp());
-            statement.setInt(7, admin.getId());
+            statement.setString(2, admin.getNIK());
+            statement.setString(3, admin.getUsername());
+            statement.setString(4, admin.getPassword());
+            statement.setString(5, admin.getTglLahir());
+            statement.setString(6, admin.getPhoto());
+            statement.setString(7, admin.getJenisKelamin());
+            statement.setString(8, admin.getNoHp());
+            statement.setInt(9, admin.getId());
             
             statement.executeUpdate();
             
@@ -99,8 +103,10 @@ public class AdminDAO implements InterfaceAdminDAO {
                 ModelAdmin admin = new ModelAdmin();
                 admin.setId(result.getInt("id_admin"));
                 admin.setNama(result.getString("nama_admin"));
+                admin.setNIK(result.getString("nik"));
                 admin.setUsername(result.getString("username_admin"));
                 admin.setPassword(result.getString("password_admin"));
+                admin.setTglLahir(result.getString("tgl_lahir"));
                 admin.setPhoto(result.getString("photo"));
                 admin.setJenisKelamin(result.getString("jenis_kelamin"));
                 admin.setNoHp(result.getString("no_hp"));
@@ -130,8 +136,10 @@ public class AdminDAO implements InterfaceAdminDAO {
                 ModelAdmin admin = new ModelAdmin();
                 admin.setId(result.getInt("id_admin"));
                 admin.setNama(result.getString("nama_admin"));
+                admin.setNIK(result.getString("nik"));
                 admin.setUsername(result.getString("username_admin"));
                 admin.setPassword(result.getString("password_admin"));
+                admin.setTglLahir(result.getString("tgl_lahir"));
                 admin.setPhoto(result.getString("photo"));
                 admin.setJenisKelamin(result.getString("jenis_kelamin"));
                 admin.setNoHp(result.getString("no_hp"));
@@ -161,8 +169,10 @@ public class AdminDAO implements InterfaceAdminDAO {
                 ModelAdmin admin = new ModelAdmin();
                 admin.setId(result.getInt("id_admin"));
                 admin.setNama(result.getString("nama_admin"));
+                admin.setNIK(result.getString("nik"));
                 admin.setUsername(result.getString("username_admin"));
                 admin.setPassword(result.getString("password_admin"));
+                admin.setTglLahir(result.getString("tgl_lahir"));;
                 admin.setPhoto(result.getString("photo"));
                 admin.setJenisKelamin(result.getString("jenis_kelamin"));
                 admin.setNoHp(result.getString("no_hp"));
