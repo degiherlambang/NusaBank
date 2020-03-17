@@ -47,6 +47,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         todayDateInit();
         nc = new CRegisNasabah(this);
         rc = new CRegisRekening(this);
+        System.out.println(System.getProperty("user.dir"));
     }
 
     public void todayDateInit() {

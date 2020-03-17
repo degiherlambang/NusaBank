@@ -90,6 +90,7 @@ public class CRegisNasabah {
         
         
         File newPath = null;
+        String newFileName = "";
         try {
             String fileType = "";
             String oldFileName = vRegNasabah.getFileName();
@@ -103,11 +104,11 @@ public class CRegisNasabah {
             
             String prefix = nasabah.getUsername();
             String mid = "_NusaBank_";
-            String sufix = "_".concat(String.valueOf(nasabah.getTglPembuatan()))
+            String sufix = String.valueOf(nasabah.getTglPembuatan())
                     .replace(" ", "_")
                     .replace(":", "-");
             String destPath = "res/nasabah_photos/";
-            String newFileName = 
+            newFileName = 
                     destPath.concat(
                         prefix.concat(
                             mid.concat(
@@ -115,19 +116,21 @@ public class CRegisNasabah {
                             )
                         )
                     );
+            String copyNewFile = 
+                    System.getProperty("user.dir")
+                            .concat("/src/com/nusabank/")
+                            .concat(newFileName);
             System.out.println(newFileName);
             
             File srcPhoto = new File(vRegNasabah.getLbFoto().getText());
-            //File fileName = new File(vRegNasabah.getFileName());
-           
-            // newPath = new File("res/nasabah_photos/"+fileName);
-            newPath = new File(newFileName);
+
+            newPath = new File(copyNewFile);
             Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         
-        nasabah.setPhoto(newPath.getAbsolutePath());
+        nasabah.setPhoto(newFileName);
         
         interfaceNasabah.insert(nasabah);
         JOptionPane.showMessageDialog(null,"Data berhasil di input");
