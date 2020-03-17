@@ -79,6 +79,7 @@ public class CLoginNasabah {
                     vMenuNasabah.getLabelNIK().setText(String.valueOf(nasabah.getNik()));
                     vMenuNasabah.getLabelGender().setText(nasabah.getJenisKelamin());
                     vMenuNasabah.getLabelDOB().setText(nasabah.getTglLahir().toString());
+                    vMenuNasabah.getLbJenisRek().setText(this.jenisRekening);
                     
                     BufferedImage iconAvatar = ImageIO.read(this.getClass().getResourceAsStream("../"+nasabah.getPhoto()));
                     vMenuNasabah.getLabelAvatar().setIcon(new ImageIcon(iconAvatar.getScaledInstance(128, 128, Image.SCALE_DEFAULT)));
