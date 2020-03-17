@@ -230,7 +230,21 @@ public class NasabahDAO implements InterfaceNasabahDAO {
         } catch (SQLException ex) {
             Logger.getLogger(NasabahDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }
+        }  
     }
     
+    public int getIdRekening(String id) {
+        ModelNasabah nasabah = new ModelNasabah();
+        try {
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT * FROM nasabah WHERE id_nasabah="+id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                nasabah.setIdRekening(rs.getInt("id_rekening"));
+            }
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, "error: "+e);
+        }
+        
+        return nasabah.getIdRekening();
+    }
 }

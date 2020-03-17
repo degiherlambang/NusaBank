@@ -30,12 +30,16 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JLabel getLabelIdNasabah() {
+        return lbIdNasabah;
+    }
+    
     public JLabel getLogoPT() {
         return lbLogoPT;
     }
     
-    public JLabel getLabelNama(){
-        return lbNama;
+    public JLabel getLabelUsername(){
+        return lbUsername;
     }
     
     public JLabel getLabelNamaWelcome() {
@@ -89,11 +93,12 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        lbNama = new javax.swing.JLabel();
+        lbUsername = new javax.swing.JLabel();
         lbNIK = new javax.swing.JLabel();
         lbDOB = new javax.swing.JLabel();
         lbGender = new javax.swing.JLabel();
         lbJenisRek = new javax.swing.JLabel();
+        lbIdNasabah = new javax.swing.JLabel();
         lbTanggal = new javax.swing.JLabel();
         labelAvatar = new javax.swing.JLabel();
 
@@ -107,7 +112,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
         lbNamaWelcome.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        lbNamaWelcome.setText("------");
+        lbNamaWelcome.setText("Nama");
         getContentPane().add(lbNamaWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 130, -1));
 
         lbLogoPT.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -240,7 +245,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
 
         jLabel5.setText("User Info:");
 
-        lbNama.setText("Nama");
+        lbUsername.setText("Username");
 
         lbNIK.setText("NIK");
 
@@ -250,30 +255,25 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
 
         lbJenisRek.setText("Jenis_Rek");
 
+        lbIdNasabah.setText("ID");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel5)
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel5)
-                        .addGap(0, 22, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbNIK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbJenisRek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbNIK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbJenisRek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbIdNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -281,8 +281,10 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
+                .addGap(13, 13, 13)
+                .addComponent(lbIdNasabah)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbNama)
+                .addComponent(lbUsername)
                 .addGap(18, 18, 18)
                 .addComponent(lbNIK)
                 .addGap(16, 16, 16)
@@ -291,7 +293,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
                 .addComponent(lbGender)
                 .addGap(18, 18, 18)
                 .addComponent(lbJenisRek)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -323,7 +325,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAccountInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountInfoActionPerformed
-        // TODO add your handling code here:
+       new ViewAccountInfo().setVisible(true);
     }//GEN-LAST:event_btnAccountInfoActionPerformed
 
     /**
@@ -383,11 +385,12 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     private javax.swing.JLabel labelAvatar;
     private javax.swing.JLabel lbDOB;
     private javax.swing.JLabel lbGender;
+    public static javax.swing.JLabel lbIdNasabah;
     private javax.swing.JLabel lbJenisRek;
     private javax.swing.JLabel lbLogoPT;
     private javax.swing.JLabel lbNIK;
-    private javax.swing.JLabel lbNama;
-    private javax.swing.JLabel lbNamaWelcome;
+    public static javax.swing.JLabel lbNamaWelcome;
     private javax.swing.JLabel lbTanggal;
+    public static javax.swing.JLabel lbUsername;
     // End of variables declaration//GEN-END:variables
 }

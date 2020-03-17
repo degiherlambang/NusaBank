@@ -33,13 +33,10 @@ public class CLoginNasabah {
     private ModelNasabah nasabah;
     private List<ModelNasabah> listNasabah;
     private String jenisRekening;
-    //private final InterfaceNasabahDAO interfaceNasabah;
+
 
     public CLoginNasabah(ViewLoginNasabah vLoginNasabah) {
         this.vLoginNasabah = vLoginNasabah;
-        //interfaceNasabah = new NasabahDAO();
-        //nasabah = new ModelNasabah();
-        //listNasabah = interfaceNasabah.getAll();
     }
 
     public void doLogin(String username, String password) throws IOException {
@@ -74,12 +71,13 @@ public class CLoginNasabah {
                     JOptionPane.showMessageDialog(null, "Login Sukses!");
                     System.out.println(nasabah.getPhoto());
                     ViewMenuNasabah vMenuNasabah = new ViewMenuNasabah();
-                    vMenuNasabah.getLabelNama().setText(nasabah.getNama());
+                    vMenuNasabah.getLabelUsername().setText(nasabah.getUsername());
                     vMenuNasabah.getLabelNamaWelcome().setText(nasabah.getNama());
                     vMenuNasabah.getLabelNIK().setText(String.valueOf(nasabah.getNik()));
                     vMenuNasabah.getLabelGender().setText(nasabah.getJenisKelamin());
                     vMenuNasabah.getLabelDOB().setText(nasabah.getTglLahir().toString());
                     vMenuNasabah.getLbJenisRek().setText(this.jenisRekening);
+                    vMenuNasabah.getLabelIdNasabah().setText(String.valueOf(nasabah.getId()));
                     
                     BufferedImage iconAvatar = ImageIO.read(this.getClass().getResourceAsStream("../"+nasabah.getPhoto()));
                     vMenuNasabah.getLabelAvatar().setIcon(new ImageIcon(iconAvatar.getScaledInstance(128, 128, Image.SCALE_DEFAULT)));

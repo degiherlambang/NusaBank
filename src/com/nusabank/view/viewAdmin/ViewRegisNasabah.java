@@ -614,13 +614,10 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private void btnBrowsePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePhotoActionPerformed
         JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         // invoke the showsOpenDialog function to show the open dialog 
-        
         int r = j.showOpenDialog(null);
         if (r == JFileChooser.APPROVE_OPTION) {
             this.setFileName(j.getSelectedFile().getName());
             this.setSourcePath(j.getSelectedFile().getAbsolutePath());
-            //this.sourcePath = j.getSelectedFile().getAbsolutePath();
-            //this.fileName = j.getSelectedFile().getName();
             lbFoto.setText(this.getSrcPath());
         }
     }//GEN-LAST:event_btnBrowsePhotoActionPerformed

@@ -188,5 +188,20 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         }
         return lastId;
     }
+
+    public int getNoPIN(int idRek) {
+        ModelRekening rekening = new ModelRekening();
+        try {
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT * FROM rekening WHERE id_rekening="+idRek);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                rekening.setNoPin(rs.getInt("no_pin"));
+            }
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return rekening.getNoPin();
+    }
+    
     
 }

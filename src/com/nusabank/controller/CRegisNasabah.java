@@ -126,6 +126,7 @@ public class CRegisNasabah {
 
             newPath = new File(copyNewFile);
             Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
@@ -133,6 +134,7 @@ public class CRegisNasabah {
         nasabah.setPhoto(newFileName);
         
         interfaceNasabah.insert(nasabah);
+        vRegNasabah.getLbNamaNasabah().setText(nasabah.getNama());
         JOptionPane.showMessageDialog(null,"Data berhasil di input");
     }
 

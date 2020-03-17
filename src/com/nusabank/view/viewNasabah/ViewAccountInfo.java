@@ -7,6 +7,8 @@ package com.nusabank.view.viewNasabah;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import com.nusabank.controller.CSaldoNasabah;
+import com.nusabank.view.viewNasabah.ViewMenuNasabah;
 
 /**
  *
@@ -14,13 +16,24 @@ import javax.swing.JTextField;
  */
 public class ViewAccountInfo extends javax.swing.JFrame {
 
+    private CSaldoNasabah cSaldoNasabah;
+    
+    private String idNasabahLogin = ViewMenuNasabah.lbIdNasabah.getText();
+    private String namaNasabahLogin = ViewMenuNasabah.lbNamaWelcome.getText();
     /**
      * Creates new form ViewCekSaldo
      */
     public ViewAccountInfo() {
         initComponents();
+        cSaldoNasabah = new CSaldoNasabah(this, idNasabahLogin);  
+        txtNamaNasabah.setText(namaNasabahLogin);
+        
     }
 
+    public JTextField getTfNoPIN() {
+        return txtNoPIN;
+    }
+    
     public JTextField getTfNamaNasabah(){
         return txtNamaNasabah;
     }
@@ -64,6 +77,9 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnGantiPIN = new javax.swing.JButton();
         btnEditDataNasabah = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtNoPIN = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,9 +98,17 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Saldo");
 
-        txtNoRekening.setText("jTextField1");
+        txtNamaNasabah.setBackground(new java.awt.Color(153, 204, 255));
+        txtNamaNasabah.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNamaNasabah.setEnabled(false);
 
-        txtSaldo.setText("jTextField1");
+        txtNoRekening.setBackground(new java.awt.Color(153, 204, 255));
+        txtNoRekening.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNoRekening.setEnabled(false);
+
+        txtSaldo.setBackground(new java.awt.Color(153, 204, 255));
+        txtSaldo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtSaldo.setEnabled(false);
 
         btnBack.setText("Back");
 
@@ -96,6 +120,11 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                 btnEditDataNasabahActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setText("No PIN");
+
+        jButton1.setText("Cek Saldo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,16 +144,19 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNamaNasabah)
                                     .addComponent(txtNoRekening, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                    .addComponent(txtSaldo)))
+                                    .addComponent(txtSaldo)
+                                    .addComponent(txtNoPIN)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnGantiPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
+                                .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -149,6 +181,12 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtNoRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtNoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -164,7 +202,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditDataNasabahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDataNasabahActionPerformed
-        // TODO add your handling code here:
+        cSaldoNasabah.checkSaldo();
     }//GEN-LAST:event_btnEditDataNasabahActionPerformed
 
     /**
@@ -207,12 +245,15 @@ public class ViewAccountInfo extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEditDataNasabah;
     private javax.swing.JButton btnGantiPIN;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbLogoPT;
     private javax.swing.JTextField txtNamaNasabah;
+    private javax.swing.JTextField txtNoPIN;
     private javax.swing.JTextField txtNoRekening;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
