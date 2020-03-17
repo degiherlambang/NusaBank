@@ -79,7 +79,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         btnEditDataNasabah = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtNoPIN = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCekSaldo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,7 +124,12 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("No PIN");
 
-        jButton1.setText("Cek Saldo");
+        btnCekSaldo.setText("Cek Saldo");
+        btnCekSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSaldoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +161,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                                 .addComponent(btnGantiPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(btnCekSaldo, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -186,7 +191,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtNoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnCekSaldo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -202,8 +207,12 @@ public class ViewAccountInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditDataNasabahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDataNasabahActionPerformed
-        cSaldoNasabah.checkSaldo();
+        
     }//GEN-LAST:event_btnEditDataNasabahActionPerformed
+
+    private void btnCekSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekSaldoActionPerformed
+        cSaldoNasabah.checkSaldo();
+    }//GEN-LAST:event_btnCekSaldoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,9 +252,9 @@ public class ViewAccountInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCekSaldo;
     private javax.swing.JButton btnEditDataNasabah;
     private javax.swing.JButton btnGantiPIN;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

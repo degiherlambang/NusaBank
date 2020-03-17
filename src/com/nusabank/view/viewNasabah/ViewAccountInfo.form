@@ -54,7 +54,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnEditDataNasabah" pref="132" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCekSaldo" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -94,7 +94,7 @@
                   <Component id="txtNoPIN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnCekSaldo" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="15" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -212,10 +212,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNoPIN">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnCekSaldo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cek Saldo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekSaldoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

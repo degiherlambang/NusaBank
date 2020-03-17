@@ -36,9 +36,12 @@ public class CSaldoNasabah {
     
     private final RekeningDAO interfaceRekening;
     private final NasabahDAO interfaceNasabah;
+    
     private String idNasabah;
     private int idRekening;
-
+    private String noRek;
+    private int validatePIN;
+    private int saldo;
     
     public CSaldoNasabah(JFrame frame, String idNasabah) {
         this.vAccountInfo = (ViewAccountInfo) frame;
@@ -50,13 +53,17 @@ public class CSaldoNasabah {
         rekLogin = new ModelRekening();
        
         this.idRekening = interfaceNasabah.getIdRekening(idNasabah);
+        noRek = interfaceRekening.getNoRek(idRekening);
+        validatePIN = interfaceRekening.getNoPIN(idRekening);
+        saldo = interfaceRekening.getSaldo(idRekening);
+        
+        vAccountInfo.getTfNoRek().setText(noRek);
     }
     
     public void checkSaldo() {
         int inputNoPIN = Integer.parseInt(vAccountInfo.getTfNoPIN().getText());
-        int validatePIN = interfaceRekening.getNoPIN(idRekening);
-        if (inputNoPIN == validatePIN) {
-            vAccountInfo.getTfSaldo().setText(String.valueOf(listRekening.get(0).getSaldo()));
+        if (this.validatePIN==inputNoPIN) {
+            vAccountInfo.getTfSaldo().setText(String.valueOf(this.saldo));
         } else {
             JOptionPane.showMessageDialog(null, "Kode PIN salah !");
         }

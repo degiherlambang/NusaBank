@@ -203,5 +203,31 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         return rekening.getNoPin();
     }
     
+    public String getNoRek(int idRek) {
+        ModelRekening rekening = new ModelRekening();
+        try {
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT * FROM rekening WHERE id_rekening="+idRek);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                rekening.setNoRekening(rs.getString("no_rekening"));
+            }
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return rekening.getNoRekening();
+    }
     
+    public int getSaldo(int idRek) {
+        ModelRekening rekening = new ModelRekening();
+        try {
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT * FROM rekening WHERE id_rekening="+idRek);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                rekening.setSaldo(rs.getInt("saldo"));
+            }
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return rekening.getSaldo();
+    }
 }
