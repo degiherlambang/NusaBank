@@ -45,7 +45,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
             JOptionPane.showMessageDialog(null, "Error: "+ex);
             Logger.getLogger(TransaksiBankDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

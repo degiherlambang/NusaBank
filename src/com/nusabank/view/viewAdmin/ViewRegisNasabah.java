@@ -11,11 +11,19 @@ import com.nusabank.controller.CRegisRekening;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileSystemView;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,6 +34,11 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     
     private CRegisNasabah nc;
     private CRegisRekening rc;
+    
+    private String fileName;
+    private String sourcePath;
+    private String destPath;
+    
     /**
      * Creates new form ViewRegisNasabah
      */
@@ -39,6 +52,30 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     public void todayDateInit() {
         todayDate.setText(LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    }
+    
+    public String getFileName(){
+        return this.fileName;
+    }
+    
+    public String getSrcPath(){
+        return this.sourcePath;
+    }
+    
+    public String getDestPath() {
+        return this.destPath;
+    }
+    
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setSourcePath(String sourcePath) {
+        this.sourcePath = sourcePath;
+    }
+
+    public void setDestPath(String destPath) {
+        this.destPath = destPath;
     }
     
     public JTextField getTxtNama() {
@@ -269,6 +306,11 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
 
         btnBrowsePhoto.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnBrowsePhoto.setText("- Browse -");
+        btnBrowsePhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowsePhotoActionPerformed(evt);
+            }
+        });
 
         cmbJenisRekening.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cmbJenisRekening.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Choose -", "Reguler", "Gold", "Platinum", "VVIP", " " }));
@@ -316,9 +358,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbNamaNasabah, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtIdRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(txtIdRekening, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -562,13 +602,27 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
        txtNoRekening.setText(noRek);
        rc.insert();
        
-       if (String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtRePassword.getPassword()))){
-        nc.insert();
-        nc.reset();   
+       if (String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtRePassword.getPassword()))) {
+            nc.insert();
+            nc.reset();   
        } else {
            JOptionPane.showMessageDialog(null,"error");
        }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnBrowsePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePhotoActionPerformed
+        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        // invoke the showsOpenDialog function to show the open dialog 
+        
+        int r = j.showOpenDialog(null);
+        if (r == JFileChooser.APPROVE_OPTION) {
+            this.setFileName(j.getSelectedFile().getName());
+            this.setSourcePath(j.getSelectedFile().getAbsolutePath());
+            //this.sourcePath = j.getSelectedFile().getAbsolutePath();
+            //this.fileName = j.getSelectedFile().getName();
+            lbFoto.setText(this.getSrcPath());
+        }
+    }//GEN-LAST:event_btnBrowsePhotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -659,4 +713,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    
 }

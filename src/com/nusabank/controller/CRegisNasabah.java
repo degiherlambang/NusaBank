@@ -11,6 +11,10 @@ import com.nusabank.model.DAO.InterfaceNasabahDAO;
 import com.nusabank.model.table.TableModelNasabah;
 import com.nusabank.view.viewAdmin.ViewRegisNasabah;
 import com.nusabank.view.viewNasabah.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -83,6 +87,47 @@ public class CRegisNasabah {
         nasabah.setTglLahir((new java.sql.Date(vRegNasabah.getTxtLahir().getDate().getTime()).toString()));
         nasabah.setTglPembuatan(dateFormat.format(tglPembuatan));
         nasabah.setIdRekening(Integer.parseInt(vRegNasabah.getTxtIdRekening().getText()));
+        
+        
+        File newPath = null;
+        try {
+            String fileType = "";
+            String oldFileName = vRegNasabah.getFileName();
+            if (oldFileName.endsWith(".png")){
+                fileType=".png";
+            } else if (oldFileName.endsWith(".jpg")){
+                fileType=".jpg";
+            } else if (oldFileName.endsWith(".jpeg")){
+                fileType=".jpeg";
+            }
+            
+            String prefix = nasabah.getUsername();
+            String mid = "_NusaBank_";
+            String sufix = "_".concat(String.valueOf(nasabah.getTglPembuatan()))
+                    .replace(" ", "_")
+                    .replace(":", "-");
+            String destPath = "res/nasabah_photos/";
+            String newFileName = 
+                    destPath.concat(
+                        prefix.concat(
+                            mid.concat(
+                                sufix.concat(fileType)
+                            )
+                        )
+                    );
+            System.out.println(newFileName);
+            
+            File srcPhoto = new File(vRegNasabah.getLbFoto().getText());
+            //File fileName = new File(vRegNasabah.getFileName());
+           
+            // newPath = new File("res/nasabah_photos/"+fileName);
+            newPath = new File(newFileName);
+            Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        
+        nasabah.setPhoto(newPath.getAbsolutePath());
         
         interfaceNasabah.insert(nasabah);
         JOptionPane.showMessageDialog(null,"Data berhasil di input");
