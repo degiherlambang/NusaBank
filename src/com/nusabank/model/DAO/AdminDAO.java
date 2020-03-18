@@ -27,17 +27,20 @@ public class AdminDAO implements InterfaceAdminDAO {
     public void insert(ModelAdmin admin) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO admin "
-                    + "(id_admin, nama_admin, nik,username_admin, password_admin, tgl_lahir, photo, jenis_kelamin, no_hp)"
+                    + "(id_admin, nama_admin, nik, username_admin, password_admin,"
+                    + " tgl_lahir, photo, jenis_kelamin, no_hp, email, alamat)"
                     + "VALUES "
-                    + "(null, ?, ?, ?, ?, ?, ?, ?, ?");
+                    + "(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
             statement.setString(1, admin.getNama());
             statement.setString(2, admin.getNIK());
-            statement.setString(2, admin.getUsername());
-            statement.setString(3, admin.getPassword());
-            statement.setString(4, admin.getTglLahir());
-            statement.setString(5, admin.getPhoto());
-            statement.setString(6, admin.getJenisKelamin());
-            statement.setString(7, admin.getNoHp());
+            statement.setString(3, admin.getUsername());
+            statement.setString(4, admin.getPassword());
+            statement.setString(5, admin.getTglLahir());
+            statement.setString(6, admin.getPhoto());
+            statement.setString(7, admin.getJenisKelamin());
+            statement.setString(8, admin.getNoHp());
+            statement.setString(9, admin.getEmail());
+            statement.setString(10, admin.getAlamat());
             
             statement.executeUpdate();
             statement.close();
@@ -53,7 +56,8 @@ public class AdminDAO implements InterfaceAdminDAO {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
                     + "UPDATE admin SET "
                     + "nama_admin=?, nik=?, username_admin=?, password_admin=?,"
-                    + "tgl_lahir=?, photo=?, jenis_kelamin=?, no_hp=?"
+                    + "tgl_lahir=?, photo=?, jenis_kelamin=?, no_hp=?,"
+                    + "email=?, alamat=?"
                     + "  WHERE id_admin=?");
             
             statement.setString(1, admin.getNama());
@@ -64,7 +68,9 @@ public class AdminDAO implements InterfaceAdminDAO {
             statement.setString(6, admin.getPhoto());
             statement.setString(7, admin.getJenisKelamin());
             statement.setString(8, admin.getNoHp());
-            statement.setInt(9, admin.getId());
+            statement.setString(9, admin.getEmail());
+            statement.setString(10, admin.getAlamat());
+            statement.setInt(11, admin.getId());
             
             statement.executeUpdate();
             
@@ -110,6 +116,8 @@ public class AdminDAO implements InterfaceAdminDAO {
                 admin.setPhoto(result.getString("photo"));
                 admin.setJenisKelamin(result.getString("jenis_kelamin"));
                 admin.setNoHp(result.getString("no_hp"));
+                admin.setEmail(result.getString("email"));
+                admin.setAlamat(result.getString("alamat"));
                 listAdmin.add(admin);
             }
             
@@ -143,9 +151,10 @@ public class AdminDAO implements InterfaceAdminDAO {
                 admin.setPhoto(result.getString("photo"));
                 admin.setJenisKelamin(result.getString("jenis_kelamin"));
                 admin.setNoHp(result.getString("no_hp"));
+                admin.setEmail(result.getString("email"));
+                admin.setAlamat(result.getString("alamat"));
                 listAdmin.add(admin);
             }
-            
             
             statement.close();
             result.close();
@@ -176,6 +185,8 @@ public class AdminDAO implements InterfaceAdminDAO {
                 admin.setPhoto(result.getString("photo"));
                 admin.setJenisKelamin(result.getString("jenis_kelamin"));
                 admin.setNoHp(result.getString("no_hp"));
+                admin.setEmail(result.getString("email"));
+                admin.setAlamat(result.getString("alamat"));
                 listAdmin.add(admin);
             }
             

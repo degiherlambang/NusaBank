@@ -38,10 +38,15 @@ public class TableModelAdmin extends AbstractTableModel{
         switch (columnIndex) {
             case 0 : return list.get(rowIndex).getId();
             case 1 : return list.get(rowIndex).getNama();
-            case 2 : return list.get(rowIndex).getUsername();
-            case 3 : return list.get(rowIndex).getPhoto();
-            case 4 : return list.get(rowIndex).getJenisKelamin();
-            case 5 : return list.get(rowIndex).getNoHp();
+            case 2 : return list.get(rowIndex).getNIK();
+            case 3 : return list.get(rowIndex).getUsername();
+            case 4 : return list.get(rowIndex).getPassword();
+            case 5 : return list.get(rowIndex).getTglLahir();
+            case 6 : return list.get(rowIndex).getPhoto();
+            case 7 : return list.get(rowIndex).getJenisKelamin();
+            case 8 : return list.get(rowIndex).getNoHp();
+            case 9 : return list.get(rowIndex).getEmail();
+            case 10 : return list.get(rowIndex).getAlamat();
                 default:return null;
         }
     }
@@ -51,10 +56,15 @@ public class TableModelAdmin extends AbstractTableModel{
         switch (column) {
             case 0 : return "ID";
             case 1 : return "NAMA";
-            case 2 : return "USERNAME";
-            case 3 : return "PHOTO";
-            case 4 : return "JENIS KELAMIN";
-            case 5 : return "NO.HP";
+            case 2 : return "NIK";
+            case 3 : return "USERNAME";
+            case 4 : return "PASSWORD";
+            case 5 : return "TGL LAHIR";
+            case 6 : return "PHOTO";
+            case 7 : return "JENIS KELAMIN";
+            case 8 : return "NO HP";
+            case 9 : return "EMAIL";
+            case 10 : return "ALAMAT";
                 default:return null;
         }
     }

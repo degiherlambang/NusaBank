@@ -29,6 +29,10 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
                 .format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
     }
     
+    public JLabel getLbEmail() {
+        return lbEmail;
+    }
+    
     public JLabel getLbLogoPT() {
         return lbLogoPT;
     }
@@ -107,6 +111,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         lbNoHpAdmin = new javax.swing.JLabel();
         lbUsernameAdmin = new javax.swing.JLabel();
         lbIdAdmin = new javax.swing.JLabel();
+        lbEmail = new javax.swing.JLabel();
         lbTodayDate = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -216,6 +221,11 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         );
 
         jButton4.setText("Manage Data Admin");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -281,6 +291,8 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
 
         lbIdAdmin.setText("UID");
 
+        lbEmail.setText("Email");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -304,7 +316,10 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
                         .addComponent(lbNoHpAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbIdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lbIdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -326,7 +341,9 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
                 .addComponent(lbGenderAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbNoHpAdmin)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lbEmail)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -394,14 +411,13 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
                 .addContainerGap(359, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(20, 20, 20)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
                                 .addComponent(lbHeadNamaAdm))
@@ -420,6 +436,10 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new ViewSavingWD().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new ViewManageAdmin().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +497,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lbAvatarAdmin;
     private javax.swing.JLabel lbDobAdmin;
+    private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbGenderAdmin;
     private javax.swing.JLabel lbHeadNamaAdm;
     public static javax.swing.JLabel lbIdAdmin;

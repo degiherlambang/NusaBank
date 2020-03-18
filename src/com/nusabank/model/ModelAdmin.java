@@ -21,6 +21,9 @@ public class ModelAdmin {
     private String jenisKelamin;
     private String noHp;
     private String tglLahir;
+    private String email;
+    private String alamat;
+    
     
     
 
@@ -96,6 +99,22 @@ public class ModelAdmin {
 
     public void setNIK(String NIK) {
         this.NIK = NIK;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
     
     

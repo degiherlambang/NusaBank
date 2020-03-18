@@ -57,6 +57,8 @@ public class CLoginAdmin {
                     admin.setPhoto(rs.getString("photo"));
                     admin.setTglLahir(rs.getString("tgl_lahir"));
                     admin.setNIK(rs.getString("nik"));
+                    admin.setEmail(rs.getString("email"));
+                    admin.setAlamat(rs.getString("alamat"));
                     
                     String photoAdmin = admin.getPhoto();
                     if ((photoAdmin.equals(null) || photoAdmin.equals("")) 
@@ -76,6 +78,7 @@ public class CLoginAdmin {
                     vMenuAdmin.getLbNikAdmin().setText(admin.getNIK());
                     vMenuAdmin.getLbNoHpAdmin().setText(admin.getNoHp());
                     vMenuAdmin.getLbUsernameAdmin().setText(admin.getUsername());
+                    vMenuAdmin.getLbEmail().setText(admin.getEmail());
                     
                     BufferedImage iconAvatar = ImageIO.read(this.getClass().getResourceAsStream("../"+photoAdmin));
                     vMenuAdmin.getLbAvatarAdmin().setIcon(new ImageIcon(iconAvatar.getScaledInstance(128, 128, Image.SCALE_DEFAULT)));
