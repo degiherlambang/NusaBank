@@ -230,4 +230,35 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         }
         return rekening.getSaldo();
     }
+    
+    public void trimSaldo(int id, int nominal) {
+        ModelRekening rekening = new ModelRekening();
+        rekening.setIdRekening(id);
+        int currentSaldo;
+        int updateSaldo;
+        try {
+            String qSel = "SELECT  * FROM rekening WHERE id_rekening = "+id;
+            PreparedStatement pst = DBConnection.getConnection().prepareStatement(qSel);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                rekening.setIdRekening(rs.getInt("id_rekening"));
+                rekening.setNoRekening(rs.getString("no_rekening"));
+                rekening.setSaldo(rs.getInt("saldo"));
+            }
+            
+            currentSaldo = rekening.getSaldo();
+            updateSaldo = currentSaldo - nominal;
+            rekening.setSaldo(updateSaldo);
+            
+            String q = "UPDATE rekening SET saldo=? WHERE id_rekening=?";
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement(q);
+            ps.setInt(1,rekening.getIdRekening());
+            ps.setInt(2, rekening.getSaldo());
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
