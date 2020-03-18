@@ -179,20 +179,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton3" alignment="0" pref="171" max="32767" attributes="0"/>
+                  <Component id="btnTrxPpob" alignment="0" pref="171" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnTrxPpob" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btnTrxPpob">
               <Properties>
                 <Property name="text" type="java.lang.String" value="PPOB"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrxPpobActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -223,20 +226,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn" alignment="0" pref="172" max="32767" attributes="0"/>
+                  <Component id="btnTrxBank" alignment="0" pref="172" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnTrxBank" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btn">
+            <Component class="javax.swing.JButton" name="btnTrxBank">
               <Properties>
                 <Property name="text" type="java.lang.String" value="TRANSFER"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrxBankActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

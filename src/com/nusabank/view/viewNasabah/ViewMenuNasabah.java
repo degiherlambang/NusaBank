@@ -7,6 +7,7 @@ package com.nusabank.view.viewNasabah;
 
 
 import com.nusabank.model.database.DBConnection;
+import com.nusabank.controller.CButton;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -23,11 +24,13 @@ import javax.swing.JOptionPane;
  */
 public class ViewMenuNasabah extends javax.swing.JFrame {
 
+    private CButton cb;
     /**
      * Creates new form MenuNasabah
      */
     public ViewMenuNasabah() {
         initComponents();
+        cb = new CButton(this);
     }
 
     public JLabel getLabelIdNasabah() {
@@ -83,11 +86,11 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         btnMenu4 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         btnMenu3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnTrxPpob = new javax.swing.JButton();
         btnMenu6 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         btnMenu2 = new javax.swing.JPanel();
-        btn = new javax.swing.JButton();
+        btnTrxBank = new javax.swing.JButton();
         btnMenu5 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -152,17 +155,22 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
 
-        jButton3.setText("PPOB");
+        btnTrxPpob.setText("PPOB");
+        btnTrxPpob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrxPpobActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnMenu3Layout = new javax.swing.GroupLayout(btnMenu3);
         btnMenu3.setLayout(btnMenu3Layout);
         btnMenu3Layout.setHorizontalGroup(
             btnMenu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+            .addComponent(btnTrxPpob, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
         );
         btnMenu3Layout.setVerticalGroup(
             btnMenu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTrxPpob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jButton6.setText("HELP");
@@ -178,17 +186,22 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
             .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btn.setText("TRANSFER");
+        btnTrxBank.setText("TRANSFER");
+        btnTrxBank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrxBankActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnMenu2Layout = new javax.swing.GroupLayout(btnMenu2);
         btnMenu2.setLayout(btnMenu2Layout);
         btnMenu2Layout.setHorizontalGroup(
             btnMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+            .addComponent(btnTrxBank, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
         );
         btnMenu2Layout.setVerticalGroup(
             btnMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTrxBank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jButton5.setText("DEPOSITO");
@@ -328,6 +341,14 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
        new ViewAccountInfo().setVisible(true);
     }//GEN-LAST:event_btnAccountInfoActionPerformed
 
+    private void btnTrxBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrxBankActionPerformed
+        cb.goTrxBank();
+    }//GEN-LAST:event_btnTrxBankActionPerformed
+
+    private void btnTrxPpobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrxPpobActionPerformed
+        cb.goTrxPpob();
+    }//GEN-LAST:event_btnTrxPpobActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -365,7 +386,6 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn;
     private javax.swing.JButton btnAccountInfo;
     private javax.swing.JPanel btnMenu1;
     private javax.swing.JPanel btnMenu2;
@@ -373,7 +393,8 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     private javax.swing.JPanel btnMenu4;
     private javax.swing.JPanel btnMenu5;
     private javax.swing.JPanel btnMenu6;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnTrxBank;
+    private javax.swing.JButton btnTrxPpob;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

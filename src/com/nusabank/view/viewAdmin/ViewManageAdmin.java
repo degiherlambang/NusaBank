@@ -6,6 +6,7 @@
 package com.nusabank.view.viewAdmin;
 
 
+import com.toedter.calendar.JDateChooser;
 import com.nusabank.controller.CManageAdmin;
 import com.nusabank.view.viewAdmin.ViewMenuAdmin;
 import javax.swing.JFileChooser;
@@ -33,7 +34,7 @@ public class ViewManageAdmin extends javax.swing.JFrame {
     
     
 
-    public com.toedter.calendar.JDateChooser getDcTglLahir() {
+    public JDateChooser getDcTglLahir() {
         return dcTglLahir;
     }
     

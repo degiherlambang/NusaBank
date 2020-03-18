@@ -61,55 +61,60 @@ public class CManageAdmin {
         admin.setPassword(String.valueOf(vma.getTfPasswordAdmin().getPassword()));
         admin.setEmail(vma.getTfEmailAdmin().getText());
         admin.setAlamat(vma.getTfAlamatAdmin().getText());
-        admin.setTglLahir(vma.getDcTglLahir().getDate().toString());
+        admin.setTglLahir((new java.sql.Date(vma.getDcTglLahir().getDate().getTime()).toString()));
         admin.setNoHp(vma.getTfNoHpAdmin().getText());
         
         File newPath = null;
         String newFileName = "";
-        try {
-            String fileType = "";
-            String oldFileName = vma.getFileName();
-            if (oldFileName.endsWith(".png")){
-                fileType=".png";
-            } else if (oldFileName.endsWith(".jpg")){
-                fileType=".jpg";
-            } else if (oldFileName.endsWith(".jpeg")){
-                fileType=".jpeg";
-            }
-            
-            String prefix = admin.getUsername();
-            String mid = "_NusaBank_";
-            String sufix = String.valueOf(admin.getTglLahir())
-                    .replace(" ", "_")
-                    .replace(":", "-");
-            String destPath = "res/admin_photos/";
-            newFileName = 
-                    destPath.concat(
-                        prefix.concat(
-                            mid.concat(
-                                sufix.concat(fileType)
-                            )
-                        )
-                    );
-            String copyNewFile = 
-                    System.getProperty("user.dir")
-                            .concat("/src/com/nusabank/")
-                            .concat(newFileName);
-            System.out.println(newFileName);
-            
-            File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
+        String oldFileName = vma.getFileName();
+        if (!vma.getTfPhotoAdminPath().getText().isEmpty()) {
+            try {
+                String fileType = "";
 
-            newPath = new File(copyNewFile);
-            Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+                if (oldFileName.endsWith(".png")){
+                    fileType=".png";
+                } else if (oldFileName.endsWith(".jpg")){
+                    fileType=".jpg";
+                } else if (oldFileName.endsWith(".jpeg")){
+                    fileType=".jpeg";
+                }
+
+                String prefix = admin.getUsername();
+                String mid = "_NusaBank_";
+                String sufix = String.valueOf(admin.getTglLahir())
+                        .replace(" ", "_")
+                        .replace(":", "-");
+                String destPath = "res/admin_photos/";
+                newFileName = 
+                        destPath.concat(
+                            prefix.concat(
+                                mid.concat(
+                                    sufix.concat(fileType)
+                                )
+                            )
+                        );
+                String copyNewFile = 
+                        System.getProperty("user.dir")
+                                .concat("/src/com/nusabank/")
+                                .concat(newFileName);
+                System.out.println(newFileName);
+
+                File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
+
+                newPath = new File(copyNewFile);
+                Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        } else {
+            newFileName = "";
         }
         
         admin.setPhoto(newFileName);
         
         aDao.insert(admin);
-        JOptionPane.showMessageDialog(null, "New admin added !");
+        JOptionPane.showMessageDialog(vma, "New admin added !");
     }
     
     public void update(){
@@ -121,55 +126,60 @@ public class CManageAdmin {
         admin.setPassword(String.valueOf(vma.getTfPasswordAdmin().getPassword()));
         admin.setEmail(vma.getTfEmailAdmin().getText());
         admin.setAlamat(vma.getTfAlamatAdmin().getText());
-        admin.setTglLahir(vma.getDcTglLahir().getDate().toString());
+        admin.setTglLahir((new java.sql.Date(vma.getDcTglLahir().getDate().getTime()).toString()));
         admin.setNoHp(vma.getTfNoHpAdmin().getText());
         
         File newPath = null;
         String newFileName = "";
-        try {
-            String fileType = "";
-            String oldFileName = vma.getFileName();
-            if (oldFileName.endsWith(".png")){
-                fileType=".png";
-            } else if (oldFileName.endsWith(".jpg")){
-                fileType=".jpg";
-            } else if (oldFileName.endsWith(".jpeg")){
-                fileType=".jpeg";
-            }
-            
-            String prefix = admin.getUsername();
-            String mid = "_NusaBank_";
-            String sufix = String.valueOf(admin.getTglLahir())
-                    .replace(" ", "_")
-                    .replace(":", "-");
-            String destPath = "res/admin_photos/";
-            newFileName = 
-                    destPath.concat(
-                        prefix.concat(
-                            mid.concat(
-                                sufix.concat(fileType)
-                            )
-                        )
-                    );
-            String copyNewFile = 
-                    System.getProperty("user.dir")
-                            .concat("/src/com/nusabank/")
-                            .concat(newFileName);
-            System.out.println(newFileName);
-            
-            File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
+        String oldFileName = vma.getFileName();
+        if (!vma.getTfPhotoAdminPath().getText().isEmpty()) {
+            try {
+                String fileType = "";
 
-            newPath = new File(copyNewFile);
-            Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+                if (oldFileName.endsWith(".png")){
+                    fileType=".png";
+                } else if (oldFileName.endsWith(".jpg")){
+                    fileType=".jpg";
+                } else if (oldFileName.endsWith(".jpeg")){
+                    fileType=".jpeg";
+                }
+
+                String prefix = admin.getUsername();
+                String mid = "_NusaBank_";
+                String sufix = String.valueOf(admin.getTglLahir())
+                        .replace(" ", "_")
+                        .replace(":", "-");
+                String destPath = "res/admin_photos/";
+                newFileName = 
+                        destPath.concat(
+                            prefix.concat(
+                                mid.concat(
+                                    sufix.concat(fileType)
+                                )
+                            )
+                        );
+                String copyNewFile = 
+                        System.getProperty("user.dir")
+                                .concat("/src/com/nusabank/")
+                                .concat(newFileName);
+                System.out.println(newFileName);
+
+                File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
+                
+                newPath = new File(copyNewFile);
+                Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        } else {
+            newFileName = "";
         }
         
         admin.setPhoto(newFileName);
         
         aDao.update(admin);
-        JOptionPane.showMessageDialog(null, "update success !");
+        JOptionPane.showMessageDialog(vma, "update success !");
     }
     
     public void delete(){

@@ -15,7 +15,7 @@ public class ModelTransaksiPPOB {
     private int idTransaksi;
     private String jenisTransaksi;
     private int nominal;
-    private Date tglTransaksi;
+    private String tglTransaksi;
     private int noTarget;
     private String ketTransaksi;
 
@@ -43,11 +43,11 @@ public class ModelTransaksiPPOB {
         this.nominal = nominal;
     }
 
-    public Date getTglTransaksi() {
+    public String getTglTransaksi() {
         return tglTransaksi;
     }
 
-    public void setTglTransaksi(Date tglTransaksi) {
+    public void setTglTransaksi(String tglTransaksi) {
         this.tglTransaksi = tglTransaksi;
     }
 

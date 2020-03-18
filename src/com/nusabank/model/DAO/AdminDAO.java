@@ -27,10 +27,10 @@ public class AdminDAO implements InterfaceAdminDAO {
     public void insert(ModelAdmin admin) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO admin "
-                    + "(id_admin, nama_admin, nik, username_admin, password_admin,"
+                    + "(nama_admin, nik, username_admin, password_admin,"
                     + " tgl_lahir, photo, jenis_kelamin, no_hp, email, alamat)"
                     + "VALUES "
-                    + "(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
+                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, admin.getNama());
             statement.setString(2, admin.getNIK());
             statement.setString(3, admin.getUsername());
@@ -47,7 +47,7 @@ public class AdminDAO implements InterfaceAdminDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: "+ex);
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
     }
 
     @Override

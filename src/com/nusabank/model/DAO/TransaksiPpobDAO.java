@@ -34,7 +34,7 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
                     + "(null, ?, ?, ?, ?, ?)");
             statement.setString(1, mTrxPPOB.getJenisTransaksi());
             statement.setInt(2, mTrxPPOB.getNominal());
-            statement.setDate(3, mTrxPPOB.getTglTransaksi());
+            statement.setString(3, mTrxPPOB.getTglTransaksi());
             statement.setInt(4, mTrxPPOB.getNoTarget());
             statement.setString(5, mTrxPPOB.getKetTransaksi());
             statement.executeUpdate();
@@ -56,7 +56,7 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
             
             statement.setString(1, mTrxPPOB.getJenisTransaksi());
             statement.setInt(2, mTrxPPOB.getNominal());
-            statement.setDate(3, mTrxPPOB.getTglTransaksi());
+            statement.setString(3, mTrxPPOB.getTglTransaksi());
             statement.setInt(4, mTrxPPOB.getNoTarget());
             statement.setString(5, mTrxPPOB.getKetTransaksi());
             statement.setInt(6, mTrxPPOB.getIdTransaksi());
@@ -99,7 +99,7 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
                 mTrxPPOb.setIdTransaksi(result.getInt("id_transaksi"));
                 mTrxPPOb.setJenisTransaksi(result.getString("jenis_transaksi"));
                 mTrxPPOb.setNominal(result.getInt("nominal"));
-                mTrxPPOb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mTrxPPOb.setTglTransaksi(result.getString("tgl_transaksi"));
                 mTrxPPOb.setNoTarget(result.getInt("no_target"));
                 mTrxPPOb.setKetTransaksi(result.getString("ket_transaksi"));
                 listTrxPPOB.add(mTrxPPOb);
@@ -129,7 +129,7 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
                 mTrxPPOb.setIdTransaksi(result.getInt("id_transaksi"));
                 mTrxPPOb.setJenisTransaksi(result.getString("jenis_transaksi"));
                 mTrxPPOb.setNominal(result.getInt("nominal"));
-                mTrxPPOb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mTrxPPOb.setTglTransaksi(result.getString("tgl_transaksi"));
                 mTrxPPOb.setNoTarget(result.getInt("no_target"));
                 mTrxPPOb.setKetTransaksi(result.getString("ket_transaksi"));
                 listTrxPPOB.add(mTrxPPOb);
@@ -159,7 +159,7 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
                 mTrxPPOb.setIdTransaksi(result.getInt("id_transaksi"));
                 mTrxPPOb.setJenisTransaksi(result.getString("jenis_transaksi"));
                 mTrxPPOb.setNominal(result.getInt("nominal"));
-                mTrxPPOb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mTrxPPOb.setTglTransaksi(result.getString("tgl_transaksi"));
                 mTrxPPOb.setNoTarget(result.getInt("no_target"));
                 mTrxPPOb.setKetTransaksi(result.getString("ket_transaksi"));
                 listTrxPPOB.add(mTrxPPOb);

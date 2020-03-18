@@ -9,7 +9,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -228,16 +228,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="BACK"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSubmit">
           <Properties>
             <Property name="text" type="java.lang.String" value="SUBMIT"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnReset">
           <Properties>
             <Property name="text" type="java.lang.String" value="RESET"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

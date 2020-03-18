@@ -4,23 +4,26 @@
  * and open the template in the editor.
  */
 package com.nusabank.view.viewNasabah;
-
+import com.nusabank.controller.CButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
+import com.nusabank.controller.CTransaksiBank;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
  */
 public class ViewTrxBank extends javax.swing.JFrame {
+private final CTransaksiBank cTrxBank;
+private CButton cButton;
 
-    /**
-     * Creates new form ViewTrxBank
-     */
-    public ViewTrxBank() {
+
+public ViewTrxBank() {
         initComponents();
+        cButton = new CButton(this);
+        cTrxBank = new CTransaksiBank(this);
     }
     
     public JComboBox getCmbJenisTransaksi() {
@@ -78,7 +81,7 @@ public class ViewTrxBank extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableTrxBank = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel4.setText("Nusa Bank");
@@ -107,10 +110,25 @@ public class ViewTrxBank extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtKeterangan);
 
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("SUBMIT");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel6.setText("Bank Code");
@@ -255,6 +273,32 @@ public class ViewTrxBank extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+String cekTransaksi = cmbJenisTransaksi.getSelectedItem().toString();
+String cekBank = txtKodeBank.getText();
+String cekNumber = txtNoRekTujuan.getText();
+String cekNominal = txtNominal.getText();
+String cekKeterangan = txtNominal.getText();
+
+if(cekTransaksi == "- Choose -" || cekBank.isEmpty() || cekNumber.isEmpty() || cekNominal.isEmpty() || cekKeterangan.isEmpty()){
+    JOptionPane.showMessageDialog(null, "Data gagal di input");
+}
+else{
+     cTrxBank.insert();
+     cTrxBank.reset();
+    JOptionPane.showMessageDialog(null, "Data berhasil di input");
+}
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+cTrxBank.reset();
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+cButton.goBackMenuNasabah();
+this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments

@@ -34,7 +34,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                     + "(null, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, mtb.getJenisTransaksi());
             statement.setInt(2, mtb.getNominal());
-            statement.setDate(3, mtb.getTglTransaksi());
+            statement.setString(3, mtb.getTglTransaksi());
             statement.setInt(4, mtb.getKodeBank());
             statement.setInt(5, mtb.getRekTujuan());
             statement.setInt(6, mtb.getBiayaAdmin());
@@ -60,7 +60,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
             
             statement.setString(1, mtb.getJenisTransaksi());
             statement.setInt(2, mtb.getNominal());
-            statement.setDate(3, mtb.getTglTransaksi());
+            statement.setString(3, mtb.getTglTransaksi());
             statement.setInt(4, mtb.getKodeBank());
             statement.setInt(5, mtb.getRekTujuan());
             statement.setInt(6, mtb.getBiayaAdmin());
@@ -105,7 +105,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                 mtb.setIdTransaksi(result.getInt("id_transaksi"));
                 mtb.setJenisTransaksi(result.getString("jenis_transaksi"));
                 mtb.setNominal(result.getInt("nominal"));
-                mtb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mtb.setTglTransaksi(result.getString("tgl_transaksi"));
                 mtb.setKodeBank(result.getInt("kode_bank"));
                 mtb.setRekTujuan(result.getInt("rek_tujuan"));
                 mtb.setBiayaAdmin(result.getInt("biaya_admin"));
@@ -137,7 +137,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                 mtb.setIdTransaksi(result.getInt("id_transaksi"));
                 mtb.setJenisTransaksi(result.getString("jenis_transaksi"));
                 mtb.setNominal(result.getInt("nominal"));
-                mtb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mtb.setTglTransaksi(result.getString("tgl_transaksi"));
                 mtb.setKodeBank(result.getInt("kode_bank"));
                 mtb.setRekTujuan(result.getInt("rek_tujuan"));
                 mtb.setBiayaAdmin(result.getInt("biaya_admin"));
@@ -169,7 +169,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                 mtb.setIdTransaksi(result.getInt("id_transaksi"));
                 mtb.setJenisTransaksi(result.getString("jenis_transaksi"));
                 mtb.setNominal(result.getInt("nominal"));
-                mtb.setTglTransaksi(result.getDate("tgl_transaksi"));
+                mtb.setTglTransaksi(result.getString("tgl_transaksi"));
                 mtb.setKodeBank(result.getInt("kode_bank"));
                 mtb.setRekTujuan(result.getInt("rek_tujuan"));
                 mtb.setBiayaAdmin(result.getInt("biaya_admin"));

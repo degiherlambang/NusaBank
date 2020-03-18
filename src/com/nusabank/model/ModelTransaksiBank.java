@@ -15,7 +15,7 @@ public class ModelTransaksiBank {
     private int idTransaksi;
     private String jenisTransaksi;
     private int nominal;
-    private Date tglTransaksi;
+    private String tglTransaksi;
     private int kodeBank;
     private int rekTujuan;
     private int biayaAdmin;
@@ -45,11 +45,11 @@ public class ModelTransaksiBank {
         this.nominal = nominal;
     }
 
-    public Date getTglTransaksi() {
+    public String getTglTransaksi() {
         return tglTransaksi;
     }
 
-    public void setTglTransaksi(Date tglTransaksi) {
+    public void setTglTransaksi(String tglTransaksi) {
         this.tglTransaksi = tglTransaksi;
     }
 
