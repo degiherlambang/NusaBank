@@ -6,6 +6,7 @@
 package com.nusabank.view.viewAdmin;
 
 import com.toedter.calendar.JDateChooser;
+import com.nusabank.model.DAO.Function;
 import com.nusabank.controller.CRegisNasabah;
 import com.nusabank.controller.CRegisRekening;
 import java.time.LocalDateTime;
@@ -32,6 +33,7 @@ import java.util.logging.Logger;
 public class ViewRegisNasabah extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
     
+    private Function func;
     private CRegisNasabah nc;
     private CRegisRekening rc;
     
@@ -45,6 +47,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     public ViewRegisNasabah() {
         initComponents();
         todayDateInit();
+        func = new Function();
         nc = new CRegisNasabah(this);
         rc = new CRegisRekening(this);
         System.out.println(System.getProperty("user.dir"));
@@ -598,12 +601,12 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNamaIbuActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-       String noRek = rc.generateNoRek(
+       String noRekening = func.generateNoRek(
                txtNamaNasabah.getText().replace(" ", ""),
                dcTglLahir.getDateFormatString(), 
                todayDate.getText()
        );
-       txtNoRekening.setText(noRek);
+       txtNoRekening.setText(noRekening);
        rc.insert();
        
        if (String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtRePassword.getPassword()))) {

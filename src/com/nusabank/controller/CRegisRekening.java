@@ -5,6 +5,7 @@
  */
 package com.nusabank.controller;
 
+import com.nusabank.model.DAO.Function;
 import com.nusabank.model.DAO.InterfaceRekeningDAO;
 import com.nusabank.model.DAO.RekeningDAO;
 import com.nusabank.model.ModelRekening;
@@ -26,6 +27,8 @@ import javax.swing.JOptionPane;
  */
 public class CRegisRekening {
  
+    private Function func;
+    
     private final ViewRegisNasabah vRegNasabah;
 
     private List<ModelRekening> listRekening;
@@ -35,6 +38,7 @@ public class CRegisRekening {
     public CRegisRekening(JFrame frame) {
         this.vRegNasabah = (ViewRegisNasabah) frame;
         interfaceRekening = new RekeningDAO();
+        func = new Function();
         listRekening = interfaceRekening.getAll();
     }
     
@@ -69,30 +73,7 @@ public class CRegisRekening {
         
     }
 
-    public String generateNoRek(String nmNasabah, String dob, String dj) {
-        String norekResult = "1234567890";
-
-        String a = nmNasabah;
-        String b = dob;
-        String c = dj;
-        int hash1 = a.hashCode();
-        int hash2 = b.hashCode();
-        int hash3 = c.hashCode();
-        String pt1 = String.valueOf(hash1).substring(1, 5);
-        String pt2 = String.valueOf(hash2).substring(1, 5);
-        String pt3 = String.valueOf(hash3).substring(1, 5);
-        String cont = pt1 + pt2 + pt3;
-        System.out.println(hash1);
-        System.out.println(hash2);
-        System.out.println(hash3);
-        System.out.println(pt1);
-        System.out.println(pt2);
-        System.out.println(pt3);
-        System.out.println(cont);
-        norekResult = cont;
-        
-        return norekResult;
-    }
+    
 
     
 }

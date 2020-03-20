@@ -22,6 +22,31 @@ import javax.swing.JFrame;
  */
 public class Function {
     
+   public String generateNoRek(String nmNasabah, String dob, String dj) {
+        String norekResult = "1234567890";
+
+        String a = nmNasabah;
+        String b = dob;
+        String c = dj;
+        int hash1 = a.hashCode();
+        int hash2 = b.hashCode();
+        int hash3 = c.hashCode();
+        String pt1 = String.valueOf(hash1).substring(1, 5);
+        String pt2 = String.valueOf(hash2).substring(1, 5);
+        String pt3 = String.valueOf(hash3).substring(1, 5);
+        String cont = pt1 + pt2 + pt3;
+        System.out.println(hash1);
+        System.out.println(hash2);
+        System.out.println(hash3);
+        System.out.println(pt1);
+        System.out.println(pt2);
+        System.out.println(pt3);
+        System.out.println(cont);
+        norekResult = cont;
+        
+        return norekResult;
+    }
+   
    public String uploadPhotoNasabah(ViewRegisNasabah vRegNasabah, ModelNasabah nasabah) {
     File newPath = null;
         String newFileName = "";
