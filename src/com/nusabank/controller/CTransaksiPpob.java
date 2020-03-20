@@ -60,4 +60,9 @@ public class CTransaksiPpob {
         cTrxPpob.getTfKeterangan().setText("");
           
     }
+    public void bindingTable(){
+        listTrxPpob = interfaceTrxPpob.getAll();
+        cTrxPpob.getTableTrxPPOB().setModel(new TableModelTransaksiPPOB(listTrxPpob));
+    }
+
 }

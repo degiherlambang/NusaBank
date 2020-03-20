@@ -113,6 +113,11 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         btnBack.setText("Back");
 
         btnGantiPIN.setText("Ganti PIN");
+        btnGantiPIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGantiPINActionPerformed(evt);
+            }
+        });
 
         btnEditDataNasabah.setText("Edit Data Pribadi");
         btnEditDataNasabah.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +219,11 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         cSaldoNasabah.checkSaldo();
     }//GEN-LAST:event_btnCekSaldoActionPerformed
 
+    private void btnGantiPINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGantiPINActionPerformed
+    ViewGantiPin vGP = new ViewGantiPin();
+    vGP.setVisible(true);
+    }//GEN-LAST:event_btnGantiPINActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,7 +273,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
     private javax.swing.JLabel lbLogoPT;
     private javax.swing.JTextField txtNamaNasabah;
     private javax.swing.JTextField txtNoPIN;
-    private javax.swing.JTextField txtNoRekening;
+    public static javax.swing.JTextField txtNoRekening;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 }

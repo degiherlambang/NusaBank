@@ -265,4 +265,86 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             e.printStackTrace();
         }
     }
+    
+    public void doSaving(String id, int nominal) {
+        ModelRekening rekening = new ModelRekening();
+        rekening.setNoRekening(id);
+        int currentSaldo;
+        int updateSaldo;
+        try {
+            String qSel = "SELECT  * FROM rekening WHERE no_rekening = "+id;
+            PreparedStatement pst = DBConnection.getConnection().prepareStatement(qSel);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                rekening.setSaldo(rs.getInt("saldo"));
+                rekening.setNoRekening(rs.getString("no_rekening"));
+            }
+            
+            currentSaldo = rekening.getSaldo();
+            updateSaldo = currentSaldo + nominal;
+            rekening.setSaldo(updateSaldo);
+            
+            String q = "UPDATE rekening SET saldo=? WHERE no_rekening=?";
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement(q);
+            ps.setInt(1, rekening.getSaldo());
+            ps.setString(2,rekening.getNoRekening());
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void doWithDraw(String id, int nominal) {
+        ModelRekening rekening = new ModelRekening();
+        rekening.setNoRekening(id);
+        int currentSaldo;
+        int updateSaldo;
+        try {
+            String qSel = "SELECT  * FROM rekening WHERE no_rekening = "+id;
+            PreparedStatement pst = DBConnection.getConnection().prepareStatement(qSel);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                rekening.setSaldo(rs.getInt("saldo"));
+                rekening.setNoRekening(rs.getString("no_rekening"));
+            }
+            
+            currentSaldo = rekening.getSaldo();
+            updateSaldo = currentSaldo - nominal;
+            rekening.setSaldo(updateSaldo);
+            
+            String q = "UPDATE rekening SET saldo=? WHERE no_rekening=?";
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement(q);
+            ps.setInt(1, rekening.getSaldo());
+            ps.setString(2,rekening.getNoRekening());
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void doChangePin(ModelRekening rekening) {
+    try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
+                    + "UPDATE rekening SET "
+                    + "no_pin=?"
+                    + "  WHERE no_rekening=? AND no_pin=?");
+            
+            statement.setInt(1, rekening.getNoPin());
+            statement.setString(2, rekening.getNoRekening());
+            statement.setInt(3, rekening.getIdRekening());;
+            
+          
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
 }
