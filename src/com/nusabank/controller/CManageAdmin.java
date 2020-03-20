@@ -5,6 +5,7 @@
  */
 package com.nusabank.controller;
 
+import com.nusabank.model.DAO.Function;
 import com.nusabank.model.ModelAdmin;
 import com.nusabank.model.DAO.AdminDAO;
 import com.nusabank.model.DAO.InterfaceAdminDAO;
@@ -28,224 +29,134 @@ import javax.swing.JOptionPane;
  */
 public class CManageAdmin {
     
-    private final ViewManageAdmin vma;
+    private Function func;
+    private final ViewManageAdmin vManageAdmin;
     
     private List<ModelAdmin> listAdmin;
-    private final InterfaceAdminDAO aDao;
+    private final InterfaceAdminDAO interfaceAdmin;
     
-    public CManageAdmin(ViewManageAdmin vma) {
-        this.vma =  vma;
-        aDao = new AdminDAO();
-        listAdmin = aDao.getAll();
+    public CManageAdmin(ViewManageAdmin vManageAdmin) {
+        this.vManageAdmin =  vManageAdmin;
+        interfaceAdmin = new AdminDAO();
+        func = new Function();
+        listAdmin = interfaceAdmin.getAll();
+        
     }
     
     public void reset(){
-        vma.getTfIdAdmin().setText("");
-        vma.getTfNamaAdmin().setText("");
-        vma.getTfNikAdmin().setText("");
-        vma.getTfAlamatAdmin().setText("");
-        vma.getTfNoHpAdmin().setText("");
-        vma.getTfPasswordAdmin().setText("");
-        vma.getTfUsernameAdmin().setText("");
-        vma.getTfPhotoAdminPath().setText("");
-        vma.getTfEmailAdmin().setText("");
-        vma.getCmbJenisKelamin().setSelectedIndex(0);
+        vManageAdmin.getTfIdAdmin().setText("");
+        vManageAdmin.getTfNamaAdmin().setText("");
+        vManageAdmin.getTfNikAdmin().setText("");
+        vManageAdmin.getTfAlamatAdmin().setText("");
+        vManageAdmin.getTfNoHpAdmin().setText("");
+        vManageAdmin.getTfPasswordAdmin().setText("");
+        vManageAdmin.getTfUsernameAdmin().setText("");
+        vManageAdmin.getTfPhotoAdminPath().setText("");
+        vManageAdmin.getTfEmailAdmin().setText("");
+        vManageAdmin.getCmbJenisKelamin().setSelectedIndex(0);
     }
     
     public void insert(){
         ModelAdmin admin = new ModelAdmin();
-        admin.setNama(vma.getTfNamaAdmin().getText());
-        admin.setNIK(vma.getTfNikAdmin().getText());
-        admin.setUsername(vma.getTfUsernameAdmin().getText());
-        admin.setJenisKelamin(vma.getCmbJenisKelamin().getSelectedItem().toString());
-        admin.setPassword(String.valueOf(vma.getTfPasswordAdmin().getPassword()));
-        admin.setEmail(vma.getTfEmailAdmin().getText());
-        admin.setAlamat(vma.getTfAlamatAdmin().getText());
-        admin.setTglLahir((new java.sql.Date(vma.getDcTglLahir().getDate().getTime()).toString()));
-        admin.setNoHp(vma.getTfNoHpAdmin().getText());
         
-        File newPath = null;
-        String newFileName = "";
-        String oldFileName = vma.getFileName();
-        if (!vma.getTfPhotoAdminPath().getText().isEmpty()) {
-            try {
-                String fileType = "";
-
-                if (oldFileName.endsWith(".png")){
-                    fileType=".png";
-                } else if (oldFileName.endsWith(".jpg")){
-                    fileType=".jpg";
-                } else if (oldFileName.endsWith(".jpeg")){
-                    fileType=".jpeg";
-                }
-
-                String prefix = admin.getUsername();
-                String mid = "_NusaBank_";
-                String sufix = String.valueOf(admin.getTglLahir())
-                        .replace(" ", "_")
-                        .replace(":", "-");
-                String destPath = "res/admin_photos/";
-                newFileName = 
-                        destPath.concat(
-                            prefix.concat(
-                                mid.concat(
-                                    sufix.concat(fileType)
-                                )
-                            )
-                        );
-                String copyNewFile = 
-                        System.getProperty("user.dir")
-                                .concat("/src/com/nusabank/")
-                                .concat(newFileName);
-                System.out.println(newFileName);
-
-                File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
-
-                newPath = new File(copyNewFile);
-                Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } else {
-            newFileName = "";
-        }
+        admin.setNama(vManageAdmin.getTfNamaAdmin().getText());
+        admin.setNIK(vManageAdmin.getTfNikAdmin().getText());
+        admin.setUsername(vManageAdmin.getTfUsernameAdmin().getText());
+        admin.setJenisKelamin(vManageAdmin.getCmbJenisKelamin().getSelectedItem().toString());
+        admin.setPassword(String.valueOf(vManageAdmin.getTfPasswordAdmin().getPassword()));
+        admin.setEmail(vManageAdmin.getTfEmailAdmin().getText());
+        admin.setAlamat(vManageAdmin.getTfAlamatAdmin().getText());
+        admin.setTglLahir((new java.sql.Date(vManageAdmin.getDcTglLahir().getDate().getTime()).toString()));
+        admin.setNoHp(vManageAdmin.getTfNoHpAdmin().getText());
         
+        String newFileName = func.uploadPhotoAdmin(vManageAdmin, admin);
         admin.setPhoto(newFileName);
         
-        aDao.insert(admin);
-        JOptionPane.showMessageDialog(vma, "New admin added !");
+        interfaceAdmin.insert(admin);
+        JOptionPane.showMessageDialog(vManageAdmin, "New admin added !");
     }
     
     public void update(){
         ModelAdmin admin = new ModelAdmin();
-        admin.setNama(vma.getTfNamaAdmin().getText());
-        admin.setNIK(vma.getTfNikAdmin().getText());
-        admin.setUsername(vma.getTfUsernameAdmin().getText());
-        admin.setJenisKelamin(vma.getCmbJenisKelamin().getSelectedItem().toString());
-        admin.setPassword(String.valueOf(vma.getTfPasswordAdmin().getPassword()));
-        admin.setEmail(vma.getTfEmailAdmin().getText());
-        admin.setAlamat(vma.getTfAlamatAdmin().getText());
-        admin.setTglLahir((new java.sql.Date(vma.getDcTglLahir().getDate().getTime()).toString()));
-        admin.setNoHp(vma.getTfNoHpAdmin().getText());
+        admin.setNama(vManageAdmin.getTfNamaAdmin().getText());
+        admin.setNIK(vManageAdmin.getTfNikAdmin().getText());
+        admin.setUsername(vManageAdmin.getTfUsernameAdmin().getText());
+        admin.setJenisKelamin(vManageAdmin.getCmbJenisKelamin().getSelectedItem().toString());
+        admin.setPassword(String.valueOf(vManageAdmin.getTfPasswordAdmin().getPassword()));
+        admin.setEmail(vManageAdmin.getTfEmailAdmin().getText());
+        admin.setAlamat(vManageAdmin.getTfAlamatAdmin().getText());
+        admin.setTglLahir((new java.sql.Date(vManageAdmin.getDcTglLahir().getDate().getTime()).toString()));
+        admin.setNoHp(vManageAdmin.getTfNoHpAdmin().getText());
         
-        File newPath = null;
-        String newFileName = "";
-        String oldFileName = vma.getFileName();
-        if (!vma.getTfPhotoAdminPath().getText().isEmpty()) {
-            try {
-                String fileType = "";
-
-                if (oldFileName.endsWith(".png")){
-                    fileType=".png";
-                } else if (oldFileName.endsWith(".jpg")){
-                    fileType=".jpg";
-                } else if (oldFileName.endsWith(".jpeg")){
-                    fileType=".jpeg";
-                }
-
-                String prefix = admin.getUsername();
-                String mid = "_NusaBank_";
-                String sufix = String.valueOf(admin.getTglLahir())
-                        .replace(" ", "_")
-                        .replace(":", "-");
-                String destPath = "res/admin_photos/";
-                newFileName = 
-                        destPath.concat(
-                            prefix.concat(
-                                mid.concat(
-                                    sufix.concat(fileType)
-                                )
-                            )
-                        );
-                String copyNewFile = 
-                        System.getProperty("user.dir")
-                                .concat("/src/com/nusabank/")
-                                .concat(newFileName);
-                System.out.println(newFileName);
-
-                File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
-                
-                newPath = new File(copyNewFile);
-                Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } else {
-            newFileName = "";
-        }
-        
+        String newFileName = func.uploadPhotoAdmin(vManageAdmin, admin);
         admin.setPhoto(newFileName);
         
-        aDao.update(admin);
-        JOptionPane.showMessageDialog(vma, "update success !");
+        interfaceAdmin.update(admin);
+        JOptionPane.showMessageDialog(vManageAdmin, "update success !");
     }
     
     public void delete(){
-    if (vma.getTfIdAdmin().getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(vma, "No data deleted....? ",null, JOptionPane.ERROR_MESSAGE);
+    if (vManageAdmin.getTfIdAdmin().getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(vManageAdmin, "No data deleted....? ",null, JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        int row = Integer.parseInt(vma.getTfIdAdmin().getText());
+        int row = Integer.parseInt(vManageAdmin.getTfIdAdmin().getText());
         
-        aDao.delete(row);
+        interfaceAdmin.delete(row);
         JOptionPane.showMessageDialog(null, "Succesfully deleted !");
     }
     
     public void bindingTable(){
-        listAdmin = aDao.getAll();
-        vma.getTableAdmin().setModel(new TableModelAdmin(listAdmin));
+        listAdmin = interfaceAdmin.getAll();
+        vManageAdmin.getTableAdmin().setModel(new TableModelAdmin(listAdmin));
     }
     
     public void getData(){
 
-        String cat = vma.getCmbCategory().getSelectedItem().toString();
+        String cat = vManageAdmin.getCmbCategory().getSelectedItem().toString();
         String keyword = null;
         
         if (cat.equals("ID")){
-            keyword = vma.getTfIdAdmin().getText();
+            keyword = vManageAdmin.getTfIdAdmin().getText();
         } else if (cat.equals("NAMA")) {
-            keyword = vma.getTfNamaAdmin().getText();
+            keyword = vManageAdmin.getTfNamaAdmin().getText();
         } else if (cat.equals("NIK")) {
-            keyword = vma.getTfNikAdmin().getText();
+            keyword = vManageAdmin.getTfNikAdmin().getText();
         } else if (cat.equals("USERNAME")) {
-            keyword = vma.getTfUsernameAdmin().getText();
+            keyword = vManageAdmin.getTfUsernameAdmin().getText();
         } else if (cat.equals("GENDER")) {
-            keyword = vma.getCmbJenisKelamin().getSelectedItem().toString();
+            keyword = vManageAdmin.getCmbJenisKelamin().getSelectedItem().toString();
         } else if (cat.equals("EMAIL")) {
-            keyword = vma.getTfEmailAdmin().getText();
+            keyword = vManageAdmin.getTfEmailAdmin().getText();
         } else if (cat.equals("PHONE_NO")) {
-            keyword = vma.getTfNoHpAdmin().getText();
+            keyword = vManageAdmin.getTfNoHpAdmin().getText();
         } else if (cat.equals("ADDRESS")) {
-            keyword = vma.getTfAlamatAdmin().getText();
+            keyword = vManageAdmin.getTfAlamatAdmin().getText();
         }
-       //String nama = panel.getTxtNama().getText();
-        
-       aDao.search(cat, keyword);
+
+       interfaceAdmin.search(cat, keyword);
        bindingSearch(cat, keyword);
-        //implementMahasiswa.getMahasiswa(nama);
-        //isiTabelCari(nama);
+
     }
     
     public void getDataField(){
-         int row = vma.getTableAdmin().getSelectedRow();
+         int row = vManageAdmin.getTableAdmin().getSelectedRow();
         
         if (row != -1){
             try {
             java.util.Date tglLahir = new SimpleDateFormat("yyyy-MM-dd").parse(listAdmin.get(row).getTglLahir());
-            vma.getTfIdAdmin().setText(String.valueOf(listAdmin.get(row).getId()));
-            vma.getTfNamaAdmin().setText(listAdmin.get(row).getNama());
-            vma.getTfNikAdmin().setText(listAdmin.get(row).getNIK());
-            vma.getTfUsernameAdmin().setText(listAdmin.get(row).getUsername());
-            vma.getTfPasswordAdmin().setText(listAdmin.get(row).getPassword());
-            vma.getDcTglLahir().setDate(tglLahir);
-            vma.getTfPhotoAdminPath().setText(listAdmin.get(row).getPhoto());
-            vma.getCmbJenisKelamin().setSelectedItem(listAdmin.get(row).getJenisKelamin());
-            vma.getTfNoHpAdmin().setText(listAdmin.get(row).getNoHp());
-            vma.getTfEmailAdmin().setText(listAdmin.get(row).getEmail());
-            vma.getTfAlamatAdmin().setText(listAdmin.get(row).getAlamat());
+            vManageAdmin.getTfIdAdmin().setText(String.valueOf(listAdmin.get(row).getId()));
+            vManageAdmin.getTfNamaAdmin().setText(listAdmin.get(row).getNama());
+            vManageAdmin.getTfNikAdmin().setText(listAdmin.get(row).getNIK());
+            vManageAdmin.getTfUsernameAdmin().setText(listAdmin.get(row).getUsername());
+            vManageAdmin.getTfPasswordAdmin().setText(listAdmin.get(row).getPassword());
+            vManageAdmin.getDcTglLahir().setDate(tglLahir);
+            vManageAdmin.getTfPhotoAdminPath().setText(listAdmin.get(row).getPhoto());
+            vManageAdmin.getCmbJenisKelamin().setSelectedItem(listAdmin.get(row).getJenisKelamin());
+            vManageAdmin.getTfNoHpAdmin().setText(listAdmin.get(row).getNoHp());
+            vManageAdmin.getTfEmailAdmin().setText(listAdmin.get(row).getEmail());
+            vManageAdmin.getTfAlamatAdmin().setText(listAdmin.get(row).getAlamat());
             } catch(ParseException e){
                 e.printStackTrace();
             }
@@ -253,8 +164,8 @@ public class CManageAdmin {
     }
     
     public void bindingSearch(String cat, String keyword){
-        listAdmin = aDao.search(cat, keyword);
-        vma.getTableAdmin().setModel(new TableModelAdmin(listAdmin));
+        listAdmin = interfaceAdmin.search(cat, keyword);
+        vManageAdmin.getTableAdmin().setModel(new TableModelAdmin(listAdmin));
     }
 
 }

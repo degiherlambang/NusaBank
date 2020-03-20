@@ -391,6 +391,9 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel24.setText("PIN (Default)");
 
+        txtNoPIN.setText("123456");
+        txtNoPIN.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

@@ -684,6 +684,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtNoPIN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="123456"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

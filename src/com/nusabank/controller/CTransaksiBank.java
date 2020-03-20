@@ -8,12 +8,20 @@ import com.nusabank.model.ModelTransaksiBank;
 import com.nusabank.model.DAO.TransaksiBankDAO;
 import com.nusabank.model.DAO.InterfaceTrxBankDAO;
 import com.nusabank.model.table.TableModelTransaksiBank;
+
 import com.nusabank.model.ModelRekening;
 import com.nusabank.model.DAO.RekeningDAO;
 import com.nusabank.model.DAO.InterfaceRekeningDAO;
+
 import com.nusabank.view.viewAdmin.ViewMenuAdmin;
+
+import com.nusabank.model.ModelNasabah;
+import com.nusabank.model.DAO.NasabahDAO;
+import com.nusabank.model.DAO.InterfaceNasabahDAO;
+
 import com.nusabank.view.viewNasabah.*;
 import com.nusabank.view.viewNasabah.ViewTrxBank;
+
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -30,17 +38,19 @@ import javax.swing.JOptionPane;
  */
 public class CTransaksiBank {
     private final ViewTrxBank cTrxBank;
-    private ViewMenuNasabah vmn;
+    private ViewMenuNasabah viewMenuNasabah;
     
     private List<ModelTransaksiBank> listTrxBank;
 
     private final  InterfaceTrxBankDAO interfaceTrxBank;
     private final InterfaceRekeningDAO interfaceRek;
+    private final InterfaceNasabahDAO interNasabah;
     
     public CTransaksiBank(JFrame frame) {
         this.cTrxBank = (ViewTrxBank) frame;
         interfaceTrxBank = new TransaksiBankDAO();
         interfaceRek = new RekeningDAO();
+        interNasabah = new NasabahDAO();
         listTrxBank = interfaceTrxBank.getAll();
     }
     

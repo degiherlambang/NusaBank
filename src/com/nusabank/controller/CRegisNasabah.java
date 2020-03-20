@@ -5,6 +5,7 @@
  */
 package com.nusabank.controller;
 
+import com.nusabank.model.DAO.Function;
 import com.nusabank.model.ModelNasabah;
 import com.nusabank.model.DAO.NasabahDAO;
 import com.nusabank.model.DAO.InterfaceNasabahDAO;
@@ -31,6 +32,7 @@ import javax.swing.JOptionPane;
  */
 public class CRegisNasabah {
 
+    private Function func;
     private final ViewRegisNasabah vRegNasabah;
 
     private List<ModelNasabah> listNasabah;
@@ -40,6 +42,7 @@ public class CRegisNasabah {
     public CRegisNasabah(JFrame frame) {
         this.vRegNasabah = (ViewRegisNasabah) frame;
         interfaceNasabah = new NasabahDAO();
+        func = new Function();
         listNasabah = interfaceNasabah.getAll();
     }
 
@@ -67,7 +70,7 @@ public class CRegisNasabah {
     public void insert() {
 
         ModelNasabah nasabah = new ModelNasabah();
-        
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         java.util.Date tglPembuatan = new java.util.Date();
         
@@ -88,49 +91,7 @@ public class CRegisNasabah {
         nasabah.setTglPembuatan(dateFormat.format(tglPembuatan));
         nasabah.setIdRekening(Integer.parseInt(vRegNasabah.getTxtIdRekening().getText()));
         
-        
-        File newPath = null;
-        String newFileName = "";
-        try {
-            String fileType = "";
-            String oldFileName = vRegNasabah.getFileName();
-            if (oldFileName.endsWith(".png")){
-                fileType=".png";
-            } else if (oldFileName.endsWith(".jpg")){
-                fileType=".jpg";
-            } else if (oldFileName.endsWith(".jpeg")){
-                fileType=".jpeg";
-            }
-            
-            String prefix = nasabah.getUsername();
-            String mid = "_NusaBank_";
-            String sufix = String.valueOf(nasabah.getTglPembuatan())
-                    .replace(" ", "_")
-                    .replace(":", "-");
-            String destPath = "res/nasabah_photos/";
-            newFileName = 
-                    destPath.concat(
-                        prefix.concat(
-                            mid.concat(
-                                sufix.concat(fileType)
-                            )
-                        )
-                    );
-            String copyNewFile = 
-                    System.getProperty("user.dir")
-                            .concat("/src/com/nusabank/")
-                            .concat(newFileName);
-            System.out.println(newFileName);
-            
-            File srcPhoto = new File(vRegNasabah.getLbFoto().getText());
-
-            newPath = new File(copyNewFile);
-            Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        
+        String newFileName = func.uploadPhotoNasabah(vRegNasabah, nasabah);
         nasabah.setPhoto(newFileName);
         
         interfaceNasabah.insert(nasabah);

@@ -189,6 +189,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         return lastId;
     }
 
+    @Override
     public int getNoPIN(int idRek) {
         ModelRekening rekening = new ModelRekening();
         try {
@@ -203,6 +204,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         return rekening.getNoPin();
     }
     
+    @Override
     public String getNoRek(int idRek) {
         ModelRekening rekening = new ModelRekening();
         try {
@@ -217,6 +219,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         return rekening.getNoRekening();
     }
     
+    @Override
     public int getSaldo(int idRek) {
         ModelRekening rekening = new ModelRekening();
         try {
@@ -231,6 +234,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         return rekening.getSaldo();
     }
     
+    @Override
     public void trimSaldo(int id, int nominal) {
         ModelRekening rekening = new ModelRekening();
         rekening.setIdRekening(id);

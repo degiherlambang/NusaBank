@@ -19,4 +19,9 @@ public interface InterfaceRekeningDAO {
     public List<ModelRekening> search(String category, String search);
     public List<ModelRekening> getById(int id);
     public String getLastId();
+    public int getNoPIN(int idRek);
+    public String getNoRek(int idRek);
+    public int getSaldo(int idRek);
+    public void trimSaldo(int id, int nominal);
+    
 }
