@@ -28,10 +28,10 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
     public void insert(ModelTransaksiPPOB mTrxPPOB) {
      try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO transaksi_ppob "
-                    + "(id_transaksi, jenis_transaksi, nominal, tgl_transaksi, no_target,"
-                    + "ket_transaksi)"
+                    + "(jenis_transaksi, nominal, tgl_transaksi, no_target,"
+                    + "ket_transaksi, id_rekening)"
                     + "VALUES "
-                    + "(null, ?, ?, ?, ?, ?)");
+                    + "(?, ?, ?, ?, ?)");
             statement.setString(1, mTrxPPOB.getJenisTransaksi());
             statement.setInt(2, mTrxPPOB.getNominal());
             statement.setString(3, mTrxPPOB.getTglTransaksi());

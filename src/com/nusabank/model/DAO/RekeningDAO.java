@@ -256,8 +256,8 @@ public class RekeningDAO implements InterfaceRekeningDAO {
             
             String q = "UPDATE rekening SET saldo=? WHERE id_rekening=?";
             PreparedStatement ps = DBConnection.getConnection().prepareStatement(q);
-            ps.setInt(1,rekening.getIdRekening());
-            ps.setInt(2, rekening.getSaldo());
+            ps.setInt(1,rekening.getSaldo());
+            ps.setInt(2, rekening.getIdRekening());
             ps.executeUpdate();
             ps.close();
             

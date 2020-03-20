@@ -18,6 +18,9 @@ public class ModelTransaksiPPOB {
     private String tglTransaksi;
     private int noTarget;
     private String ketTransaksi;
+    private int idRekening;
+    
+    
 
     public int getIdTransaksi() {
         return idTransaksi;
@@ -65,6 +68,14 @@ public class ModelTransaksiPPOB {
 
     public void setKetTransaksi(String ketTransaksi) {
         this.ketTransaksi = ketTransaksi;
+    }
+
+    public int getIdRekening() {
+        return idRekening;
+    }
+
+    public void setIdRekening(int idRekening) {
+        this.idRekening = idRekening;
     }
     
 }

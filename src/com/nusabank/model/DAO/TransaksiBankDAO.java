@@ -28,10 +28,10 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
     public void insert(ModelTransaksiBank mtb) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO transaksi_bank "
-                    + "(id_transaksi, jenis_transaksi, nominal, tgl_transaksi, kode_bank, rek_tujuan,"
-                    + "biaya_admin, ket_transaksi)"
+                    + "(jenis_transaksi, nominal, tgl_transaksi, kode_bank, rek_tujuan,"
+                    + "biaya_admin, ket_transaksi, id_rekening)"
                     + "VALUES "
-                    + "(null, ?, ?, ?, ?, ?, ?, ?)");
+                    + "(?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, mtb.getJenisTransaksi());
             statement.setInt(2, mtb.getNominal());
             statement.setString(3, mtb.getTglTransaksi());
@@ -39,6 +39,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
             statement.setInt(5, mtb.getRekTujuan());
             statement.setInt(6, mtb.getBiayaAdmin());
             statement.setString(7, mtb.getKetTransaksi());
+            statement.setInt(8, mtb.getIdRekening());
             statement.executeUpdate();
             statement.close();
         } catch(SQLException ex) {

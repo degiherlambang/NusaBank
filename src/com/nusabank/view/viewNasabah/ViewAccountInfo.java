@@ -54,9 +54,6 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         return btnGantiPIN;
     }
     
-    public JButton getBtnBack() {
-        return btnBack;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,7 +71,6 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         txtNamaNasabah = new javax.swing.JTextField();
         txtNoRekening = new javax.swing.JTextField();
         txtSaldo = new javax.swing.JTextField();
-        btnBack = new javax.swing.JButton();
         btnGantiPIN = new javax.swing.JButton();
         btnEditDataNasabah = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -109,8 +105,6 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         txtSaldo.setBackground(new java.awt.Color(153, 204, 255));
         txtSaldo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtSaldo.setEnabled(false);
-
-        btnBack.setText("Back");
 
         btnGantiPIN.setText("Ganti PIN");
         btnGantiPIN.addActionListener(new java.awt.event.ActionListener() {
@@ -169,17 +163,11 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                             .addComponent(btnCekSaldo, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addGap(1, 1, 1)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbLogoPT, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -261,7 +249,6 @@ public class ViewAccountInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCekSaldo;
     private javax.swing.JButton btnEditDataNasabah;
     private javax.swing.JButton btnGantiPIN;

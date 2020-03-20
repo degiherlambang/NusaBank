@@ -8,9 +8,15 @@ import com.nusabank.model.ModelTransaksiBank;
 import com.nusabank.model.DAO.TransaksiBankDAO;
 import com.nusabank.model.DAO.InterfaceTrxBankDAO;
 import com.nusabank.model.table.TableModelTransaksiBank;
+
 import com.nusabank.model.ModelRekening;
 import com.nusabank.model.DAO.RekeningDAO;
 import com.nusabank.model.DAO.InterfaceRekeningDAO;
+
+import com.nusabank.model.ModelNasabah;
+import com.nusabank.model.DAO.InterfaceNasabahDAO;
+import com.nusabank.model.DAO.NasabahDAO;
+
 import com.nusabank.view.viewAdmin.ViewMenuAdmin;
 import com.nusabank.view.viewNasabah.*;
 import com.nusabank.view.viewNasabah.ViewTrxBank;
@@ -29,19 +35,42 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class CTransaksiBank {
-    private final ViewTrxBank cTrxBank;
+    private final ViewTrxBank vTrxBank;
     private ViewTrxBank vTB;
     
     private List<ModelTransaksiBank> listTrxBank;
+    private List<ModelNasabah> listNasabah;
+    private List<ModelRekening> listRekening;
 
-    private final  InterfaceTrxBankDAO interfaceTrxBank;
-    private final InterfaceRekeningDAO interfaceRek;
+    private final ModelNasabah nsbLogin;
+    private final ModelRekening rekLogin;
     
-    public CTransaksiBank(ViewTrxBank vTB) {
-        this.cTrxBank = (ViewTrxBank) vTB;
+    private final InterfaceTrxBankDAO interfaceTrxBank;
+    private final InterfaceRekeningDAO interfaceRek;
+    private final NasabahDAO interfaceNasabah;
+    
+    private String idNasabah;
+    private int idRekening;
+    private int currentBalance;
+    private String noRekening;
+    
+    
+    public CTransaksiBank(ViewTrxBank vTB, String idNasabah) {
+        this.vTrxBank = (ViewTrxBank) vTB;
+        
         interfaceTrxBank = new TransaksiBankDAO();
         interfaceRek = new RekeningDAO();
+        interfaceNasabah = new NasabahDAO();
+        nsbLogin = new ModelNasabah();
+        rekLogin = new ModelRekening();
+        
+        this.idRekening = interfaceNasabah.getIdRekening(idNasabah);
+        this.noRekening = interfaceRek.getNoRek(idRekening);
+        this.currentBalance = interfaceRek.getSaldo(idRekening);
+        
+        vTrxBank.getLbNoRekening().setText(noRekening);
         listTrxBank = interfaceTrxBank.getAll();
+        
     }
     
     public void insert() {
@@ -53,31 +82,35 @@ public class CTransaksiBank {
         java.util.Date tglPembuatan = new java.util.Date();
         int adminFee = 1000;
         
-        trxBank.setJenisTransaksi((cTrxBank.getCmbJenisTransaksi().getSelectedItem().toString()));
-        trxBank.setNominal(Integer.parseInt(cTrxBank.getTfNominal().getText()));
-        trxBank.setTglTransaksi(dateFormat.format(tglPembuatan));
-        trxBank.setKodeBank(Integer.parseInt(cTrxBank.getTfKodeBank().getText()));
-        trxBank.setRekTujuan(Integer.parseInt(cTrxBank.getTfNoRekTujuan().getText()));
-        trxBank.setBiayaAdmin(adminFee);
-        trxBank.setKetTransaksi(cTrxBank.getTfKeterangan().getText());
-
-        interfaceTrxBank.insert(trxBank);
         
+        trxBank.setJenisTransaksi((vTrxBank.getCmbJenisTransaksi().getSelectedItem().toString()));
+        trxBank.setNominal(Integer.parseInt(vTrxBank.getTfNominal().getText()));
+        trxBank.setTglTransaksi(dateFormat.format(tglPembuatan));
+        trxBank.setKodeBank(Integer.parseInt(vTrxBank.getTfKodeBank().getText()));
+        trxBank.setRekTujuan(Integer.parseInt(vTrxBank.getTfNoRekTujuan().getText()));
+        trxBank.setBiayaAdmin(adminFee);
+        trxBank.setKetTransaksi(vTrxBank.getTfKeterangan().getText());
+        
+        int totalBalanceCut = trxBank.getNominal() + adminFee;
+        
+        
+        interfaceTrxBank.insert(trxBank);
+        interfaceRek.trimSaldo(this.idRekening, totalBalanceCut);
        
     }
     
     public void reset() {
-        cTrxBank.getCmbJenisTransaksi().setSelectedItem(0);
-        cTrxBank.getTfNominal().setText("");
-        cTrxBank.getTfKodeBank().setText("");
-        cTrxBank.getTfNoRekTujuan().setText("");
-        cTrxBank.getTfKeterangan().setText("");
+        vTrxBank.getCmbJenisTransaksi().setSelectedItem(0);
+        vTrxBank.getTfNominal().setText("");
+        vTrxBank.getTfKodeBank().setText("");
+        vTrxBank.getTfNoRekTujuan().setText("");
+        vTrxBank.getTfKeterangan().setText("");
           
     }
     
     public void bindingTable(){
         listTrxBank = interfaceTrxBank.getAll();
-        cTrxBank.getTableTrxBank().setModel(new TableModelTransaksiBank(listTrxBank));
+        vTrxBank.getTableTrxBank().setModel(new TableModelTransaksiBank(listTrxBank));
     }
 
 }

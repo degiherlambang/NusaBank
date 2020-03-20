@@ -20,6 +20,9 @@ public class ModelTransaksiBank {
     private int rekTujuan;
     private int biayaAdmin;
     private String ketTransaksi;
+    private int idRekening;
+    
+    
 
     public int getIdTransaksi() {
         return idTransaksi;
@@ -83,6 +86,14 @@ public class ModelTransaksiBank {
 
     public void setKetTransaksi(String ketTransaksi) {
         this.ketTransaksi = ketTransaksi;
+    }
+
+    public int getIdRekening() {
+        return idRekening;
+    }
+
+    public void setIdRekening(int idRekening) {
+        this.idRekening = idRekening;
     }
     
 }
