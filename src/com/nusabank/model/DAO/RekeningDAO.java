@@ -266,6 +266,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         }
     }
     
+    @Override
     public void doSaving(String id, int nominal) {
         ModelRekening rekening = new ModelRekening();
         rekening.setNoRekening(id);
@@ -296,6 +297,7 @@ public class RekeningDAO implements InterfaceRekeningDAO {
         }
     }
     
+    @Override
     public void doWithDraw(String id, int nominal) {
         ModelRekening rekening = new ModelRekening();
         rekening.setNoRekening(id);

@@ -18,4 +18,5 @@ public interface InterfaceTrxPpobDAO {
     public List<ModelTransaksiPPOB> getAll();
     public List<ModelTransaksiPPOB> search(String category, String search);
     public List<ModelTransaksiPPOB> getById(int id);
+    public String getLastId();
 }

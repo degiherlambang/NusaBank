@@ -17,8 +17,6 @@ import com.nusabank.model.ModelNasabah;
 import com.nusabank.model.DAO.InterfaceNasabahDAO;
 import com.nusabank.model.DAO.NasabahDAO;
 
-import com.nusabank.view.viewAdmin.ViewMenuAdmin;
-import com.nusabank.view.viewNasabah.*;
 import com.nusabank.view.viewNasabah.ViewTrxBank;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -41,9 +39,6 @@ public class CTransaksiBank {
     private List<ModelTransaksiBank> listTrxBank;
     private List<ModelNasabah> listNasabah;
     private List<ModelRekening> listRekening;
-
-    private final ModelNasabah nsbLogin;
-    private final ModelRekening rekLogin;
     
     private final InterfaceTrxBankDAO interfaceTrxBank;
     private final InterfaceRekeningDAO interfaceRek;
@@ -51,7 +46,7 @@ public class CTransaksiBank {
     
     private String idNasabah;
     private int idRekening;
-    private int currentBalance;
+    private int currentSaldo;
     private String noRekening;
     
     
@@ -61,15 +56,13 @@ public class CTransaksiBank {
         interfaceTrxBank = new TransaksiBankDAO();
         interfaceRek = new RekeningDAO();
         interfaceNasabah = new NasabahDAO();
-        nsbLogin = new ModelNasabah();
-        rekLogin = new ModelRekening();
         
         this.idRekening = interfaceNasabah.getIdRekening(idNasabah);
         this.noRekening = interfaceRek.getNoRek(idRekening);
-        this.currentBalance = interfaceRek.getSaldo(idRekening);
+        this.currentSaldo = interfaceRek.getSaldo(idRekening);
         
         vTrxBank.getLbNoRekening().setText(noRekening);
-        listTrxBank = interfaceTrxBank.getAll();
+        listTrxBank = interfaceTrxBank.search("id_rekening", String.valueOf(this.idRekening));
         
     }
     
@@ -90,12 +83,26 @@ public class CTransaksiBank {
         trxBank.setRekTujuan(Integer.parseInt(vTrxBank.getTfNoRekTujuan().getText()));
         trxBank.setBiayaAdmin(adminFee);
         trxBank.setKetTransaksi(vTrxBank.getTfKeterangan().getText());
+        trxBank.setIdRekening(this.idRekening);
         
-        int totalBalanceCut = trxBank.getNominal() + adminFee;
+        int totalCutSaldo = trxBank.getNominal() + adminFee;
         
-        
-        interfaceTrxBank.insert(trxBank);
-        interfaceRek.trimSaldo(this.idRekening, totalBalanceCut);
+        if (currentSaldo < totalCutSaldo){
+            JOptionPane.showMessageDialog(vTrxBank, "Your current balance isn't sufficent to do a transaction !");
+        } else {
+            interfaceTrxBank.insert(trxBank);
+            interfaceRek.trimSaldo(this.idRekening, totalCutSaldo);  
+            JOptionPane.showMessageDialog(vTrxBank, "Transaction Success!"
+                    + "\nNo.ID.Trx: "+interfaceTrxBank.getLastId()
+                    + "\nTo: "+ trxBank.getRekTujuan()
+                    + "\nBank Code: "+ trxBank.getKodeBank()
+                    + "\nCurrent balance: Rp."+ currentSaldo
+                    + "\nAmount: Rp."+trxBank.getNominal()
+                    + "\nAdmin Fee: Rp."+adminFee
+                    + "\n==================================="
+                    + "\nBalance left: Rp."+ (currentSaldo - totalCutSaldo)
+            );
+        }
        
     }
     
@@ -109,7 +116,7 @@ public class CTransaksiBank {
     }
     
     public void bindingTable(){
-        listTrxBank = interfaceTrxBank.getAll();
+        listTrxBank = interfaceTrxBank.search("id_rekening", String.valueOf(idRekening));
         vTrxBank.getTableTrxBank().setModel(new TableModelTransaksiBank(listTrxBank));
     }
 

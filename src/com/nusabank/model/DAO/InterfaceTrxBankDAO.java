@@ -18,4 +18,5 @@ public interface InterfaceTrxBankDAO {
     public List<ModelTransaksiBank> getAll();
     public List<ModelTransaksiBank> search(String category, String search);
     public List<ModelTransaksiBank> getById(int id);
+    public String getLastId();
 }

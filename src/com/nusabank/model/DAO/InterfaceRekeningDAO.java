@@ -23,6 +23,8 @@ public interface InterfaceRekeningDAO {
     public String getNoRek(int idRek);
     public int getSaldo(int idRek);
     public void trimSaldo(int id, int nominal);
+    public void doSaving(String id, int nominal);
+    public void doWithDraw(String id, int nominal);
     public void doChangePin(ModelRekening rekening);
     
 }

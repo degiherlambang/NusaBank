@@ -31,12 +31,13 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
                     + "(jenis_transaksi, nominal, tgl_transaksi, no_target,"
                     + "ket_transaksi, id_rekening)"
                     + "VALUES "
-                    + "(?, ?, ?, ?, ?)");
+                    + "(?, ?, ?, ?, ?, ?)");
             statement.setString(1, mTrxPPOB.getJenisTransaksi());
             statement.setInt(2, mTrxPPOB.getNominal());
             statement.setString(3, mTrxPPOB.getTglTransaksi());
             statement.setInt(4, mTrxPPOB.getNoTarget());
             statement.setString(5, mTrxPPOB.getKetTransaksi());
+            statement.setInt(6, mTrxPPOB.getIdRekening());
             statement.executeUpdate();
             statement.close();
         } catch(SQLException ex) {
@@ -95,14 +96,14 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
             ResultSet result = statement.executeQuery("SELECT * FROM transaksi_ppob");
             
             while (result.next()) { 
-                ModelTransaksiPPOB mTrxPPOb = new ModelTransaksiPPOB();
-                mTrxPPOb.setIdTransaksi(result.getInt("id_transaksi"));
-                mTrxPPOb.setJenisTransaksi(result.getString("jenis_transaksi"));
-                mTrxPPOb.setNominal(result.getInt("nominal"));
-                mTrxPPOb.setTglTransaksi(result.getString("tgl_transaksi"));
-                mTrxPPOb.setNoTarget(result.getInt("no_target"));
-                mTrxPPOb.setKetTransaksi(result.getString("ket_transaksi"));
-                listTrxPPOB.add(mTrxPPOb);
+                ModelTransaksiPPOB mTrxPPOB = new ModelTransaksiPPOB();
+                mTrxPPOB.setIdTransaksi(result.getInt("id_transaksi"));
+                mTrxPPOB.setJenisTransaksi(result.getString("jenis_transaksi"));
+                mTrxPPOB.setNominal(result.getInt("nominal"));
+                mTrxPPOB.setTglTransaksi(result.getString("tgl_transaksi"));
+                mTrxPPOB.setNoTarget(result.getInt("no_target"));
+                mTrxPPOB.setKetTransaksi(result.getString("ket_transaksi"));
+                listTrxPPOB.add(mTrxPPOB);
             }
             
             
@@ -125,14 +126,15 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
             ResultSet result = statement.executeQuery(query);
             
             while (result.next()) { 
-                ModelTransaksiPPOB mTrxPPOb = new ModelTransaksiPPOB();
-                mTrxPPOb.setIdTransaksi(result.getInt("id_transaksi"));
-                mTrxPPOb.setJenisTransaksi(result.getString("jenis_transaksi"));
-                mTrxPPOb.setNominal(result.getInt("nominal"));
-                mTrxPPOb.setTglTransaksi(result.getString("tgl_transaksi"));
-                mTrxPPOb.setNoTarget(result.getInt("no_target"));
-                mTrxPPOb.setKetTransaksi(result.getString("ket_transaksi"));
-                listTrxPPOB.add(mTrxPPOb);
+                ModelTransaksiPPOB mTrxPPOB = new ModelTransaksiPPOB();
+                mTrxPPOB.setIdTransaksi(result.getInt("id_transaksi"));
+                mTrxPPOB.setJenisTransaksi(result.getString("jenis_transaksi"));
+                mTrxPPOB.setNominal(result.getInt("nominal"));
+                mTrxPPOB.setTglTransaksi(result.getString("tgl_transaksi"));
+                mTrxPPOB.setNoTarget(result.getInt("no_target"));
+                mTrxPPOB.setKetTransaksi(result.getString("ket_transaksi"));
+                mTrxPPOB.setIdRekening(result.getInt("id_rekening"));
+                listTrxPPOB.add(mTrxPPOB);
             }
             
             
@@ -155,14 +157,15 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
             ResultSet result = statement.executeQuery(query);
             
             while (result.next()) { 
-                ModelTransaksiPPOB mTrxPPOb = new ModelTransaksiPPOB();
-                mTrxPPOb.setIdTransaksi(result.getInt("id_transaksi"));
-                mTrxPPOb.setJenisTransaksi(result.getString("jenis_transaksi"));
-                mTrxPPOb.setNominal(result.getInt("nominal"));
-                mTrxPPOb.setTglTransaksi(result.getString("tgl_transaksi"));
-                mTrxPPOb.setNoTarget(result.getInt("no_target"));
-                mTrxPPOb.setKetTransaksi(result.getString("ket_transaksi"));
-                listTrxPPOB.add(mTrxPPOb);
+                ModelTransaksiPPOB mTrxPPOB = new ModelTransaksiPPOB();
+                mTrxPPOB.setIdTransaksi(result.getInt("id_transaksi"));
+                mTrxPPOB.setJenisTransaksi(result.getString("jenis_transaksi"));
+                mTrxPPOB.setNominal(result.getInt("nominal"));
+                mTrxPPOB.setTglTransaksi(result.getString("tgl_transaksi"));
+                mTrxPPOB.setNoTarget(result.getInt("no_target"));
+                mTrxPPOB.setKetTransaksi(result.getString("ket_transaksi"));
+                mTrxPPOB.setIdRekening(result.getInt("id_rekening"));
+                listTrxPPOB.add(mTrxPPOB);
             }
             
             
@@ -173,6 +176,24 @@ public class TransaksiPpobDAO implements InterfaceTrxPpobDAO {
             Logger.getLogger(TransaksiPpobDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+
+    @Override
+    public String getLastId() {
+        String lastId = "0";
+        String qLastId = "SELECT MAX(id_transaksi) AS last_id FROM transaksi_ppob";
+        
+        try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(qLastId);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                lastId = rs.getString("last_id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lastId;
     }
     
 }

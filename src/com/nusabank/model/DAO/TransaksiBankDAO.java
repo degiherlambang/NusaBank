@@ -57,7 +57,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                     + "jenis_transaksi=?, nominal=?, tgl_transaksi=?,"
                     + "kode_bank=?, rek_tujuan=?, biaya_admin=?,"
                     + "ket_transaksi=?"
-                    + "  WHERE id_transaksi=?");
+                    + "  WHERE id_transaksi=? AND id_rekening=?");
             
             statement.setString(1, mtb.getJenisTransaksi());
             statement.setInt(2, mtb.getNominal());
@@ -67,6 +67,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
             statement.setInt(6, mtb.getBiayaAdmin());
             statement.setString(7, mtb.getKetTransaksi());
             statement.setInt(8, mtb.getIdTransaksi());
+            statement.setInt(9, mtb.getIdRekening());
             
             statement.executeUpdate();
             
@@ -111,6 +112,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                 mtb.setRekTujuan(result.getInt("rek_tujuan"));
                 mtb.setBiayaAdmin(result.getInt("biaya_admin"));
                 mtb.setKetTransaksi(result.getString("ket_transaksi"));
+                mtb.setIdRekening(result.getInt("id_rekening"));
                 listTrxBank.add(mtb);
             }
             
@@ -143,6 +145,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                 mtb.setRekTujuan(result.getInt("rek_tujuan"));
                 mtb.setBiayaAdmin(result.getInt("biaya_admin"));
                 mtb.setKetTransaksi(result.getString("ket_transaksi"));
+                mtb.setIdRekening(result.getInt("id_rekening"));
                 listTrxBank.add(mtb);
             }
             
@@ -175,6 +178,7 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
                 mtb.setRekTujuan(result.getInt("rek_tujuan"));
                 mtb.setBiayaAdmin(result.getInt("biaya_admin"));
                 mtb.setKetTransaksi(result.getString("ket_transaksi"));
+                mtb.setIdRekening(result.getInt("id_rekening"));
                 listTrxBank.add(mtb);
             }
             
@@ -188,4 +192,21 @@ public class TransaksiBankDAO implements InterfaceTrxBankDAO {
         }
     }
     
+    @Override
+    public String getLastId() {
+        String lastId = "0";
+        String qLastId = "SELECT MAX(id_transaksi) AS last_id FROM transaksi_bank";
+        
+        try {
+            PreparedStatement statement = DBConnection.getConnection().prepareStatement(qLastId);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                lastId = rs.getString("last_id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RekeningDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lastId;
+    }
 }
