@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.nusabank.view.viewNasabah;
+
 import com.nusabank.controller.CButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -11,41 +12,42 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import com.nusabank.controller.CTransaksiBank;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class ViewTrxBank extends javax.swing.JFrame {
-private final CTransaksiBank cTrxBank;
-private CButton cButton;
 
+    private final CTransaksiBank cTrxBank;
+    private CButton cButton;
 
-public ViewTrxBank() {
+    public ViewTrxBank() {
         initComponents();
         cButton = new CButton(this);
         cTrxBank = new CTransaksiBank(this);
     }
-    
+
     public JComboBox getCmbJenisTransaksi() {
         return cmbJenisTransaksi;
     }
-    
+
     public JTextField getTfKodeBank() {
         return txtKodeBank;
     }
-    
+
     public JTextField getTfNoRekTujuan() {
         return txtNoRekTujuan;
     }
-    
+
     public JTextField getTfNominal() {
         return txtNominal;
     }
-    
+
     public JTextArea getTfKeterangan() {
         return txtKeterangan;
     }
-    
+
     public JTable getTableTrxBank() {
         return tableTrxBank;
     }
@@ -275,29 +277,28 @@ public ViewTrxBank() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-String cekTransaksi = cmbJenisTransaksi.getSelectedItem().toString();
-String cekBank = txtKodeBank.getText();
-String cekNumber = txtNoRekTujuan.getText();
-String cekNominal = txtNominal.getText();
-String cekKeterangan = txtNominal.getText();
+        String cekTransaksi = cmbJenisTransaksi.getSelectedItem().toString();
+        String cekBank = txtKodeBank.getText();
+        String cekNumber = txtNoRekTujuan.getText();
+        String cekNominal = txtNominal.getText();
+        String cekKeterangan = txtNominal.getText();
 
-if(cekTransaksi == "- Choose -" || cekBank.isEmpty() || cekNumber.isEmpty() || cekNominal.isEmpty() || cekKeterangan.isEmpty()){
-    JOptionPane.showMessageDialog(null, "Data gagal di input");
-}
-else{
-     cTrxBank.insert();
-     cTrxBank.reset();
-    JOptionPane.showMessageDialog(null, "Data berhasil di input");
-}
+        if (cekTransaksi == "- Choose -" || cekBank.isEmpty() || cekNumber.isEmpty() || cekNominal.isEmpty() || cekKeterangan.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Data gagal di input");
+        } else {
+            cTrxBank.insert();
+            cTrxBank.reset();
+            JOptionPane.showMessageDialog(null, "Data berhasil di input");
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-cTrxBank.reset();
+        cTrxBank.reset();
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-cButton.goBackMenuNasabah();
-this.dispose();
+        cButton.goBackMenuNasabah();
+        this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

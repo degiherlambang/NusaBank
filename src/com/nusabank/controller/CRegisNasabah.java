@@ -55,7 +55,6 @@ public class CRegisNasabah {
         vRegNasabah.getTxtNamaIbu().setText("");
         vRegNasabah.getTxtNoHP().setText("");
         vRegNasabah.getTxtNoPIN().setText("");
-        //vRegNasabah.getTxtNoRekening().setText("");
         vRegNasabah.getTxtPassword().setText("");
         vRegNasabah.getTxtPekerjaan().setText("");
         vRegNasabah.getTxtRePassword().setText("");
@@ -65,6 +64,8 @@ public class CRegisNasabah {
         vRegNasabah.getCmbStatus().setSelectedIndex(0);
         vRegNasabah.getLbFoto().setText("file...");
         vRegNasabah.getLbNamaNasabah().setText("");   
+        vRegNasabah.getTxtIdRekening().setText("");
+        vRegNasabah.getTxtNoRekening().setText("");
     }
 
     public void insert() {
