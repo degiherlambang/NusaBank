@@ -32,7 +32,7 @@ folder and run the jar files NusaBank.jar
 
 * **Andi Dwi Saputro** - *Initial Commit* - [andiads](https://github.com/andiads)
 * **Degi Herlambang** - *Contributor* - [degiherlambang](https://github.com/degiherlambang)
-* **Jamaludin** - *Contributor* - [jamalludin](https://github.com/jamalludin13)
+* **Jamalludin** - *Contributor* - [jamalludin](https://github.com/jamalludin13)
 
 ## License
 
