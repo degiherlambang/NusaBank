@@ -266,8 +266,8 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaValidation = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
-        dcTglLahir = new com.toedter.calendar.JDateChooser();
         lbIdAdmin = new javax.swing.JLabel();
+        dcTglLahir = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nusa Bank - New Customer Account Registration");
@@ -511,11 +511,9 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 780, 200));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1220, 10));
 
-        dcTglLahir.setDateFormatString("yyyy-MM-dd");
-        getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 240, -1));
-
         lbIdAdmin.setText("UID");
         getContentPane().add(lbIdAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 90, -1));
+        getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 250, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
