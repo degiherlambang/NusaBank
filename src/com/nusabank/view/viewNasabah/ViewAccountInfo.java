@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import com.nusabank.controller.CSaldoNasabah;
 import com.nusabank.view.viewNasabah.ViewMenuNasabah;
+import javax.swing.UIManager;
 
 /**
  *
@@ -25,6 +26,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
      */
     public ViewAccountInfo() {
         initComponents();
+        setLocationRelativeTo(null);
         cSaldoNasabah = new CSaldoNasabah(this, idNasabahLogin);  
         txtNamaNasabah.setText(namaNasabahLogin);
         
@@ -46,9 +48,6 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         return txtSaldo;
     }
     
-    public JButton getBtnEditData() {
-        return btnEditDataNasabah;
-    }
     
     public JButton getBtnGantiPIN() {
         return btnGantiPIN;
@@ -72,12 +71,12 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         txtNoRekening = new javax.swing.JTextField();
         txtSaldo = new javax.swing.JTextField();
         btnGantiPIN = new javax.swing.JButton();
-        btnEditDataNasabah = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtNoPIN = new javax.swing.JTextField();
         btnCekSaldo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nusa Bank - Customer/Nasabah Account Information");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Balance Check");
@@ -86,13 +85,13 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         lbLogoPT.setText("NUSA BANK");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setText("Nama");
+        jLabel3.setText("Name");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("No Rekening");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setText("Saldo");
+        jLabel5.setText("Balance/Saldo");
 
         txtNamaNasabah.setBackground(new java.awt.Color(153, 204, 255));
         txtNamaNasabah.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -106,24 +105,17 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         txtSaldo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtSaldo.setEnabled(false);
 
-        btnGantiPIN.setText("Ganti PIN");
+        btnGantiPIN.setText("Change PIN");
         btnGantiPIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGantiPINActionPerformed(evt);
             }
         });
 
-        btnEditDataNasabah.setText("Edit Data Pribadi");
-        btnEditDataNasabah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditDataNasabahActionPerformed(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("No PIN");
 
-        btnCekSaldo.setText("Cek Saldo");
+        btnCekSaldo.setText("Check Saldo");
         btnCekSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCekSaldoActionPerformed(evt);
@@ -156,11 +148,8 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                                     .addComponent(txtNoRekening, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                                     .addComponent(txtSaldo)
                                     .addComponent(txtNoPIN)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnGantiPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
-                            .addComponent(btnCekSaldo, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(btnCekSaldo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGantiPIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -190,18 +179,12 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEditDataNasabah, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(btnGantiPIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnGantiPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditDataNasabahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDataNasabahActionPerformed
-        
-    }//GEN-LAST:event_btnEditDataNasabahActionPerformed
 
     private void btnCekSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekSaldoActionPerformed
         cSaldoNasabah.checkSaldo();
@@ -222,12 +205,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewAccountInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -250,7 +228,6 @@ public class ViewAccountInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCekSaldo;
-    private javax.swing.JButton btnEditDataNasabah;
     private javax.swing.JButton btnGantiPIN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

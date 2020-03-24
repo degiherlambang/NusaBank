@@ -11,6 +11,8 @@ import com.nusabank.controller.CButton;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -30,9 +32,16 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
      */
     public ViewMenuNasabah() {
         initComponents();
+        todayDateInit();
+        setLocationRelativeTo(null);
         cb = new CButton(this);
     }
 
+    public void todayDateInit() {
+        lbTanggal.setText(LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    }
+    
     public JLabel getLabelIdNasabah() {
         return lbIdNasabah;
     }
@@ -88,7 +97,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         btnMenu3 = new javax.swing.JPanel();
         btnTrxPpob = new javax.swing.JButton();
         btnMenu6 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        btnAbout = new javax.swing.JButton();
         btnMenu2 = new javax.swing.JPanel();
         btnTrxBank = new javax.swing.JButton();
         btnMenu5 = new javax.swing.JPanel();
@@ -106,7 +115,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         labelAvatar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Nasabah Menu - Nusa Bank v.1.0");
+        setTitle("Nusa Bank v1.0 -  Customer/Nasabah Dashboard");
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -143,6 +152,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         );
 
         jButton4.setText("CREDIT CARD");
+        jButton4.setEnabled(false);
 
         javax.swing.GroupLayout btnMenu4Layout = new javax.swing.GroupLayout(btnMenu4);
         btnMenu4.setLayout(btnMenu4Layout);
@@ -173,17 +183,22 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
             .addComponent(btnTrxPpob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jButton6.setText("HELP");
+        btnAbout.setText("ABOUT");
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnMenu6Layout = new javax.swing.GroupLayout(btnMenu6);
         btnMenu6.setLayout(btnMenu6Layout);
         btnMenu6Layout.setHorizontalGroup(
             btnMenu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnMenu6Layout.setVerticalGroup(
             btnMenu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         btnTrxBank.setText("TRANSFER");
@@ -205,6 +220,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         );
 
         jButton5.setText("DEPOSITO");
+        jButton5.setEnabled(false);
 
         javax.swing.GroupLayout btnMenu5Layout = new javax.swing.GroupLayout(btnMenu5);
         btnMenu5.setLayout(btnMenu5Layout);
@@ -340,7 +356,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAccountInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountInfoActionPerformed
-       new ViewAccountInfo().setVisible(true);
+       cb.goAccountInfo();
     }//GEN-LAST:event_btnAccountInfoActionPerformed
 
     private void btnTrxBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrxBankActionPerformed
@@ -350,6 +366,17 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     private void btnTrxPpobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrxPpobActionPerformed
         cb.goTrxPpob();
     }//GEN-LAST:event_btnTrxPpobActionPerformed
+
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+        JOptionPane.showMessageDialog(null, 
+                "v.1.0 - Developed by NusaSoft"
+                        + "\n 1. Andi"
+                        + "\n 2. Degi"
+                        + "\n 3. Jamal"
+                        + "\n Visit our repository: https://github.com/andiads/NusaBank",
+                "About Us",
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,6 +415,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnAccountInfo;
     private javax.swing.JPanel btnMenu1;
     private javax.swing.JPanel btnMenu2;
@@ -399,7 +427,6 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     private javax.swing.JButton btnTrxPpob;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;

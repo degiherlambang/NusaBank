@@ -10,8 +10,11 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import com.nusabank.controller.CTransaksiPpob;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -28,8 +31,15 @@ public class ViewTrxPPOB extends javax.swing.JFrame {
      */
     public ViewTrxPPOB() {
         initComponents();
+        setLocationRelativeTo(null);
+        todayDateInit();
         cTrxPpob = new CTransaksiPpob(this, idNasabahLogin);
         cTrxPpob.bindingTable();
+    }
+    
+    public void todayDateInit() {
+        lbTodayDate.setText(LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
     }
 
     public JLabel getLbNoRekening() {
@@ -66,7 +76,7 @@ public class ViewTrxPPOB extends javax.swing.JFrame {
 
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbTodayDate = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -89,11 +99,12 @@ public class ViewTrxPPOB extends javax.swing.JFrame {
         jTextField3.setText("jTextField3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nusa Bank - PPOB Transaction");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel4.setText("Nusa Bank");
 
-        jLabel12.setText("tanggalSekarang");
+        lbTodayDate.setText("tanggalSekarang");
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -234,7 +245,7 @@ public class ViewTrxPPOB extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbTodayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel8)
@@ -260,7 +271,7 @@ public class ViewTrxPPOB extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbTodayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -312,12 +323,7 @@ cTrxPpob.reset();
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewTrxPPOB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -342,7 +348,6 @@ cTrxPpob.reset();
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cmbJenisTransaksi;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -355,6 +360,7 @@ cTrxPpob.reset();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbNoRekening;
+    private javax.swing.JLabel lbTodayDate;
     private javax.swing.JTable tableTrxPPOB;
     private javax.swing.JTextArea txtKeterangan;
     private javax.swing.JTextField txtNoTarget;

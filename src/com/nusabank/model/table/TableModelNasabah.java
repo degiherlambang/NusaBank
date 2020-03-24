@@ -38,10 +38,11 @@ public class TableModelNasabah extends AbstractTableModel {
             case 0 : return list.get(rowIndex).getId();
             case 1 : return list.get(rowIndex).getNama();
             case 2 : return list.get(rowIndex).getNik();
-            case 3 : return list.get(rowIndex).getAlamatRumah();
-            case 4 : return list.get(rowIndex).getJenisKelamin();
-            case 5 : return list.get(rowIndex).getNoHp();
-            case 6 : return list.get(rowIndex).getIdRekening();
+            case 3 : return list.get(rowIndex).getEmail();
+            case 4 : return list.get(rowIndex).getAlamatRumah();
+            case 5 : return list.get(rowIndex).getJenisKelamin();
+            case 6 : return list.get(rowIndex).getNoHp();
+            case 7 : return list.get(rowIndex).getIdRekening();
                 default:return null;
         }
     }
@@ -52,10 +53,11 @@ public class TableModelNasabah extends AbstractTableModel {
             case 0 : return "ID";
             case 1 : return "NAMA";
             case 2 : return "NIK";
-            case 3 : return "ALAMAT";
-            case 4 : return "JENIS KELAMIN";
-            case 5 : return "NO.HP";
-            case 6 : return "NO.REK";
+            case 3 : return "E-MAIL";
+            case 4 : return "ALAMAT";
+            case 5 : return "JENIS KELAMIN";
+            case 6 : return "NO.HP";
+            case 7 : return "NO.REK";
                 default:return null;
         }
     }

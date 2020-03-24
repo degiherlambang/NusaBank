@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nusabank.model.DAO;
+package com.nusabank.helper;
 
 import com.nusabank.model.ModelAdmin;
 import com.nusabank.model.ModelNasabah;
 import com.nusabank.view.viewAdmin.ViewManageAdmin;
 import com.nusabank.view.viewAdmin.ViewMenuAdmin;
 import com.nusabank.view.viewAdmin.ViewRegisNasabah;
+import com.nusabank.view.viewAdmin.ViewManageNasabah;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -46,6 +47,52 @@ public class Function {
         
         return norekResult;
     }
+   
+   public String updatePhotoNasabah(ViewManageNasabah vmn, ModelNasabah nasabah) {
+       File newPath = null;
+        String newFileName = "";
+        try {
+            String fileType = "";
+            String oldFileName = vmn.getFileName();
+            if (oldFileName.endsWith(".png")){
+                fileType=".png";
+            } else if (oldFileName.endsWith(".jpg")){
+                fileType=".jpg";
+            } else if (oldFileName.endsWith(".jpeg")){
+                fileType=".jpeg";
+            }
+            
+            String prefix = nasabah.getUsername();
+            String mid = "_NusaBank_";
+            String sufix = String.valueOf(nasabah.getTglPembuatan())
+                    .replace(" ", "_")
+                    .replace(":", "-");
+            String destPath = "res/nasabah_photos/";
+            newFileName = 
+                    destPath.concat(
+                        prefix.concat(
+                            mid.concat(
+                                sufix.concat(fileType)
+                            )
+                        )
+                    );
+            String copyNewFile = 
+                    System.getProperty("user.dir")
+                            .concat("/src/com/nusabank/")
+                            .concat(newFileName);
+            System.out.println(newFileName);
+            
+            File srcPhoto = new File(vmn.getTfPhoto().getText());
+
+            newPath = new File(copyNewFile);
+            Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        
+        return newFileName;
+   }
    
    public String uploadPhotoNasabah(ViewRegisNasabah vRegNasabah, ModelNasabah nasabah) {
     File newPath = null;
@@ -98,7 +145,7 @@ public class Function {
         String newFileName = "";
         String oldFileName = vma.getFileName();
         // check if admin has photo or not, if not > set to default avatar from res
-        if (!vma.getTfPhotoAdminPath().getText().isEmpty()) {
+        if (!vma.getTxtPhotoAdminPath().getText().isEmpty()) {
             try {
                 String fileType = "";
 
@@ -130,7 +177,7 @@ public class Function {
                                 .concat(newFileName);
                 System.out.println(newFileName);
 
-                File srcPhoto = new File(vma.getTfPhotoAdminPath().getText());
+                File srcPhoto = new File(vma.getTxtPhotoAdminPath().getText());
 
                 newPath = new File(copyNewFile);
                 Files.copy(srcPhoto.toPath(), newPath.toPath(), StandardCopyOption.REPLACE_EXISTING);

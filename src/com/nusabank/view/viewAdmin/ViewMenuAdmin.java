@@ -9,6 +9,7 @@ import com.nusabank.view.viewAdmin.ViewRegisNasabah;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JLabel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -21,6 +22,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
      */
     public ViewMenuAdmin() {
         initComponents();
+        setLocationRelativeTo(null);
         todayDateInit();
     }
 
@@ -116,6 +118,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Nusa Bank v1.0 -  Administrator Dashboard");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 102));
 
@@ -168,6 +171,11 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         );
 
         jButton3.setText("Manage Data Nasabah");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -441,6 +449,10 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         new ViewManageAdmin().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new ViewManageNasabah().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -451,12 +463,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

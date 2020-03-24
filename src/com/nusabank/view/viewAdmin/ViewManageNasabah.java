@@ -5,19 +5,205 @@
  */
 package com.nusabank.view.viewAdmin;
 
+import com.toedter.calendar.JDateChooser;
+import com.nusabank.controller.CManageNasabah;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.filechooser.FileSystemView;
+
 /**
  *
  * @author ANDI DWI SAPUTRO
  */
 public class ViewManageNasabah extends javax.swing.JFrame {
 
+    private CManageNasabah cManageNasabah;
+
+    private String fileName;
+    private String sourcePath;
+    private String destPath;
+
     /**
      * Creates new form ViewManageNasabah
      */
     public ViewManageNasabah() {
         initComponents();
+        todayDateInit();
+        setLocationRelativeTo(null);
+        dcTglLahir.setDate(new Date());
+        cManageNasabah = new CManageNasabah(this);
+        cManageNasabah.bindingTable();
     }
 
+    public void todayDateInit() {
+        lbTodayDate.setText(LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    }
+    
+    public JTable getTableNasabah() {
+        return tableNasabah;
+    }
+    
+    public javax.swing.JLabel getTfIDNasabah() {
+        return tfIDNasabah;
+    }
+
+    public javax.swing.JTextField getTfName() {
+        return tfName;
+    }
+
+    public javax.swing.JTextField getTfNik() {
+        return tfNIK;
+    }
+
+    public JDateChooser getDcTglLahir() {
+        return dcTglLahir;
+    }
+
+    public javax.swing.JTextArea getTaAdress() {
+        return taAdress;
+    }
+
+    public javax.swing.JTextField getTfPhoto() {
+        return tfPhoto;
+    }
+
+    public javax.swing.JComboBox<String> getCmbGender() {
+        return cbGender;
+    }
+
+    public javax.swing.JTextField getTfPekerjaan() {
+        return tfWork;
+    }
+
+    public javax.swing.JTextField getTfAdressWork() {
+        return tfWorkAdress;
+    }
+
+    public javax.swing.JTextField getTfIncome() {
+        return tfIncome;
+    }
+
+    public javax.swing.JTextField getTfNoHP() {
+        return tfNoHP;
+    }
+
+    public javax.swing.JComboBox<String> getCmbStatus() {
+        return cbStatus;
+    }
+
+    public javax.swing.JTextField getTfMotherName() {
+        return tfMotherName;
+    }
+
+    public javax.swing.JTextField getUsername() {
+        return tfUsername;
+    }
+
+    public javax.swing.JTextField getTfPassword() {
+        return tfPassword;
+    }
+
+    public javax.swing.JLabel getLbDateMake() {
+        return lbDate;
+    }
+
+    public javax.swing.JTextField getTfIDRekening() {
+        return tfAccountID;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getSourcePath() {
+        return sourcePath;
+    }
+
+    public void setSourcePath(String sourcePath) {
+        this.sourcePath = sourcePath;
+    }
+
+    public String getDestPath() {
+        return destPath;
+    }
+
+    public void setDestPath(String destPath) {
+        this.destPath = destPath;
+    }
+
+    public javax.swing.JButton getBtnPhoto() {
+        return btnPhoto;
+    }
+
+    public javax.swing.JButton getBtnRefresh() {
+        return btnRefresh;
+    }
+
+    public javax.swing.JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public javax.swing.JButton getBtnUpdate() {
+        return btnReset;
+    }
+
+    public javax.swing.JComboBox<String> getCbGender() {
+        return cbGender;
+    }
+
+    public javax.swing.JComboBox<String> getCbStatus() {
+        return cbStatus;
+    }
+
+    public javax.swing.JComboBox<String> getCmbCategory() {
+        return cmbCategory;
+    }
+
+    public com.toedter.calendar.JDateChooser getDcDOB() {
+        return dcTglLahir;
+    }
+
+    public javax.swing.JTextField getTfAccountID() {
+        return tfAccountID;
+    }
+
+    public javax.swing.JTextField getTfEmail() {
+        return tfEmail;
+    }
+
+    public javax.swing.JTextField getTfNIK() {
+        return tfNIK;
+    }
+
+    public javax.swing.JTextField getTfSearch() {
+        return tfSearch;
+    }
+
+    public javax.swing.JTextField getTfUsername() {
+        return tfUsername;
+    }
+
+    public javax.swing.JTextField getTfWork() {
+        return tfWork;
+    }
+
+    public javax.swing.JTextField getTfWorkAdress() {
+        return tfWorkAdress;
+    }
+
+    public javax.swing.JTextArea getTxtAreaValidation() {
+        return txtAreaValidation;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,16 +222,55 @@ public class ViewManageNasabah extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tableNasabah = new javax.swing.JTable();
+        tfName = new javax.swing.JTextField();
+        lbTodayDate = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        taAdress = new javax.swing.JTextArea();
+        btnPhoto = new javax.swing.JButton();
+        tfWork = new javax.swing.JTextField();
+        tfWorkAdress = new javax.swing.JTextField();
+        tfIncome = new javax.swing.JTextField();
+        tfNoHP = new javax.swing.JTextField();
+        tfMotherName = new javax.swing.JTextField();
+        tfUsername = new javax.swing.JTextField();
+        tfAccountID = new javax.swing.JTextField();
+        lbDate = new javax.swing.JLabel();
+        cbGender = new javax.swing.JComboBox<>();
+        cbStatus = new javax.swing.JComboBox<>();
+        tfNIK = new javax.swing.JTextField();
+        dcTglLahir = new com.toedter.calendar.JDateChooser();
+        tfPhoto = new javax.swing.JTextField();
+        tfIDNasabah = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtAreaValidation = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel20 = new javax.swing.JLabel();
+        cmbCategory = new javax.swing.JComboBox<>();
+        btnRefresh = new javax.swing.JButton();
+        tfSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        tfPassword = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -66,32 +291,34 @@ public class ViewManageNasabah extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nusa Bank -  Customer / Nasabah Management");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         jLabel1.setText("NUSA BANK");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 0, 259, 38));
 
         jLabel2.setText("ID NASABAH");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 63, -1, -1));
 
         jLabel3.setText("NAME");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 98, -1, -1));
 
-        jLabel4.setText("GENDER");
+        jLabel4.setText("NIK");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 139, -1, -1));
 
-        jLabel5.setText("ADDRES");
+        jLabel5.setText("E-MAIL");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 210, 40, -1));
 
-        jButton1.setText("ADD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnResetActionPerformed(evt);
             }
         });
+        getContentPane().add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, 131, 50));
 
-        jButton2.setText("DELETE");
-
-        jButton3.setText("UPDATE");
-
-        jButton4.setText("READ");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableNasabah.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -102,87 +329,206 @@ public class ViewManageNasabah extends javax.swing.JFrame {
                 "ID", "NAME", "GENDER", "ADDRES"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tableNasabah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableNasabahMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableNasabah);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 340, 930, 310));
+        getContentPane().add(tfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 95, 184, -1));
 
-        jLabel6.setText("LOGO");
+        lbTodayDate.setText("todayDate");
+        getContentPane().add(lbTodayDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 140, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jComboBox1, 0, 184, Short.MAX_VALUE))))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6)))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel7.setText("ADDRESS");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 260, 50, -1));
+
+        jLabel8.setText("PHOTO");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 358, -1, -1));
+
+        jLabel9.setText("GENDER");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 395, -1, -1));
+
+        jLabel10.setText("JOB POSITION");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 433, -1, -1));
+
+        jLabel11.setText("WORK ADDRESS");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 471, -1, -1));
+
+        jLabel12.setText("INCOME");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 509, -1, -1));
+
+        jLabel13.setText("PHONE NUMBER");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 547, -1, -1));
+
+        jLabel14.setText("STATUS");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 585, -1, -1));
+
+        jLabel15.setText("MOTHER NAME");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 632, -1, -1));
+
+        jLabel16.setText("USERNAME");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 69, -1, -1));
+
+        jLabel17.setText("PASSWORD");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 110, -1, -1));
+
+        jLabel18.setText("DATE CREATED");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 139, -1, -1));
+
+        jLabel19.setText("BANK ACCOUNT ID");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 171, -1, -1));
+
+        taAdress.setColumns(20);
+        taAdress.setRows(5);
+        jScrollPane4.setViewportView(taAdress);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 253, 184, 80));
+
+        btnPhoto.setText("BROWSE");
+        btnPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPhotoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 354, -1, -1));
+        getContentPane().add(tfWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 430, 193, -1));
+        getContentPane().add(tfWorkAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 468, 193, -1));
+
+        tfIncome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIncomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tfIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 506, 193, -1));
+        getContentPane().add(tfNoHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 544, 193, -1));
+        getContentPane().add(tfMotherName, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 629, 193, -1));
+        getContentPane().add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 66, 165, -1));
+        getContentPane().add(tfAccountID, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 168, 165, -1));
+
+        lbDate.setText("DATE");
+        getContentPane().add(lbDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 139, 165, -1));
+
+        cbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- CHOOSE -", "MALE", "FEMALE" }));
+        getContentPane().add(cbGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 392, 193, -1));
+
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- CHOOSE -", "SINGLE", "MARIED", "SINGLE PARENT" }));
+        getContentPane().add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 582, 193, -1));
+        getContentPane().add(tfNIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 136, 184, -1));
+        getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 168, 184, -1));
+        getContentPane().add(tfPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 355, 112, -1));
+
+        tfIDNasabah.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tfIDNasabah.setText("ID");
+        getContentPane().add(tfIDNasabah, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 63, 184, 21));
+
+        txtAreaValidation.setBackground(new java.awt.Color(0, 0, 0));
+        txtAreaValidation.setColumns(20);
+        txtAreaValidation.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        txtAreaValidation.setForeground(new java.awt.Color(255, 102, 102));
+        txtAreaValidation.setRows(5);
+        txtAreaValidation.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Validation Messages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 51, 51))); // NOI18N
+        txtAreaValidation.setDisabledTextColor(new java.awt.Color(255, 102, 102));
+        txtAreaValidation.setEnabled(false);
+        jScrollPane5.setViewportView(txtAreaValidation);
+
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 50, 410, 150));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 940, 20));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 20, 460));
+
+        jLabel20.setText("Category:");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
+
+        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NAME", "NIK", "USERNAME", "DOB", "GENDER", "EMAIL", "PHONE_NO", "ADDRESS", "JOB", "BANK ACCOUNT ID", "STATUS" }));
+        getContentPane().add(cmbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 103, -1));
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, -1, -1));
+        getContentPane().add(tfSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 275, -1));
+
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, -1, -1));
+
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 250, 130, 70));
+
+        jLabel21.setText("DOB");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 174, -1, -1));
+        getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 180, -1));
+
+        btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 131, 50));
+        getContentPane().add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 160, -1));
+
+        jLabel6.setText("Customer Data Management");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 170, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void tfIncomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIncomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_tfIncomeActionPerformed
+
+    private void tableNasabahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNasabahMouseClicked
+        cManageNasabah.getDataField();
+    }//GEN-LAST:event_tableNasabahMouseClicked
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        cManageNasabah.reset();
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhotoActionPerformed
+        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        // invoke the showsOpenDialog function to show the open dialog 
+        int r = j.showOpenDialog(null);
+        if (r == JFileChooser.APPROVE_OPTION) {
+            this.setFileName(j.getSelectedFile().getName());
+            this.setSourcePath(j.getSelectedFile().getAbsolutePath());
+            tfPhoto.setText(this.getSourcePath());
+        }
+    }//GEN-LAST:event_btnPhotoActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        cManageNasabah.bindingTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        cManageNasabah.getData();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        cManageNasabah.delete();
+        cManageNasabah.bindingTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        cManageNasabah.validateForm();
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,12 +540,7 @@ public class ViewManageNasabah extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewManageNasabah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -220,25 +561,66 @@ public class ViewManageNasabah extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnPhoto;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cbGender;
+    private javax.swing.JComboBox<String> cbStatus;
+    private javax.swing.JComboBox<String> cmbCategory;
+    private com.toedter.calendar.JDateChooser dcTglLahir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lbDate;
+    private javax.swing.JLabel lbTodayDate;
+    private javax.swing.JTextArea taAdress;
+    private javax.swing.JTable tableNasabah;
+    private javax.swing.JTextField tfAccountID;
+    private javax.swing.JTextField tfEmail;
+    private javax.swing.JLabel tfIDNasabah;
+    private javax.swing.JTextField tfIncome;
+    private javax.swing.JTextField tfMotherName;
+    private javax.swing.JTextField tfNIK;
+    private javax.swing.JTextField tfName;
+    private javax.swing.JTextField tfNoHP;
+    private javax.swing.JPasswordField tfPassword;
+    private javax.swing.JTextField tfPhoto;
+    private javax.swing.JTextField tfSearch;
+    private javax.swing.JTextField tfUsername;
+    private javax.swing.JTextField tfWork;
+    private javax.swing.JTextField tfWorkAdress;
+    private javax.swing.JTextArea txtAreaValidation;
     // End of variables declaration//GEN-END:variables
+
+    
 }

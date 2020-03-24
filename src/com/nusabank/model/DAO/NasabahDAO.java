@@ -30,11 +30,11 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO nasabah "
                     + "(nama, nik, tgl_lahir, alamat, photo, jenis_kelamin,"
                     + "pekerjaan, alamat_kantor, pendapatan, no_hp, status, nama_ibu, username_nasabah,"
-                    + "password_nasabah, tgl_pembuatan, id_rekening)"
+                    + "password_nasabah, tgl_pembuatan, id_rekening, email)"
                     + "VALUES "
-                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, nasabah.getNama());
-            statement.setInt(2, nasabah.getNik());
+            statement.setString(2, nasabah.getNik());
             statement.setString(3, nasabah.getTglLahir());
             statement.setString(4, nasabah.getAlamatRumah());
             statement.setString(5, nasabah.getPhoto());
@@ -49,6 +49,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             statement.setString(14, nasabah.getPassword());
             statement.setString(15, nasabah.getTglPembuatan());
             statement.setInt(16, nasabah.getIdRekening());
+            statement.setString(17, nasabah.getEmail());
             
             statement.executeUpdate();
             statement.close();
@@ -68,11 +69,11 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                     + "alamat=?, photo=?, jenis_kelamin=?,"
                     + "pekerjaan=?, alamat_kantor=?, pendapatan=?,"
                     + "no_hp=?, status=?, nama_ibu=?,"
-                    + "username_nasabah=?, password_nasabah=?"
-                    + "  WHERE id=?");
+                    + "username_nasabah=?, password_nasabah=?, email=?, id_rekening=?"
+                    + "  WHERE id_nasabah=?");
             
             statement.setString(1, nasabah.getNama());
-            statement.setInt(2, nasabah.getNik());
+            statement.setString(2, nasabah.getNik());
             statement.setString(3, nasabah.getTglLahir());
             statement.setString(4, nasabah.getAlamatRumah());
             statement.setString(5, nasabah.getPhoto());
@@ -85,7 +86,9 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             statement.setString(12, nasabah.getNamaIbu());
             statement.setString(13, nasabah.getUsername());
             statement.setString(14, nasabah.getPassword());
-            statement.setInt(15, nasabah.getId());
+            statement.setString(15, nasabah.getEmail());
+            statement.setInt(16, nasabah.getIdRekening());
+            statement.setInt(17, nasabah.getId());
             
           
             statement.executeUpdate();
@@ -100,7 +103,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
     public void delete(int id) {
         try {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement(""
-                    + "DELETE FROM nasabah WHERE id=?");
+                    + "DELETE FROM nasabah WHERE id_nasabah=?");
             
             statement.setInt(1, id);
             
@@ -125,7 +128,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 ModelNasabah nasabah = new ModelNasabah();
                 nasabah.setId(result.getInt("id_nasabah"));
                 nasabah.setNama(result.getString("nama"));
-                nasabah.setNik(result.getInt("nik"));
+                nasabah.setNik(result.getString("nik"));
                 nasabah.setJenisKelamin(result.getString("jenis_kelamin"));
                 nasabah.setUsername(result.getString("username_nasabah"));
                 nasabah.setPassword(result.getString("password_nasabah"));
@@ -140,7 +143,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setPhoto(result.getString("photo"));
                 nasabah.setNamaIbu(result.getString("nama_ibu"));
                 nasabah.setTglPembuatan(result.getString("tgl_pembuatan"));
-                
+                nasabah.setEmail(result.getString("email"));
                 
                 listNasabah.add(nasabah);
             }
@@ -166,7 +169,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 ModelNasabah nasabah = new ModelNasabah();
                 nasabah.setId(result.getInt("id_nasabah"));
                 nasabah.setNama(result.getString("nama"));
-                nasabah.setNik(result.getInt("nik"));
+                nasabah.setNik(result.getString("nik"));
                 nasabah.setJenisKelamin(result.getString("jenis_kelamin"));
                 nasabah.setUsername(result.getString("username_nasabah"));
                 nasabah.setPassword(result.getString("password_nasabah"));
@@ -181,6 +184,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setPhoto(result.getString("photo"));
                 nasabah.setNamaIbu(result.getString("nama_ibu"));
                 nasabah.setTglPembuatan(result.getString("tgl_pembuatan"));
+                nasabah.setEmail(result.getString("email"));
                 
                 listNasabah.add(nasabah);
             }
@@ -205,7 +209,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 ModelNasabah nasabah = new ModelNasabah();
                 nasabah.setId(result.getInt("id_nasabah"));
                 nasabah.setNama(result.getString("nama"));
-                nasabah.setNik(result.getInt("nik"));
+                nasabah.setNik(result.getString("nik"));
                 nasabah.setJenisKelamin(result.getString("jenis_kelamin"));
                 nasabah.setUsername(result.getString("username_nasabah"));
                 nasabah.setPassword(result.getString("password_nasabah"));
@@ -220,6 +224,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
                 nasabah.setPhoto(result.getString("photo"));
                 nasabah.setNamaIbu(result.getString("nama_ibu"));
                 nasabah.setTglPembuatan(result.getString("tgl_pembuatan"));
+                nasabah.setEmail(result.getString("email"));
                 
                 listNasabah.add(nasabah);
             }

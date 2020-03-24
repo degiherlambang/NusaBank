@@ -15,9 +15,10 @@ import java.sql.Date;
 public class ModelNasabah {
     private int id;
     private String nama;
-    private int nik;
+    private String nik;
     private String username;
     private String password;
+    private String email;
     private int idRekening;
     private String tglLahir;
     private String tglPembuatan;
@@ -48,11 +49,11 @@ public class ModelNasabah {
         this.nama = nama;
     }
 
-    public int getNik() {
+    public String getNik() {
         return nik;
     }
 
-    public void setNik(int nik) {
+    public void setNik(String nik) {
         this.nik = nik;
     }
 
@@ -166,6 +167,14 @@ public class ModelNasabah {
 
     public void setAlamatRumah(String alamatRumah) {
         this.alamatRumah = alamatRumah;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

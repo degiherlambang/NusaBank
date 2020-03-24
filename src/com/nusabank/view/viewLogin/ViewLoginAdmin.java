@@ -6,6 +6,7 @@
 package com.nusabank.view.viewLogin;
 
 import com.nusabank.controller.CLoginAdmin;
+import javax.swing.UIManager;
 
 /**
  *
@@ -25,6 +26,7 @@ public class ViewLoginAdmin extends javax.swing.JFrame {
      */
     public ViewLoginAdmin() {
         initComponents();
+        setLocationRelativeTo(null);
         cLoginAdmin = new CLoginAdmin(this);
     }
 
@@ -50,7 +52,8 @@ public class ViewLoginAdmin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Nasabah");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Login Admin");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("Nusa Bank");
@@ -143,12 +146,7 @@ public class ViewLoginAdmin extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewLoginAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

@@ -53,7 +53,7 @@ public class CLoginNasabah {
                     nasabah.setId(rs.getInt("id_nasabah"));
                     nasabah.setUsername(rs.getString("username_nasabah"));
                     nasabah.setNama(rs.getString("nama"));
-                    nasabah.setNik(rs.getInt("nik"));
+                    nasabah.setNik(rs.getString("nik"));
                     nasabah.setTglLahir(rs.getString("tgl_lahir"));
                     nasabah.setJenisKelamin(rs.getString("jenis_kelamin"));
                     nasabah.setIdRekening(rs.getInt("id_rekening"));
