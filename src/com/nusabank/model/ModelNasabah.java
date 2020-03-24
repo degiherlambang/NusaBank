@@ -31,6 +31,8 @@ public class ModelNasabah {
     private String jenisKelamin;
     private String photo;
     private String namaIbu;
+    private int idAdmin;
+
 
     
     public int getId() {
@@ -39,6 +41,14 @@ public class ModelNasabah {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+        public int getIdAdmin() {
+        return idAdmin;
+    }
+
+    public void setIdAdmin(int idAdmin) {
+        this.idAdmin = idAdmin;
     }
 
     public String getNama() {

@@ -129,6 +129,7 @@ public class CRegisNasabah {
         nasabah.setTglPembuatan(dateFormat.format(tglPembuatan));
         nasabah.setIdRekening(Integer.parseInt(vRegNasabah.getTxtIdRekening().getText()));
         nasabah.setEmail(vRegNasabah.getTxtEmail().getText());
+        nasabah.setIdAdmin(Integer.parseInt(vRegNasabah.getLbNoIdAdmin().getText()));
         
         String newFileName = func.uploadPhotoNasabah(vRegNasabah, nasabah);
         nasabah.setPhoto(newFileName);

@@ -30,9 +30,9 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             PreparedStatement statement = DBConnection.getConnection().prepareStatement("INSERT INTO nasabah "
                     + "(nama, nik, tgl_lahir, alamat, photo, jenis_kelamin,"
                     + "pekerjaan, alamat_kantor, pendapatan, no_hp, status, nama_ibu, username_nasabah,"
-                    + "password_nasabah, tgl_pembuatan, id_rekening, email)"
+                    + "password_nasabah, tgl_pembuatan, id_rekening, email, id_admin)"
                     + "VALUES "
-                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, nasabah.getNama());
             statement.setString(2, nasabah.getNik());
             statement.setString(3, nasabah.getTglLahir());
@@ -50,6 +50,7 @@ public class NasabahDAO implements InterfaceNasabahDAO {
             statement.setString(15, nasabah.getTglPembuatan());
             statement.setInt(16, nasabah.getIdRekening());
             statement.setString(17, nasabah.getEmail());
+            statement.setInt(18, nasabah.getIdAdmin());
             
             statement.executeUpdate();
             statement.close();
