@@ -21,11 +21,6 @@ To running this program you need to prepare some extras
 ```
 folder and run the jar files NusaBank.jar
 
-
-## Deployment
-
--
-
 ## Built With
 
 * [Java](https://www.oracle.com/java/technologies/javase-downloads.html) - Java
