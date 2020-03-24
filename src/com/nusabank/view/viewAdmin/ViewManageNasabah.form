@@ -131,6 +131,10 @@
       </Constraints>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="32"/>
+        <Property name="verticalScrollBarPolicy" type="int" value="22"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -381,6 +385,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfIncome">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfIncomeActionPerformed"/>
       </Events>
@@ -432,9 +439,9 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="- CHOOSE -"/>
-            <StringItem index="1" value="MALE"/>
-            <StringItem index="2" value="FEMALE"/>
+            <StringItem index="0" value="- Choose -"/>
+            <StringItem index="1" value="Male"/>
+            <StringItem index="2" value="Female"/>
           </StringArray>
         </Property>
       </Properties>
@@ -451,10 +458,10 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="- CHOOSE -"/>
-            <StringItem index="1" value="SINGLE"/>
-            <StringItem index="2" value="MARIED"/>
-            <StringItem index="3" value="SINGLE PARENT"/>
+            <StringItem index="0" value="- Choose -"/>
+            <StringItem index="1" value="Single"/>
+            <StringItem index="2" value="Maried"/>
+            <StringItem index="3" value="Single Parent"/>
           </StringArray>
         </Property>
       </Properties>

@@ -318,6 +318,9 @@ public class ViewManageNasabah extends javax.swing.JFrame {
         });
         getContentPane().add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, 131, 50));
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         tableNasabah.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -397,6 +400,7 @@ public class ViewManageNasabah extends javax.swing.JFrame {
         getContentPane().add(tfWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 430, 193, -1));
         getContentPane().add(tfWorkAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 468, 193, -1));
 
+        tfIncome.setText("0");
         tfIncome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfIncomeActionPerformed(evt);
@@ -411,10 +415,10 @@ public class ViewManageNasabah extends javax.swing.JFrame {
         lbDate.setText("DATE");
         getContentPane().add(lbDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 139, 165, -1));
 
-        cbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- CHOOSE -", "MALE", "FEMALE" }));
+        cbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Choose -", "Male", "Female" }));
         getContentPane().add(cbGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 392, 193, -1));
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- CHOOSE -", "SINGLE", "MARIED", "SINGLE PARENT" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Choose -", "Single", "Maried", "Single Parent" }));
         getContentPane().add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 582, 193, -1));
         getContentPane().add(tfNIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 136, 184, -1));
         getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 168, 184, -1));

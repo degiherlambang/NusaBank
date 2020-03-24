@@ -55,16 +55,16 @@ public class CRegisRekening {
     public void reset() {
         vRegNasabah.getTxtNoRekening().setText("");
         vRegNasabah.getLbNamaNasabah().setText("");
-        vRegNasabah.getTxtIdRekening().setText("");
+        vRegNasabah.getTxtIdRekening().setText("0");
     }
 
     public void insert() {
 
         ModelRekening rekening = new ModelRekening();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         java.util.Date tglPembuatan = new java.util.Date();
-
+        
         rekening.setNoPin(Integer.parseInt(String.valueOf(vRegNasabah.getTxtNoPIN().getPassword())));
         rekening.setNoRekening(vRegNasabah.getTxtNoRekening().getText());
         rekening.setSaldo(Integer.parseInt(vRegNasabah.getTxtSaldo().getText()));
@@ -75,7 +75,7 @@ public class CRegisRekening {
 
     }
 
-    public void validateForm() {
+    public boolean validateForm() {
         validator = new Validation();
         ModelRekening rekening = new ModelRekening();
 
@@ -134,30 +134,15 @@ public class CRegisRekening {
 
                 }
 
-                if (!validator.isValidDate(vRegNasabah.getTxtLahir().getDateFormatString())) {
-
-                    messageBuilder.append("\n Incorrect Date Format input !"
-                            + "\n\t-> Date of birth format should be like this: "
-                            + "\n\t-> e.g: 1970-01-31"
-                            + "format: yyyy-mm-dd.");
-
-                    vRegNasabah.getTxtLahir().setBackground(errorColor);
-                    isEachFieldsValid[2] = false;
-
-                } else {
-
-                    isEachFieldsValid[2] = true;
-                }
-
                 if (String.valueOf(rekening.getIdRekening()) == ""
                         || String.valueOf(rekening.getIdRekening()) == null) {
 
                     messageBuilder.append("\n Please fill the required fields correctly!");
-                    vRegNasabah.getCmbJenisKelamin().setBackground(errorColor);
-                    isEachFieldsValid[3] = false;
+                    vRegNasabah.getTxtIdRekening().setBackground(errorColor);
+                    isEachFieldsValid[2] = false;
                 } else {
 
-                    isEachFieldsValid[3] = true;
+                    isEachFieldsValid[2] = true;
                 }
 
                 if (String.valueOf(rekening.getSaldo()) == ""
@@ -166,7 +151,7 @@ public class CRegisRekening {
                     messageBuilder.append("\n Saldo/Balance field cannot be blank!"
                             + "\n put 0 if you don't want to submit customer first deposit!");
 
-                    vRegNasabah.getCmbJenisKelamin().setBackground(errorColor);
+                    vRegNasabah.getTxtSaldo().setBackground(errorColor);
                     isEachFieldsValid[3] = false;
                 } else {
 
@@ -178,7 +163,10 @@ public class CRegisRekening {
 
                 if (isEachFieldsValid[0] == true
                         && isEachFieldsValid[1] == true
-                        && isEachFieldsValid[2] == true) {
+                        && isEachFieldsValid[2] == true
+                        && isEachFieldsValid[3] == true
+                    ) 
+                {
 
                     isAllValid = true;
 
@@ -190,9 +178,11 @@ public class CRegisRekening {
 
             }
 
-            if (isAllValid == true) {
+        }
 
-                String noRekening = func.generateNoRek(
+        if (isAllValid == true) {
+
+            /*String noRekening = func.generateNoRek(
                         vRegNasabah.getTxtNama().getText().replace(" ", ""),
                         vRegNasabah.getTxtLahir().getDateFormatString(),
                         vRegNasabah.getLbTodayDate().getText()
@@ -200,12 +190,13 @@ public class CRegisRekening {
                 vRegNasabah.getTxtNoRekening().setText(noRekening);
                 this.insert();
                 this.reset();
+             */
+            return isAllValid;
 
-            } else {
+        } else {
 
-                JOptionPane.showMessageDialog(vRegNasabah, "There's something wrong");
-
-            }
+            //JOptionPane.showMessageDialog(vRegNasabah, "There's something wrong");
+            return isAllValid;
 
         }
 

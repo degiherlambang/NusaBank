@@ -46,12 +46,13 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtNamaNasabah" max="32767" attributes="0"/>
                                   <Component id="txtNoRekening" pref="135" max="32767" attributes="0"/>
-                                  <Component id="txtSaldo" max="32767" attributes="0"/>
+                                  <Component id="txtSaldo" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txtNoPIN" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="btnCekSaldo" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnGantiPIN" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnForgotPIN" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -85,12 +86,14 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCekSaldo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSaldo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="btnForgotPIN" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnGantiPIN" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
@@ -198,6 +201,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekSaldoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnForgotPIN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Forgot PIN"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnForgotPINActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -23,6 +23,17 @@ import javax.swing.JFrame;
  */
 public class Function {
     
+   private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+   
+   public static String randomCaptcha(int count) {
+        StringBuilder builder = new StringBuilder();
+            while (count-- != 0) {
+                int character = (int)(Math.random()*ALPHA_NUMERIC_STRING.length());
+                builder.append(ALPHA_NUMERIC_STRING.charAt(character));
+            }
+        return builder.toString();
+    }
+    
    public String generateNoRek(String nmNasabah, String dob, String dj) {
         String norekResult = "1234567890";
 

@@ -74,6 +74,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNoPIN = new javax.swing.JTextField();
         btnCekSaldo = new javax.swing.JButton();
+        btnForgotPIN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nusa Bank - Customer/Nasabah Account Information");
@@ -122,6 +123,13 @@ public class ViewAccountInfo extends javax.swing.JFrame {
             }
         });
 
+        btnForgotPIN.setText("Forgot PIN");
+        btnForgotPIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnForgotPINActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,10 +154,11 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNamaNasabah)
                                     .addComponent(txtNoRekening, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                    .addComponent(txtSaldo)
+                                    .addComponent(txtSaldo, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtNoPIN)))
                             .addComponent(btnCekSaldo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnGantiPIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnGantiPIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnForgotPIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -174,11 +183,13 @@ public class ViewAccountInfo extends javax.swing.JFrame {
                     .addComponent(txtNoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCekSaldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnForgotPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGantiPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -194,6 +205,11 @@ public class ViewAccountInfo extends javax.swing.JFrame {
     ViewGantiPin vGP = new ViewGantiPin();
     vGP.setVisible(true);
     }//GEN-LAST:event_btnGantiPINActionPerformed
+
+    private void btnForgotPINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotPINActionPerformed
+     ViewForgotPIN vFP = new ViewForgotPIN();
+     vFP.setVisible(true);
+    }//GEN-LAST:event_btnForgotPINActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,6 +244,7 @@ public class ViewAccountInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCekSaldo;
+    private javax.swing.JButton btnForgotPIN;
     private javax.swing.JButton btnGantiPIN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

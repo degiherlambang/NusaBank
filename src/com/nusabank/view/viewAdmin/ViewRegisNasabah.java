@@ -268,6 +268,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lbIdAdmin = new javax.swing.JLabel();
         dcTglLahir = new com.toedter.calendar.JDateChooser();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nusa Bank - New Customer Account Registration");
@@ -368,6 +369,11 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 199, 116, 27));
 
         btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, -1, -1));
 
         btnSave.setText("SAVE");
@@ -500,11 +506,12 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 199, 103, 27));
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 204, 250, -1));
 
+        txtAreaValidation.setEditable(false);
         txtAreaValidation.setBackground(new java.awt.Color(0, 0, 0));
         txtAreaValidation.setColumns(20);
         txtAreaValidation.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         txtAreaValidation.setForeground(new java.awt.Color(255, 102, 102));
-        txtAreaValidation.setRows(5);
+        txtAreaValidation.setRows(17);
         txtAreaValidation.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Validation Messages:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 102, 102))); // NOI18N
         jScrollPane3.setViewportView(txtAreaValidation);
 
@@ -512,8 +519,13 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1220, 10));
 
         lbIdAdmin.setText("UID");
-        getContentPane().add(lbIdAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 90, -1));
+        getContentPane().add(lbIdAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 90, -1));
+
+        dcTglLahir.setDateFormatString("yyyy-MM-dd");
         getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 250, -1));
+
+        jLabel25.setText("Admin ID:");
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -523,21 +535,30 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNamaIbuActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-       /*String noRekening = func.generateNoRek(
+       
+       
+       boolean nasabahValidCheck = nc.validateForm();
+       boolean rekeningValidCheck = rc.validateForm();
+       nc.validateForm();
+       rc.validateForm();
+       if (nasabahValidCheck == true && rekeningValidCheck == true) {
+           String noRekening = func.generateNoRek(
                txtNamaNasabah.getText().replace(" ", ""),
                dcTglLahir.getDateFormatString(), 
                todayDate.getText()
-       );
-       txtNoRekening.setText(noRekening);
-       rc.insert();
-        */
-       
-       if (String.valueOf(txtPassword.getPassword()).equals(String.valueOf(txtRePassword.getPassword()))) {
-           rc.validateForm();
-           nc.validateForm();
+            );
+            txtNoRekening.setText(noRekening);
+            rc.insert();
+            nc.insert();
+            
+            rc.reset();
+            nc.reset();
        } else {
-           JOptionPane.showMessageDialog(null,"error");
+           JOptionPane.showMessageDialog(this, "There's validation error occured."
+                   + "\nPlease contact the developer about this issue!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+           txtAreaValidation.setText(nc.getAllMsgValidation());
        }
+       
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBrowsePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowsePhotoActionPerformed
@@ -554,6 +575,11 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private void txtPendapatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPendapatanKeyReleased
         resetPendapatan();
     }//GEN-LAST:event_txtPendapatanKeyReleased
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        nc.reset();
+        rc.reset();
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -610,6 +636,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

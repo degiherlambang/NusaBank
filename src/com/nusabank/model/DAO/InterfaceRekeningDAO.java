@@ -26,5 +26,4 @@ public interface InterfaceRekeningDAO {
     public void doSaving(String id, int nominal);
     public void doWithDraw(String id, int nominal);
     public void doChangePin(ModelRekening rekening);
-    
 }

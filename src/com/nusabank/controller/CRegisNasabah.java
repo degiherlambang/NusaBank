@@ -37,6 +37,7 @@ public class CRegisNasabah {
     private Function func;
     private Validation validator;
     private final ViewRegisNasabah vRegNasabah;
+    private String allMsgValidation;
 
     private boolean isAllValid;
     private boolean isInsert = true;
@@ -58,15 +59,18 @@ public class CRegisNasabah {
         listNasabah = interfaceNasabah.getAll();
     }
 
+    public String getAllMsgValidation(){
+        return allMsgValidation;
+    }
+    
     public void reset() {
         vRegNasabah.getTxtNama().setText("");
         vRegNasabah.getTxtAlamat().setText("");
         vRegNasabah.getTxtAlamatKantor().setText("");
-        vRegNasabah.getTxtLahir().setDateFormatString(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-mm-yyyy")));
         vRegNasabah.getTxtNIK().setText("");
         vRegNasabah.getTxtNamaIbu().setText("");
         vRegNasabah.getTxtNoHP().setText("");
-        vRegNasabah.getTxtNoPIN().setText("");
+        vRegNasabah.getTxtNoPIN().setText("123456");
         vRegNasabah.getTxtPassword().setText("");
         vRegNasabah.getTxtPekerjaan().setText("");
         vRegNasabah.getTxtPendapatan().setText("0");
@@ -77,7 +81,7 @@ public class CRegisNasabah {
         vRegNasabah.getCmbStatus().setSelectedIndex(0);
         vRegNasabah.getLbFoto().setText("file...");
         vRegNasabah.getLbNamaNasabah().setText("");   
-        vRegNasabah.getTxtIdRekening().setText("");
+        vRegNasabah.getTxtIdRekening().setText("0");
         vRegNasabah.getTxtNoRekening().setText("");
         vRegNasabah.getTxtEmail().setText("");
         
@@ -106,7 +110,7 @@ public class CRegisNasabah {
 
         ModelNasabah nasabah = new ModelNasabah();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         java.util.Date tglPembuatan = new java.util.Date();
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -139,7 +143,7 @@ public class CRegisNasabah {
         JOptionPane.showMessageDialog(null,"Data berhasil di input");
     }
 
-    public void validateForm() {
+    public boolean validateForm() {
         validator = Validation.buildPasswordRule(false, false, true, 6, 12);
         ModelNasabah nasabah = new ModelNasabah();
 
@@ -178,6 +182,7 @@ public class CRegisNasabah {
                 && (String.valueOf(nasabah.getNik()).equals(""))
                 && (nasabah.getUsername().isEmpty())
                 && (nasabah.getPassword().isEmpty())
+                && (vRegNasabah.getTxtRePassword().equals(""))
                 && (nasabah.getEmail().isEmpty())
                 && (nasabah.getJenisKelamin().isEmpty()
                     || nasabah.getJenisKelamin().equals("- Choose -"))
@@ -303,7 +308,7 @@ public class CRegisNasabah {
                 messageBuilder.append("\n Incorrect Date Format input !"
                         + "\n\t-> Date of birth format should be like this: "
                         + "\n\t-> e.g: 1970-01-31"
-                        + "format: yyyy-mm-dd.");
+                        + "\n\t-> format: yyyy-mm-dd.");
 
                 vRegNasabah.getTxtLahir().setBackground(errorColor);
                 isEachFieldsValid[6] = false;
@@ -354,9 +359,23 @@ public class CRegisNasabah {
                 isEachFieldsValid[9] = true;
             
             }
-
+            
+            if (!String.valueOf(vRegNasabah.getTxtPassword().getPassword())
+                    .equals(String.valueOf(vRegNasabah.getTxtRePassword().getPassword()))
+               ) 
+            {
+                messageBuilder.append("\n Your re-typed password isn't match!");
+                vRegNasabah.getTxtRePassword().setBackground(errorColor);
+                vRegNasabah.getTxtPassword().setBackground(errorColor);
+                isEachFieldsValid[10] = false;
+            } else {
+                isEachFieldsValid[10] = true;
+            }
+            
+            this.allMsgValidation = messageBuilder.toString();
             vRegNasabah.getTxtAreaValidation().setText(messageBuilder.toString());
-
+            
+            
             if (
                     isEachFieldsValid[0] == true
                     && isEachFieldsValid[1] == true
@@ -368,6 +387,7 @@ public class CRegisNasabah {
                     && isEachFieldsValid[7] == true
                     && isEachFieldsValid[8] == true
                     && isEachFieldsValid[9] == true
+                    && isEachFieldsValid[10] == true
                 )
             {
             
@@ -383,16 +403,15 @@ public class CRegisNasabah {
         
         if (isAllValid == true) {
             
-
-                this.insert();
-                this.reset();
-
+            //this.insert();
+            //this.reset();
+            return isAllValid;
             
         } else {
             
-            JOptionPane.showMessageDialog(vRegNasabah, "There's something wrong");
-        
+            //JOptionPane.showMessageDialog(vRegNasabah, "There's something wrong");
+            return isAllValid;
+            
         }
-
     }
 }

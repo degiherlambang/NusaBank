@@ -8,6 +8,8 @@ package com.nusabank.view.viewNasabah;
 
 import com.nusabank.model.database.DBConnection;
 import com.nusabank.controller.CButton;
+import com.nusabank.controller.CLogoutNasabah;
+import com.nusabank.view.MainLogin;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -27,6 +29,7 @@ import javax.swing.JOptionPane;
 public class ViewMenuNasabah extends javax.swing.JFrame {
 
     private CButton cb;
+    private final CLogoutNasabah cLogout;
     /**
      * Creates new form MenuNasabah
      */
@@ -35,6 +38,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         todayDateInit();
         setLocationRelativeTo(null);
         cb = new CButton(this);
+        cLogout = new CLogoutNasabah(this);
     }
 
     public void todayDateInit() {
@@ -113,6 +117,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         lbIdNasabah = new javax.swing.JLabel();
         lbTanggal = new javax.swing.JLabel();
         labelAvatar = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nusa Bank v1.0 -  Customer/Nasabah Dashboard");
@@ -352,6 +357,14 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
         labelAvatar.setText("FOTO");
         getContentPane().add(labelAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 15, 128, 128));
 
+        btnLogout.setText("LOGOUT");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -377,6 +390,10 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
                 "About Us",
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAboutActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+            cLogout.doLogOut();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,6 +434,7 @@ public class ViewMenuNasabah extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnAccountInfo;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JPanel btnMenu1;
     private javax.swing.JPanel btnMenu2;
     private javax.swing.JPanel btnMenu3;

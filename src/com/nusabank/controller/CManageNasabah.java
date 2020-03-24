@@ -61,8 +61,8 @@ public class CManageNasabah {
         vManageNasabah.getTfWork().setText("");
         vManageNasabah.getTfPhoto().setText("");
         vManageNasabah.getTfMotherName().setText("");
-        vManageNasabah.getTfIncome().setText("");
-        vManageNasabah.getTfAccountID().setText("");
+        vManageNasabah.getTfIncome().setText("0");
+        vManageNasabah.getTfAccountID().setText("0");
         vManageNasabah.getCbGender().setSelectedIndex(0);
         vManageNasabah.getCbStatus().setSelectedIndex(0);
         vManageNasabah.getLbDateMake().setText("");
