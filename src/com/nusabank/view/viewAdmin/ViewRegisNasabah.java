@@ -34,11 +34,11 @@ import javax.swing.UIManager;
  */
 public class ViewRegisNasabah extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
-    
+    private String IdAdmin = ViewMenuAdmin.lbIdAdmin.getText();
     private Function func;
     private CRegisNasabah nc;
     private CRegisRekening rc;
-    
+    private ViewMenuAdmin vma;
     private String fileName;
     private String sourcePath;
     private String destPath;
@@ -47,14 +47,21 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
      * Creates new form ViewRegisNasabah
      */
     public ViewRegisNasabah() {
+    
         initComponents();
         todayDateInit();
+        noIdAdmin();
         setLocationRelativeTo(null);
         dcTglLahir.setDate(new Date());
         func = new Function();
         nc = new CRegisNasabah(this);
         rc = new CRegisRekening(this);
         System.out.println(System.getProperty("user.dir"));
+        
+        
+    }
+    public void noIdAdmin(){
+        lbIdAdmin.setText(IdAdmin);
     }
 
     public void todayDateInit() {
@@ -66,6 +73,10 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         if (txtPendapatan.getText().isEmpty()){
             txtPendapatan.setText("0");
         }
+    }
+    
+    public JLabel getLbNoIdAdmin(){
+        return lbIdAdmin;
     }
     
     public JLabel getLbTodayDate() {
@@ -232,7 +243,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         btnBrowsePhoto = new javax.swing.JButton();
         cmbJenisRekening = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        dcTglLahir = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAlamatKantor = new javax.swing.JTextArea();
         jLabel19 = new javax.swing.JLabel();
@@ -256,6 +266,8 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaValidation = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
+        dcTglLahir = new com.toedter.calendar.JDateChooser();
+        lbIdAdmin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nusa Bank - New Customer Account Registration");
@@ -387,9 +399,6 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         jLabel17.setText("Type of Account");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 117, 27));
 
-        dcTglLahir.setDateFormatString("yyyy-MM-dd");
-        getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 161, 141, -1));
-
         txtAlamatKantor.setColumns(20);
         txtAlamatKantor.setRows(5);
         jScrollPane2.setViewportView(txtAlamatKantor);
@@ -502,6 +511,12 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 780, 200));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1220, 10));
 
+        dcTglLahir.setDateFormatString("yyyy-MM-dd");
+        getContentPane().add(dcTglLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 240, -1));
+
+        lbIdAdmin.setText("UID");
+        getContentPane().add(lbIdAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 90, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -610,6 +625,7 @@ public class ViewRegisNasabah extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbFoto;
+    private javax.swing.JLabel lbIdAdmin;
     private javax.swing.JLabel lbNamaNasabah;
     private javax.swing.JLabel todayDate;
     private javax.swing.JTextArea txtAlamat;

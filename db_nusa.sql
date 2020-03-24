@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2020 at 01:52 AM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.4
+-- Generation Time: Mar 24, 2020 at 08:59 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -54,7 +56,9 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `nik`, `username_admin`, `passwor
 (10, 'Nabila Bila', '1997011232', 'nabila', 'nabila', '1997-01-12', '', 'Female', '082134567', 'nabila@nusabank.com', 'Jl.Karyawan'),
 (11, 'Jason ', '119202102', 'jasonx', 'jason12', '1995-03-18', '', 'Male', '+62 812234568', 'jason@nusabank.com', 'jalan'),
 (13, 'Nanda', '1990121292', 'nanda', 'nanda88', '1997-01-12', '', 'Female', '+62 8572928123', 'nanda@nusabank.com', 'Jalan Buntu'),
-(14, 'Mozart', '199923212', 'mozart', 'mozart123', '1992-03-02', '', 'Male', '+62 8561919182', 'mozart@nusabank.com', 'Austria');
+(14, 'Mozart', '199923212', 'mozart', 'mozart123', '1992-03-02', '', 'Male', '+62 8561919182', 'mozart@nusabank.com', 'Austria'),
+(15, 'degi', '1110', 'degiher', 'Cornetto911', '2020-03-07', 'res/admin_photos/degiher_NusaBank_2020-03-07.png', 'Male', '+62 87770917945', 'degi@gmail.com', 'vilagading'),
+(16, 'asd', '123', 'asd', 'asean911', '2020-03-24', 'res/admin_photos/asd_NusaBank_2020-03-24.jpg', 'Male', '+62 087770917945', 'ddegi.h@gmail.com', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -95,7 +99,10 @@ INSERT INTO `nasabah` (`id_nasabah`, `nama`, `nik`, `tgl_lahir`, `alamat`, `phot
 (6, 'Asep', '12345678', '1992-01-27', 'Bandung', 'res/nasabah_photos/asep1_NusaBank_2020-03-17_16-27.jpg', 'Male', 'Programmer', 'Jakarta', 50000000, '', '0812345', 'Single', 'Booo', 'asep1', '123456', '2020-03-17 16:27:00', 12, NULL),
 (7, 'Ujang', '11223344', '1990-01-01', 'Bogor', 'res/nasabah_photos/ujang1_NusaBank_2020-03-17_19-35.jpg', 'Male', 'Manager', 'Depok', 20000000, '', '0857123456', 'Single', 'Ujung', 'ujang1', '123456', '2020-03-17 19:35:00', 13, NULL),
 (9, 'Anton', '1288123921', '1990-03-10', 'Jl. Nangka No.12\nPasar Rebo, Jakarta Timur', 'res/nasabah_photos/antonyz_NusaBank_2020-03-23_21-02.png', 'Male', 'Tax Consultant', 'Jakarta Pusat', 250000000, 'anton@gmail.com', '+62 8579910201', 'Single', 'Mak w', 'antonyz', 'antony99', '2020-03-23 21:02:00', 15, NULL),
-(10, 'Peter Shawn', '19999832', '1986-09-26', 'Sillicon Valey', 'res/nasabah_photos/petershwn_NusaBank_2020-03-23_21-21.jpg', 'Male', 'Engineer', 'Sillicon Valey', 80000000, 'petershwn@yahoo.com', '+1 999222111', 'Maried', 'Brunkkk', 'petershwn', 'peter12345', '2020-03-23 21:21:00', 17, NULL);
+(10, 'Peter Shawn', '19999832', '1986-09-26', 'Sillicon Valey', 'res/nasabah_photos/petershwn_NusaBank_2020-03-23_21-21.jpg', 'Male', 'Engineer', 'Sillicon Valey', 80000000, 'petershwn@yahoo.com', '+1 999222111', 'Maried', 'Brunkkk', 'petershwn', 'peter12345', '2020-03-23 21:21:00', 17, NULL),
+(11, 'Degi Herlambang', '32012708', '1997-09-08', 'Vila gading Harapan Blok Af10', 'res/nasabah_photos/degiherlambang_NusaBank_2020-03-24_08-40.jpg', 'Male', 'Software Engineer', 'Gondangdia', 10000000, 'ddegi.h@gmail.com', '+62 87770917945', 'Maried', 'Nurul', 'degiherlambang', 'Cornetto911', '2020-03-24 08:40:00', 11, NULL),
+(12, 'Degoy', '123', '2020-03-14', 'Working', 'res/nasabah_photos/asean911_NusaBank_2020-03-24_14-31.jpg', 'Male', 'pro', 'kawe', 900000, 'degi@gmail.com', '+62 10101010', 'Single', 'nur', 'asean911', 'asean911', '2020-03-24 14:31:00', 0, 1),
+(13, 'Degii', '320101', '1997-09-08', 'Vila Gading Harapan Bekasi', 'res/nasabah_photos/degiher_NusaBank_2020-03-24_14-45.jpg', 'Male', 'Programmer', 'Gondangdia', 1000000, 'ddegi.h@gmail.com', '+62 87770917945', 'Single', 'Nurul', 'degiher', 'asean911', '2020-03-24 14:45:00', 0, 14);
 
 -- --------------------------------------------------------
 
@@ -223,27 +230,33 @@ ALTER TABLE `transaksi_ppob`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `nasabah`
 --
 ALTER TABLE `nasabah`
-  MODIFY `id_nasabah` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_nasabah` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
   MODIFY `id_rekening` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `transaksi_bank`
 --
 ALTER TABLE `transaksi_bank`
   MODIFY `id_transaksi` bigint(120) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `transaksi_ppob`
 --
 ALTER TABLE `transaksi_ppob`
   MODIFY `id_transaksi` bigint(120) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

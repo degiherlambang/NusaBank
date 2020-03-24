@@ -37,6 +37,7 @@ public class Validation {
     
     private String PIN_PATTERN = "^[0-9]{6,}$";
     
+    
     public Validation() {
         // do nothing...
     }
