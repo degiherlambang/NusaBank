@@ -2,10 +2,6 @@
 
 NusaBank is a desktop software for banking system
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 To running this program you need to prepare some extras
